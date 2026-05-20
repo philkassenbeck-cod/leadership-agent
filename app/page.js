@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
+import { OPTIMUP_LOGO, OPTIMUP_LOGO_RATIO } from "./logo";
 
 const ALL34 = ["Achiever","Activator","Adaptability","Analytical","Arranger","Belief","Command","Communication","Competition","Connectedness","Consistency","Context","Deliberative","Developer","Discipline","Empathy","Focus","Futuristic","Harmony","Ideation","Includer","Individualization","Input","Intellection","Learner","Maximizer","Positivity","Relator","Responsibility","Restorative","Self-Assurance","Significance","Strategic","Woo"];
 
@@ -277,6 +278,26 @@ export default function Home() {
       ensureSpace(20);
       writeBlock(L.letterClose, { size: 11, style: "normal", gap: 3 });
       writeBlock(coachName && coachName.trim() ? coachName.trim() : "", { size: 12, style: "bold", gap: 0 });
+
+      // Signature de marque "by [logo Optimup]", centrée en pied de page.
+      const logoW = 34;                       // largeur du logo en mm
+      const logoH = logoW * OPTIMUP_LOGO_RATIO; // hauteur proportionnelle
+      const byText = "by";
+      doc.setFont("times", "italic");
+      doc.setFontSize(10);
+      doc.setTextColor(130, 130, 130);
+      const byW = doc.getTextWidth(byText);
+      const gap = 2;                          // espace entre "by" et le logo
+      const totalW = byW + gap + logoW;
+      const startX = (pageW - totalW) / 2;
+      const baseY = pageH - 14;               // ligne de pied de page
+      doc.text(byText, startX, baseY);
+      try {
+        doc.addImage(OPTIMUP_LOGO, "JPEG", startX + byW + gap, baseY - logoH + 2, logoW, logoH);
+      } catch (imgErr) {
+        // Si l'image échoue, on retombe sur le texte.
+        doc.text("Optimup", startX + byW + gap, baseY);
+      }
 
       const safeName = (greet || "debrief").replace(/[^a-z0-9]/gi, "_");
       doc.save(`debrief_${safeName}.pdf`);
