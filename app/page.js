@@ -328,6 +328,7 @@ export default function Home() {
 
       {/* Header */}
       <div className="agent-header">
+        <img src={OPTIMUP_LOGO} alt="Optimup" className="brand-logo" />
         <h1>Leadership Agent — StrengthsFinder</h1>
         <p>{mode==="individual" ? L.headerSub : L.headerSubTeam}</p>
       </div>

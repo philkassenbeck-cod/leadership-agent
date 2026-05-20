@@ -83,6 +83,7 @@ body {
 
 /* Header */
 .agent-header { margin-bottom: 1.75rem; }
+.brand-logo { display: block; margin: 0 auto 1.1rem; width: 180px; max-width: 60%; height: auto; }
 .agent-header h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
 .agent-header p { font-size: 13px; color: var(--text2); }
 
