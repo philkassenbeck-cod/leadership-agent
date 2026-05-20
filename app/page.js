@@ -11,9 +11,9 @@ const DOMAINS = {
 };
 
 const LABELS = {
-  fr: { identity:"Identité", name:"Nom", role:"Rôle / Poste", top5:"Top 5 forces (obligatoire)", top10:"Forces 6–10 (optionnel)", context:"Contexte", goal:"Objectif du debrief", teamName:"Nom de l'équipe", teamGoal:"Objectif du debrief", members:"Membres", addMember:"+ Ajouter un membre", analyze:"Analyser →", analyzeTeam:"Analyser l'équipe →", back:"← Nouveau debrief", backTeam:"← Nouvelle analyse", individual:"Individuel", team:"Équipe", headerSub:"Debrief individuel · Saisissez le top 5 ou top 10", headerSubTeam:"Analyse d'équipe · Ajoutez les membres et leurs forces", executing:"Exécution", influencing:"Influence", relationship:"Relation", thinking:"Réflexion", chatPlaceholder:"Approfondissez une force, posez une question...", teamChatPlaceholder:"Posez une question sur la dynamique d'équipe...", goalOptions:[{v:"dev",l:"Développement personnel"},{v:"lead",l:"Leadership"},{v:"team",l:"Intégration équipe"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], teamGoalOptions:[{v:"dynamics",l:"Dynamiques d'équipe"},{v:"collab",l:"Améliorer la collaboration"},{v:"blind",l:"Identifier les angles morts"},{v:"perf",l:"Performance collective"}] },
-  de: { identity:"Identität", name:"Name", role:"Rolle / Position", top5:"Top 5 Stärken (Pflicht)", top10:"Stärken 6–10 (optional)", context:"Kontext", goal:"Ziel des Debriefs", teamName:"Teamname", teamGoal:"Ziel des Debriefs", members:"Mitglieder", addMember:"+ Mitglied hinzufügen", analyze:"Analysieren →", analyzeTeam:"Team analysieren →", back:"← Neues Debrief", backTeam:"← Neue Analyse", individual:"Individuell", team:"Team", headerSub:"Individuelles Debrief · Geben Sie die Top 5 oder Top 10 ein", headerSubTeam:"Teamanalyse · Fügen Sie Mitglieder und Stärken hinzu", executing:"Ausführung", influencing:"Einfluss", relationship:"Beziehung", thinking:"Denken", chatPlaceholder:"Vertiefen Sie eine Stärke...", teamChatPlaceholder:"Fragen zur Teamdynamik...", goalOptions:[{v:"dev",l:"Persönliche Entwicklung"},{v:"lead",l:"Leadership"},{v:"team",l:"Teamintegration"},{v:"perf",l:"Performance"},{v:"collab",l:"Zusammenarbeit"}], teamGoalOptions:[{v:"dynamics",l:"Teamdynamiken"},{v:"collab",l:"Zusammenarbeit verbessern"},{v:"blind",l:"Blinde Flecken erkennen"},{v:"perf",l:"Kollektive Performance"}] },
-  en: { identity:"Identity", name:"Name", role:"Role / Position", top5:"Top 5 strengths (required)", top10:"Strengths 6–10 (optional)", context:"Context", goal:"Debrief objective", teamName:"Team name", teamGoal:"Debrief objective", members:"Members", addMember:"+ Add member", analyze:"Analyze →", analyzeTeam:"Analyze team →", back:"← New debrief", backTeam:"← New analysis", individual:"Individual", team:"Team", headerSub:"Individual debrief · Enter top 5 or top 10", headerSubTeam:"Team analysis · Add members and their strengths", executing:"Executing", influencing:"Influencing", relationship:"Relationship", thinking:"Thinking", chatPlaceholder:"Dive deeper into a strength...", teamChatPlaceholder:"Ask about team dynamics...", goalOptions:[{v:"dev",l:"Personal development"},{v:"lead",l:"Leadership"},{v:"team",l:"Team integration"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], teamGoalOptions:[{v:"dynamics",l:"Team dynamics"},{v:"collab",l:"Improve collaboration"},{v:"blind",l:"Identify blind spots"},{v:"perf",l:"Collective performance"}] },
+  fr: { identity:"Identité", name:"Nom", role:"Rôle / Poste", top5:"Top 5 forces (obligatoire)", top10:"Forces 6–10 (optionnel)", context:"Contexte", goal:"Objectif du debrief", teamName:"Nom de l'équipe", teamGoal:"Objectif du debrief", members:"Membres", addMember:"+ Ajouter un membre", analyze:"Analyser →", analyzeTeam:"Analyser l'équipe →", back:"← Nouveau debrief", backTeam:"← Nouvelle analyse", individual:"Individuel", team:"Équipe", headerSub:"Debrief individuel · Saisissez le top 5 ou top 10", headerSubTeam:"Analyse d'équipe · Ajoutez les membres et leurs forces", executing:"Exécution", influencing:"Influence", relationship:"Relation", thinking:"Réflexion", chatPlaceholder:"Approfondissez une force, posez une question...", teamChatPlaceholder:"Posez une question sur la dynamique d'équipe...", goalOptions:[{v:"dev",l:"Développement personnel"},{v:"lead",l:"Leadership"},{v:"team",l:"Intégration équipe"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], teamGoalOptions:[{v:"dynamics",l:"Dynamiques d'équipe"},{v:"collab",l:"Améliorer la collaboration"},{v:"blind",l:"Identifier les angles morts"},{v:"perf",l:"Performance collective"}], coachName:"Votre nom (coach)", downloadPdf:"⬇ Télécharger en PDF", letterGreeting:(n)=>`Cher(e) ${n},`, letterIntro:"Voici le débrief de tes forces, fruit de notre échange. Prends le temps de le lire, d'y revenir, et de laisser ces mots résonner.", letterClose:"Avec toute ma confiance,", pdfTitle:"Débrief StrengthsFinder" },
+  de: { identity:"Identität", name:"Name", role:"Rolle / Position", top5:"Top 5 Stärken (Pflicht)", top10:"Stärken 6–10 (optional)", context:"Kontext", goal:"Ziel des Debriefs", teamName:"Teamname", teamGoal:"Ziel des Debriefs", members:"Mitglieder", addMember:"+ Mitglied hinzufügen", analyze:"Analysieren →", analyzeTeam:"Team analysieren →", back:"← Neues Debrief", backTeam:"← Neue Analyse", individual:"Individuell", team:"Team", headerSub:"Individuelles Debrief · Geben Sie die Top 5 oder Top 10 ein", headerSubTeam:"Teamanalyse · Fügen Sie Mitglieder und Stärken hinzu", executing:"Ausführung", influencing:"Einfluss", relationship:"Beziehung", thinking:"Denken", chatPlaceholder:"Vertiefen Sie eine Stärke...", teamChatPlaceholder:"Fragen zur Teamdynamik...", goalOptions:[{v:"dev",l:"Persönliche Entwicklung"},{v:"lead",l:"Leadership"},{v:"team",l:"Teamintegration"},{v:"perf",l:"Performance"},{v:"collab",l:"Zusammenarbeit"}], teamGoalOptions:[{v:"dynamics",l:"Teamdynamiken"},{v:"collab",l:"Zusammenarbeit verbessern"},{v:"blind",l:"Blinde Flecken erkennen"},{v:"perf",l:"Kollektive Performance"}], coachName:"Ihr Name (Coach)", downloadPdf:"⬇ Als PDF herunterladen", letterGreeting:(n)=>`Liebe(r) ${n},`, letterIntro:"Hier ist das Debrief deiner Stärken, das Ergebnis unseres Gesprächs. Nimm dir Zeit, es zu lesen und nachwirken zu lassen.", letterClose:"Mit vollem Vertrauen,", pdfTitle:"StrengthsFinder Debrief" },
+  en: { identity:"Identity", name:"Name", role:"Role / Position", top5:"Top 5 strengths (required)", top10:"Strengths 6–10 (optional)", context:"Context", goal:"Debrief objective", teamName:"Team name", teamGoal:"Debrief objective", members:"Members", addMember:"+ Add member", analyze:"Analyze →", analyzeTeam:"Analyze team →", back:"← New debrief", backTeam:"← New analysis", individual:"Individual", team:"Team", headerSub:"Individual debrief · Enter top 5 or top 10", headerSubTeam:"Team analysis · Add members and their strengths", executing:"Executing", influencing:"Influencing", relationship:"Relationship", thinking:"Thinking", chatPlaceholder:"Dive deeper into a strength...", teamChatPlaceholder:"Ask about team dynamics...", goalOptions:[{v:"dev",l:"Personal development"},{v:"lead",l:"Leadership"},{v:"team",l:"Team integration"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], teamGoalOptions:[{v:"dynamics",l:"Team dynamics"},{v:"collab",l:"Improve collaboration"},{v:"blind",l:"Identify blind spots"},{v:"perf",l:"Collective performance"}], coachName:"Your name (coach)", downloadPdf:"⬇ Download PDF", letterGreeting:(n)=>`Dear ${n},`, letterIntro:"Here is the debrief of your strengths, the fruit of our conversation. Take the time to read it, return to it, and let these words resonate.", letterClose:"With all my confidence,", pdfTitle:"StrengthsFinder Debrief" },
 };
 
 function getDomain(s) {
@@ -98,6 +98,7 @@ Context: ${context}`;
 export default function Home() {
   const [lang, setLang] = useState("fr");
   const [mode, setMode] = useState("individual");
+  const [coachName, setCoachName] = useState("");
 
   // Individual state
   const [indName, setIndName] = useState("");
@@ -230,6 +231,60 @@ export default function Home() {
     scrollChat(teamChatRef);
   }
 
+  // Charge jsPDF depuis un CDN (une seule fois) puis génère le PDF.
+  function loadJsPDF() {
+    return new Promise((resolve, reject) => {
+      if (window.jspdf && window.jspdf.jsPDF) return resolve(window.jspdf.jsPDF);
+      const s = document.createElement("script");
+      s.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+      s.onload = () => resolve(window.jspdf.jsPDF);
+      s.onerror = () => reject(new Error("jsPDF load failed"));
+      document.head.appendChild(s);
+    });
+  }
+
+  async function downloadPdf(recipientName, reportText) {
+    try {
+      const jsPDF = await loadJsPDF();
+      const doc = new jsPDF({ unit: "mm", format: "a4" });
+
+      const pageW = 210, pageH = 297;
+      const marginX = 22, marginTop = 24, marginBottom = 22;
+      const maxW = pageW - marginX * 2;
+      let y = marginTop;
+
+      const ensureSpace = (h) => {
+        if (y + h > pageH - marginBottom) { doc.addPage(); y = marginTop; }
+      };
+      const writeBlock = (text, { size = 11, style = "normal", gap = 5, color = [40, 40, 40] } = {}) => {
+        doc.setFont("times", style);
+        doc.setFontSize(size);
+        doc.setTextColor(color[0], color[1], color[2]);
+        const lines = doc.splitTextToSize(text, maxW);
+        lines.forEach((line) => {
+          ensureSpace(size * 0.5);
+          doc.text(line, marginX, y);
+          y += size * 0.5;
+        });
+        y += gap;
+      };
+
+      writeBlock(L.pdfTitle, { size: 18, style: "bold", gap: 10, color: [20, 20, 20] });
+      const greet = recipientName && recipientName.trim() ? recipientName.trim() : "";
+      writeBlock(L.letterGreeting(greet), { size: 13, style: "bold", gap: 6 });
+      writeBlock(L.letterIntro, { size: 11, style: "italic", gap: 8, color: [70, 70, 70] });
+      writeBlock(reportText, { size: 11, style: "normal", gap: 8 });
+      ensureSpace(20);
+      writeBlock(L.letterClose, { size: 11, style: "normal", gap: 3 });
+      writeBlock(coachName && coachName.trim() ? coachName.trim() : "", { size: 12, style: "bold", gap: 0 });
+
+      const safeName = (greet || "debrief").replace(/[^a-z0-9]/gi, "_");
+      doc.save(`debrief_${safeName}.pdf`);
+    } catch (e) {
+      alert("Impossible de générer le PDF. Réessayez.");
+    }
+  }
+
   return (
     <div className="page">
       {/* Datalist */}
@@ -268,6 +323,10 @@ export default function Home() {
             <div className="field-row">
               <label>{L.role}</label>
               <input type="text" value={indRole} onChange={e => setIndRole(e.target.value)} placeholder="ex. CEO, Chef de projet..." />
+            </div>
+            <div className="field-row">
+              <label>{L.coachName}</label>
+              <input type="text" value={coachName} onChange={e => setCoachName(e.target.value)} placeholder="ex. Philippe Kassenbeck" />
             </div>
           </div>
           <div className="form-section">
@@ -314,6 +373,7 @@ export default function Home() {
           <div className="report-area">
             <div className="report-content">{indReport.text}</div>
           </div>
+          <button className="pdf-btn" onClick={() => downloadPdf(indName, indReport.text)}>{L.downloadPdf}</button>
           <ChatArea messages={indChatMsgs} chatAreaRef={indChatRef} />
           <div className="chat-input-row">
             <textarea rows={2} value={indChatInput} onChange={e => setIndChatInput(e.target.value)}
@@ -375,6 +435,7 @@ export default function Home() {
           <div className="report-area">
             <div className="report-content">{teamReport.text}</div>
           </div>
+          <button className="pdf-btn" onClick={() => downloadPdf(teamName, teamReport.text)}>{L.downloadPdf}</button>
           <ChatArea messages={teamChatMsgs} chatAreaRef={teamChatRef} />
           <div className="chat-input-row">
             <textarea rows={2} value={teamChatInput} onChange={e => setTeamChatInput(e.target.value)}

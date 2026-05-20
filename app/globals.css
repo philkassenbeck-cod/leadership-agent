@@ -237,3 +237,13 @@ input[type="text"]:focus, select:focus, textarea:focus {
   .strengths-grid { grid-template-columns: 1fr; }
   .domains { grid-template-columns: repeat(2,1fr); }
 }
+
+.pdf-btn {
+  width: 100%; padding: 12px;
+  font-size: 14px; font-weight: 500;
+  background: transparent; color: var(--green);
+  border: 1.5px solid var(--green); border-radius: var(--radius-lg);
+  cursor: pointer; font-family: inherit;
+  transition: background .15s, color .15s; margin: 10px 0 6px;
+}
+.pdf-btn:hover { background: var(--green); color: #fff; }
