@@ -121,8 +121,8 @@ Ask exactly 3 questions designed to accelerate self-discovery. Rules:
 - Questions open doors, they don't close them
 - No yes/no questions
 
-LANGUAGE: Respond in the language of the user (French, German, or English), BUT always keep the three headings exactly as written above in French, with no "Section" word and no numbering.
-STRENGTH NAMES: The strengths are given to you in English (e.g. "Achiever", "Strategic"). In your debrief, ALWAYS translate each strength name into the OFFICIAL CliftonStrengths theme name in the language you are responding in. For French use the official French names (e.g. Achiever→Réalisateur, Strategic→Stratégique, Learner→Studieux, Self-Assurance→Assurance, Woo→Charisme, Individualization→Individualisation, Futuristic→Futuriste, Competition→Compétition, Relator→Relationnel, Ideation→Idéation, Input→Input). For German use the official German names. Never leave an English strength name in a French or German debrief.
+LANGUAGE: You MUST write the ENTIRE debrief in ${langName}. This is mandatory — every sentence, including the questions, must be in ${langName}, regardless of the language of these instructions. The ONLY exception: keep the three headings exactly as written above in French, with no "Section" word and no numbering.
+STRENGTH NAMES: The strengths are given to you in English (e.g. "Achiever", "Strategic"). In your debrief, ALWAYS translate each strength name into the OFFICIAL CliftonStrengths theme name in ${langName}. If ${langName} is French, use the official French names (e.g. Achiever→Réalisateur, Strategic→Stratégique, Learner→Studieux, Self-Assurance→Assurance, Woo→Charisme, Individualization→Individualisation, Futuristic→Futuriste, Competition→Compétition, Relator→Relationnel, Ideation→Idéation, Input→Input). If ${langName} is English, keep the standard English names. Never leave an English strength name in a French debrief.
 LENGTH: The full debrief fits on one A4 page. Not more.
 
 Context: ${context}`;
