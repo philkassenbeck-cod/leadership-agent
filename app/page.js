@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
-import { OPTIMUP_LOGO, OPTIMUP_LOGO_RATIO } from "./logo";
+import { OPTIMUP_LOGO } from "./logo";
 
 const ALL34 = ["Achiever","Activator","Adaptability","Analytical","Arranger","Belief","Command","Communication","Competition","Connectedness","Consistency","Context","Deliberative","Developer","Discipline","Empathy","Focus","Futuristic","Harmony","Ideation","Includer","Individualization","Input","Intellection","Learner","Maximizer","Positivity","Relator","Responsibility","Restorative","Self-Assurance","Significance","Strategic","Woo"];
 
@@ -328,7 +328,6 @@ export default function Home() {
 
       {/* Header */}
       <div className="agent-header">
-        <img src={OPTIMUP_LOGO} alt="Optimup" className="brand-logo" />
         <h1>Leadership Agent — StrengthsFinder</h1>
         <p>{mode==="individual" ? L.headerSub : L.headerSubTeam}</p>
       </div>
@@ -467,6 +466,12 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* Pied de page : by Optimup (texte, aligné à droite) */}
+      <div className="brand-footer">
+        <span className="brand-by">by</span>
+        <span className="brand-name">Optimup</span>
+      </div>
     </div>
   );
 }

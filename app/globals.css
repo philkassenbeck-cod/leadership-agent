@@ -83,9 +83,11 @@ body {
 
 /* Header */
 .agent-header { margin-bottom: 1.75rem; }
-.brand-logo { display: block; margin: 0 auto 1.1rem; width: 180px; max-width: 60%; height: auto; }
 .agent-header h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
 .agent-header p { font-size: 13px; color: var(--text2); }
+.brand-footer { display: flex; align-items: baseline; justify-content: flex-end; gap: 5px; margin-top: 1.5rem; }
+.brand-by { font-size: 12px; font-style: italic; color: var(--text2); }
+.brand-name { font-size: 14px; font-weight: 600; color: #111; letter-spacing: .2px; }
 
 /* Form section */
 .form-section {
