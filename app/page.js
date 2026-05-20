@@ -322,7 +322,8 @@ export default function Home() {
   }
 
   async function analyzeIndividual(langOverride) {
-    const lg = langOverride || lang;
+    // langOverride peut être un événement (onClick) : on ne le garde que si c'est une vraie langue.
+    const lg = (typeof langOverride === "string" && LABELS[langOverride]) ? langOverride : lang;
     const Lg = getLabels(lg);
     const strengths = indStrengths.filter(Boolean);
     if (strengths.length < 3) { alert(Lg.errMin3); return; }
@@ -374,7 +375,8 @@ export default function Home() {
   function updateMemberStrength(id, idx, val) { setMembers(members.map(m => m.id===id ? {...m, strengths:m.strengths.map((s,i) => i===idx ? val : s)} : m)); }
 
   async function analyzeTeam(langOverride) {
-    const lg = langOverride || lang;
+    // langOverride peut être un événement (onClick) : on ne le garde que si c'est une vraie langue.
+    const lg = (typeof langOverride === "string" && LABELS[langOverride]) ? langOverride : lang;
     const Lg = getLabels(lg);
     const validMembers = members.filter(m => m.strengths.some(Boolean));
     if (validMembers.length < 2) { alert(Lg.errMin2); return; }
