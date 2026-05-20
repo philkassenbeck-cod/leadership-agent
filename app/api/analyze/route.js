@@ -7,16 +7,33 @@ export async function POST(req) {
     const body = await req.json();
     const { systemPrompt, messages } = body;
 
+    if (!process.env.ANTHROPIC_API_KEY) {
+      return Response.json(
+        { error: "Missing ANTHROPIC_API_KEY environment variable." },
+        { status: 500 }
+      );
+    }
+    if (!Array.isArray(messages) || messages.length === 0) {
+      return Response.json({ error: "No messages provided." }, { status: 400 });
+    }
+
     const response = await client.messages.create({
-      model: "claude-opus-4-5",
-      max_tokens: 1500,
+      model: "claude-opus-4-7",
+      max_tokens: 2000,
       system: systemPrompt,
       messages,
     });
 
-    return Response.json({ content: response.content[0].text });
+    // Concatenate every text block rather than assuming a single one.
+    const text = (response.content || [])
+      .filter((block) => block.type === "text")
+      .map((block) => block.text)
+      .join("\n")
+      .trim();
+
+    return Response.json({ content: text });
   } catch (e) {
-    console.error(e);
+    console.error("Analyze route error:", e);
     return Response.json({ error: "API error" }, { status: 500 });
   }
 }
