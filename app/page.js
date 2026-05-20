@@ -236,25 +236,27 @@ export default function Home() {
     }
   }
 
-  async function analyzeIndividual() {
+  async function analyzeIndividual(langOverride) {
+    const lg = langOverride || lang;
+    const Lg = LABELS[lg];
     const strengths = indStrengths.filter(Boolean);
-    if (strengths.length < 3) { alert(L.errMin3); return; }
+    if (strengths.length < 3) { alert(Lg.errMin3); return; }
     setIndLoading(true);
-    const goalLabel = L.goalOptions.find(g => g.v === indGoal)?.l || indGoal;
+    const goalLabel = Lg.goalOptions.find(g => g.v === indGoal)?.l || indGoal;
     const ctx = `Name: ${indName || "Participant"}\nRole: ${indRole || "-"}\nObjective: ${goalLabel}\nStrengths (ranked): ${strengths.map((s,i) => `${i+1}. ${s}`).join(", ")}`;
     setIndContext(ctx);
-    const promptText = lang === "fr"
+    const promptText = lg === "fr"
       ? `Fais un debrief complet de ce profil StrengthsFinder. Structure:\n1. SYNTHÈSE DU PROFIL (3-4 phrases sur l'identité)\n2. FORCES EN DÉTAIL (analyse des 3 premières forces dominantes)\n3. DYNAMIQUES ET INTERACTIONS (synergies et tensions)\n4. ANGLES MORTS (2-3 risques)\n5. RECOMMANDATIONS CONCRÈTES (3 actions liées à: ${goalLabel})\n\nProfil: ${ctx}`
-      : lang === "de"
+      : lg === "de"
       ? `Erstelle ein vollständiges Debrief dieses StrengthsFinder-Profils. Struktur:\n1. PROFILZUSAMMENFASSUNG\n2. STÄRKEN IM DETAIL (Top 3)\n3. DYNAMIKEN UND INTERAKTIONEN\n4. BLINDE FLECKEN\n5. KONKRETE EMPFEHLUNGEN (3 Maßnahmen für: ${goalLabel})\n\nProfil: ${ctx}`
       : `Provide a complete StrengthsFinder debrief. Structure:\n1. PROFILE SUMMARY\n2. KEY STRENGTHS (top 3 in detail)\n3. DYNAMICS AND INTERACTIONS\n4. BLIND SPOTS\n5. CONCRETE RECOMMENDATIONS (3 actions for: ${goalLabel})\n\nProfile: ${ctx}`;
     try {
       const msgs = [{ role:"user", content: promptText }];
-      const report = await callAPI(buildSystem(lang, ctx), msgs);
+      const report = await callAPI(buildSystem(lg, ctx), msgs);
       setIndReport({ text: report, strengths });
       setIndHistory([{ role:"user", content: promptText }, { role:"assistant", content: report }]);
-      setIndChatMsgs([{ role:"ag", text: lang==="fr" ? "Debrief généré. Posez vos questions pour approfondir." : lang==="de" ? "Debrief erstellt. Stellen Sie Ihre Fragen." : "Debrief complete. Ask your questions." }]);
-    } catch(e) { alert(L.errApi); }
+      setIndChatMsgs([{ role:"ag", text: lg==="fr" ? "Debrief généré. Posez vos questions pour approfondir." : lg==="de" ? "Debrief erstellt. Stellen Sie Ihre Fragen." : "Debrief complete. Ask your questions." }]);
+    } catch(e) { alert(Lg.errApi); }
     setIndLoading(false);
   }
 
@@ -286,27 +288,29 @@ export default function Home() {
   function updateMemberName(id, val) { setMembers(members.map(m => m.id===id ? {...m, name:val} : m)); }
   function updateMemberStrength(id, idx, val) { setMembers(members.map(m => m.id===id ? {...m, strengths:m.strengths.map((s,i) => i===idx ? val : s)} : m)); }
 
-  async function analyzeTeam() {
+  async function analyzeTeam(langOverride) {
+    const lg = langOverride || lang;
+    const Lg = LABELS[lg];
     const validMembers = members.filter(m => m.strengths.some(Boolean));
-    if (validMembers.length < 2) { alert(L.errMin2); return; }
+    if (validMembers.length < 2) { alert(Lg.errMin2); return; }
     setTeamLoading(true);
-    const goalLabel = L.teamGoalOptions.find(g => g.v === teamGoal)?.l || teamGoal;
+    const goalLabel = Lg.teamGoalOptions.find(g => g.v === teamGoal)?.l || teamGoal;
     const membersDesc = validMembers.map((m,i) => `${m.name||`Membre ${i+1}`}: ${m.strengths.filter(Boolean).join(", ")}`).join("\n");
     const ctx = `Team: ${teamName||"Équipe"}\nObjective: ${goalLabel}\nMembers:\n${membersDesc}`;
     setTeamContext(ctx);
     const allStrengths = validMembers.flatMap(m => m.strengths.filter(Boolean));
-    const promptText = lang === "fr"
+    const promptText = lg === "fr"
       ? `Fais une analyse complète de cette équipe selon StrengthsFinder. Structure:\n1. IDENTITÉ COLLECTIVE (3-4 phrases)\n2. FORCES DOMINANTES (les 3 plus représentées et leur impact)\n3. COMPLÉMENTARITÉS (qui se complète et comment)\n4. ANGLES MORTS COLLECTIFS\n5. TENSIONS POTENTIELLES\n6. RECOMMANDATIONS (3 actions pour: ${goalLabel})\n\nÉquipe: ${ctx}`
-      : lang === "de"
+      : lg === "de"
       ? `Erstelle eine vollständige Teamanalyse. Struktur:\n1. KOLLEKTIVE IDENTITÄT\n2. DOMINANTE STÄRKEN\n3. KOMPLEMENTARITÄTEN\n4. KOLLEKTIVE BLINDE FLECKEN\n5. POTENZIELLE SPANNUNGEN\n6. EMPFEHLUNGEN (3 für: ${goalLabel})\n\nTeam: ${ctx}`
       : `Provide a complete team StrengthsFinder analysis. Structure:\n1. COLLECTIVE IDENTITY\n2. DOMINANT STRENGTHS\n3. COMPLEMENTARITIES\n4. COLLECTIVE BLIND SPOTS\n5. POTENTIAL TENSIONS\n6. RECOMMENDATIONS (3 for: ${goalLabel})\n\nTeam: ${ctx}`;
     try {
       const msgs = [{ role:"user", content: promptText }];
-      const report = await callAPI(buildSystem(lang, ctx), msgs);
+      const report = await callAPI(buildSystem(lg, ctx), msgs);
       setTeamReport({ text: report, strengths: allStrengths });
       setTeamHistory([{ role:"user", content: promptText }, { role:"assistant", content: report }]);
-      setTeamChatMsgs([{ role:"ag", text: lang==="fr" ? "Analyse générée. Posez vos questions sur l'équipe." : lang==="de" ? "Analyse erstellt." : "Analysis complete. Ask your questions." }]);
-    } catch(e) { alert(L.errApi); }
+      setTeamChatMsgs([{ role:"ag", text: lg==="fr" ? "Analyse générée. Posez vos questions sur l'équipe." : lg==="de" ? "Analyse erstellt." : "Analysis complete. Ask your questions." }]);
+    } catch(e) { alert(Lg.errApi); }
     setTeamLoading(false);
   }
 
@@ -436,6 +440,17 @@ export default function Home() {
     }
   }
 
+  // Change la langue ; si un débrief est déjà affiché, le régénère dans la nouvelle langue.
+  function changeLang(newLang) {
+    if (newLang === lang) return;
+    setLang(newLang);
+    if (mode === "individual" && indReport) {
+      analyzeIndividual(newLang);
+    } else if (mode === "team" && teamReport) {
+      analyzeTeam(newLang);
+    }
+  }
+
   return (
     <div className="page">
       {/* Datalist */}
@@ -447,7 +462,7 @@ export default function Home() {
       <div className="top-bar">
         <div className="pill-group">
           {["fr","de","en"].map(l => (
-            <button key={l} className={`pill ${lang===l?"active":""}`} onClick={() => setLang(l)}>{l.toUpperCase()}</button>
+            <button key={l} className={`pill ${lang===l?"active":""}`} onClick={() => changeLang(l)}>{l.toUpperCase()}</button>
           ))}
         </div>
         <div className="pill-group">
