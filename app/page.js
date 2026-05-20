@@ -1,4 +1,4 @@
-// rebuild 2026
+// rebuild
 "use client";
 import { useState, useRef } from "react";
 import { OPTIMUP_LOGO, OPTIMUP_LOGO_RATIO } from "./logo";
