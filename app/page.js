@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
-import { OPTIMUP_LOGO } from "./logo";
+import { OPTIMUP_LOGO, OPTIMUP_LOGO_RATIO } from "./logo";
 
 const ALL34 = ["Achiever","Activator","Adaptability","Analytical","Arranger","Belief","Command","Communication","Competition","Connectedness","Consistency","Context","Deliberative","Developer","Discipline","Empathy","Focus","Futuristic","Harmony","Ideation","Includer","Individualization","Input","Intellection","Learner","Maximizer","Positivity","Relator","Responsibility","Restorative","Self-Assurance","Significance","Strategic","Woo"];
 
@@ -68,7 +68,7 @@ function RichText({ text }) {
         const t = line.trim();
         if (/^#{1,6}\s+/.test(t)) {
           const title = t.replace(/^#{1,6}\s+/, "");
-          return <h3 key={i} className="report-h">{renderInline(title)}</h3>;
+          return <p key={i} className="report-title-plain">{renderInline(title)}</p>;
         }
         if (t === "") return <div key={i} className="report-gap" />;
         return <p key={i} className="report-p">{renderInline(t)}</p>;
@@ -262,16 +262,33 @@ export default function Home() {
     scrollChat(teamChatRef);
   }
 
-  // Charge jsPDF depuis un CDN (une seule fois) puis génère le PDF.
-  function loadJsPDF() {
+  // Charge jsPDF depuis un CDN (une seule fois), avec un CDN de secours.
+  function loadScript(src) {
     return new Promise((resolve, reject) => {
-      if (window.jspdf && window.jspdf.jsPDF) return resolve(window.jspdf.jsPDF);
       const s = document.createElement("script");
-      s.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
-      s.onload = () => resolve(window.jspdf.jsPDF);
-      s.onerror = () => reject(new Error("jsPDF load failed"));
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = () => reject(new Error("load failed: " + src));
       document.head.appendChild(s);
     });
+  }
+
+  async function loadJsPDF() {
+    if (window.jspdf && window.jspdf.jsPDF) return window.jspdf.jsPDF;
+    const cdns = [
+      "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",
+      "https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js",
+      "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js",
+    ];
+    for (const url of cdns) {
+      try {
+        await loadScript(url);
+        if (window.jspdf && window.jspdf.jsPDF) return window.jspdf.jsPDF;
+      } catch (e) {
+        // on essaie le CDN suivant
+      }
+    }
+    throw new Error("jsPDF indisponible (tous les CDN ont échoué)");
   }
 
   async function downloadPdf(recipientName, reportText) {
@@ -313,7 +330,7 @@ export default function Home() {
         if (/^#{1,6}\s+/.test(t)) {
           const title = clean.replace(/^#{1,6}\s+/, "");
           y += 3;
-          writeBlock(title, { size: 13, style: "bold", gap: 3, color: [20, 20, 20] });
+          writeBlock(title, { size: 11, style: "normal", gap: 3 });
         } else {
           writeBlock(clean, { size: 11, style: "normal", gap: 4 });
         }
