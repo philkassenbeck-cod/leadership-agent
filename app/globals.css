@@ -181,7 +181,11 @@ input[type="text"]:focus, select:focus, textarea:focus {
   padding: 1.25rem;
   margin-bottom: 1rem;
 }
-.report-content { font-size: 14px; line-height: 1.85; white-space: pre-wrap; }
+.report-content { font-size: 14px; line-height: 1.85; }
+.report-content .report-h { font-size: 16px; font-weight: 600; color: var(--text); margin: 16px 0 6px; line-height: 1.4; }
+.report-content .report-h:first-child { margin-top: 0; }
+.report-content .report-p { margin: 0 0 8px; }
+.report-content .report-gap { height: 4px; }
 
 /* Chat */
 .chat-area {

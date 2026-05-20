@@ -48,6 +48,35 @@ function DomainsBar({ strengths, L }) {
   );
 }
 
+// Affiche un texte avec un Markdown léger : "## Titre" devient un titre en gras,
+// "**gras**" devient du gras inline. Le reste s'affiche en paragraphes.
+function renderInline(text) {
+  // Découpe sur **gras** et renvoie un tableau d'éléments React.
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((p, i) =>
+    /^\*\*[^*]+\*\*$/.test(p)
+      ? <strong key={i}>{p.slice(2, -2)}</strong>
+      : <span key={i}>{p}</span>
+  );
+}
+
+function RichText({ text }) {
+  const lines = (text || "").split("\n");
+  return (
+    <>
+      {lines.map((line, i) => {
+        const t = line.trim();
+        if (/^#{1,6}\s+/.test(t)) {
+          const title = t.replace(/^#{1,6}\s+/, "");
+          return <h3 key={i} className="report-h">{renderInline(title)}</h3>;
+        }
+        if (t === "") return <div key={i} className="report-gap" />;
+        return <p key={i} className="report-p">{renderInline(t)}</p>;
+      })}
+    </>
+  );
+}
+
 function ChatArea({ messages, chatAreaRef }) {
   return (
     <div className="chat-area" ref={chatAreaRef}>
@@ -275,7 +304,22 @@ export default function Home() {
       const greet = recipientName && recipientName.trim() ? recipientName.trim() : "";
       writeBlock(L.letterGreeting(greet), { size: 13, style: "bold", gap: 6 });
       writeBlock(L.letterIntro, { size: 11, style: "italic", gap: 8, color: [70, 70, 70] });
-      writeBlock(reportText, { size: 11, style: "normal", gap: 8 });
+
+      // Écrit le débrief en interprétant le Markdown léger : "## Titre" -> titre gras.
+      (reportText || "").split("\n").forEach((raw) => {
+        const t = raw.trim();
+        if (t === "") { y += 2; return; }
+        const clean = t.replace(/\*\*(.+?)\*\*/g, "$1"); // retire le gras inline
+        if (/^#{1,6}\s+/.test(t)) {
+          const title = clean.replace(/^#{1,6}\s+/, "");
+          y += 3;
+          writeBlock(title, { size: 13, style: "bold", gap: 3, color: [20, 20, 20] });
+        } else {
+          writeBlock(clean, { size: 11, style: "normal", gap: 4 });
+        }
+      });
+      y += 4;
+
       ensureSpace(20);
       writeBlock(L.letterClose, { size: 11, style: "normal", gap: 3 });
       writeBlock(coachName && coachName.trim() ? coachName.trim() : "", { size: 12, style: "bold", gap: 0 });
@@ -393,7 +437,7 @@ export default function Home() {
           <button className="back-btn" onClick={() => { setIndReport(null); setIndChatMsgs([]); setIndHistory([]); }}>{L.back}</button>
           <DomainsBar strengths={indReport.strengths} L={L} />
           <div className="report-area">
-            <div className="report-content">{indReport.text}</div>
+            <div className="report-content"><RichText text={indReport.text} /></div>
           </div>
           <button className="pdf-btn" onClick={() => downloadPdf(indName, indReport.text)}>{L.downloadPdf}</button>
           <ChatArea messages={indChatMsgs} chatAreaRef={indChatRef} />
@@ -455,7 +499,7 @@ export default function Home() {
           <button className="back-btn" onClick={() => { setTeamReport(null); setTeamChatMsgs([]); setTeamHistory([]); }}>{L.backTeam}</button>
           <DomainsBar strengths={teamReport.strengths} L={L} />
           <div className="report-area">
-            <div className="report-content">{teamReport.text}</div>
+            <div className="report-content"><RichText text={teamReport.text} /></div>
           </div>
           <button className="pdf-btn" onClick={() => downloadPdf(teamName, teamReport.text)}>{L.downloadPdf}</button>
           <ChatArea messages={teamChatMsgs} chatAreaRef={teamChatRef} />
