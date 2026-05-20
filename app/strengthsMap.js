@@ -20,7 +20,7 @@ export const STRENGTH_NAME_MAP = {
   "autorite": "Command", "command": "Command",
   "communication": "Communication",
   "competition": "Competition",
-  "maximisation": "Maximizer", "maximizer": "Maximizer",
+  "maximisation": "Maximizer", "maximizer": "Maximizer", "maximiser": "Maximizer",
   "assurance": "Self-Assurance", "self-assurance": "Self-Assurance",
   "importance": "Significance", "significance": "Significance",
   "charisme": "Woo", "woo": "Woo",
