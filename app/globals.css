@@ -182,8 +182,8 @@ input[type="text"]:focus, select:focus, textarea:focus {
   margin-bottom: 1rem;
 }
 .report-content { font-size: 14px; line-height: 1.85; }
-.report-content .report-h { font-size: 16px; font-weight: 600; color: var(--text); margin: 16px 0 6px; line-height: 1.4; }
-.report-content .report-h:first-child { margin-top: 0; }
+.report-content .report-title-plain { margin: 14px 0 4px; }
+.report-content .report-title-plain:first-child { margin-top: 0; }
 .report-content .report-p { margin: 0 0 8px; }
 .report-content .report-gap { height: 4px; }
 
@@ -254,3 +254,17 @@ input[type="text"]:focus, select:focus, textarea:focus {
   transition: background .15s, color .15s; margin: 10px 0 6px;
 }
 .pdf-btn:hover { background: var(--green); color: #fff; }
+
+.import-btn {
+  display: block; width: 100%; padding: 12px; text-align: center;
+  font-size: 14px; font-weight: 500; cursor: pointer; font-family: inherit;
+  color: var(--green); background: transparent;
+  border: 1.5px dashed var(--green); border-radius: var(--radius-lg);
+  transition: background .15s, color .15s;
+}
+.import-btn:hover { background: var(--green); color: #fff; }
+.import-msg { margin-top: 8px; font-size: 13px; }
+.import-msg.ok { color: var(--green); }
+.import-msg.err { color: #c0392b; }
+
+.import-btn.dragover { background: var(--green); color: #fff; border-style: solid; }
