@@ -30,6 +30,28 @@ function getDomain(s) {
   return "Thinking";
 }
 
+// Nettoie le nom déduit d'un fichier Gallup : retire l'extension, les séparateurs,
+// et les mots parasites courants (CliftonStrengths, ALL 34, Report, etc.).
+function cleanMemberName(fileName) {
+  let n = fileName.replace(/\.pdf$/i, "");
+  n = n.replace(/[_-]+/g, " ");
+  const junk = [
+    /cliftonstrengths/ig,
+    /strengthsfinder/ig,
+    /signature\s*themes?\s*(report)?/ig,
+    /\ball\s*34\b/ig,
+    /\btop\s*\d+\b/ig,
+    /\b34\b/ig,
+    /\breport\b/ig,
+    /\bresults?\b/ig,
+    /\bprofile\b/ig,
+    /\bgallup\b/ig,
+  ];
+  junk.forEach(re => { n = n.replace(re, " "); });
+  n = n.replace(/\s+/g, " ").trim();
+  return n || fileName.replace(/\.pdf$/i, "");
+}
+
 function getDomainCounts(strengths) {
   const c = { Executing:0, Influencing:0, Relationship:0, Thinking:0 };
   strengths.forEach(s => { c[getDomain(s)]++; });
@@ -404,7 +426,7 @@ export default function Home() {
           const top5 = Array(5).fill("");
           top10.slice(0, 5).forEach((s, i) => { top5[i] = s; });
           // Nom déduit du nom de fichier (sans extension, tirets/underscores en espaces).
-          const guessedName = file.name.replace(/\.pdf$/i, "").replace(/[_-]+/g, " ").trim();
+          const guessedName = cleanMemberName(file.name);
           newMembers.push({ id: memberId++, name: guessedName, strengths: top5 });
         } catch (e) {
           console.error("Lecture rapport échouée:", file.name, e);
