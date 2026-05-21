@@ -13,9 +13,9 @@ const DOMAINS = {
 };
 
 const LABELS = {
-  fr: { identity:"Identité", name:"Nom", role:"Rôle / Poste", top5:"Top 5 forces (obligatoire)", top10:"Forces 6–10 (optionnel)", context:"Contexte", goal:"Objectif du debrief", teamName:"Nom de l'équipe", teamGoal:"Objectif du debrief", teamLeader:"Chef d'équipe", teamLeaderHint:"Cliquez ⭐ sur le membre qui dirige l'équipe", statsDominant:"Top 5 forces dominantes", statsRare:"Forces rares (1 personne)", statsAbsent:"Forces absentes", department:"Département / Service", phDepartment:"ex. Marketing, Direction générale, Production...", business:"Nature du métier / secteur", phBusiness:"ex. Luxe, Industrie, Services financiers...", members:"Membres", addMember:"+ Ajouter un membre", analyze:"Analyser →", analyzeTeam:"Analyser l'équipe →", back:"← Nouveau debrief", backTeam:"← Nouvelle analyse", individual:"Individuel", team:"Équipe", headerSub:"Debrief individuel · Saisissez le top 5 ou top 10", headerSubTeam:"Analyse d'équipe · Ajoutez les membres et leurs forces", executing:"Exécution", influencing:"Influence", relationship:"Relation", thinking:"Réflexion", chatPlaceholder:"Approfondissez une force, posez une question...", teamChatPlaceholder:"Posez une question sur la dynamique d'équipe...", goalOptions:[{v:"dev",l:"Développement personnel"},{v:"lead",l:"Leadership"},{v:"team",l:"Intégration équipe"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], teamGoalOptions:[{v:"dynamics",l:"Dynamiques d'équipe"},{v:"collab",l:"Améliorer la collaboration"},{v:"blind",l:"Identifier les angles morts"},{v:"perf",l:"Performance collective"}], coachName:"Votre nom (coach)", downloadPdf:"⬇ Télécharger en PDF", importPdf:"📄 Glissez votre rapport Gallup ici, ou cliquez", importDrop:"Déposez le PDF ici…", importing:"Lecture du PDF...", importOk:"Forces importées ✓", importErr:"Lecture impossible. Vérifiez que c'est bien le PDF Gallup, ou saisissez à la main.", importTeam:"📄 Glissez jusqu'à 12 rapports Gallup ici, ou cliquez", importTeamDrop:"Déposez les PDF ici…", importingTeam:"Lecture des rapports...", importTeamOk:(n)=>`${n} membre(s) importé(s) ✓`, importTeamErr:"Aucun rapport lisible. Vérifiez que ce sont bien des PDF Gallup.", importTeamMax:"12 rapports maximum.", letterGreeting:(n)=>`Cher(e) ${n},`, letterIntro:"Voici le débrief de tes forces, fruit de notre échange. Prends le temps de le lire, d'y revenir, et de laisser ces mots résonner.", letterClose:"Avec toute ma confiance,", pdfTitle:"Débrief StrengthsFinder", phName:"Prénom Nom", phRole:"ex. CEO, Chef de projet...", phCoach:"ex. Philippe Kassenbeck", phTeam:"ex. Board, Équipe Marketing...", strength:"Force", optional:"optionnel", member:"Membre", analyzing:"Analyse en cours...", errMin3:"Saisissez au moins 3 forces.", errMin2:"Ajoutez au moins 2 membres avec des forces.", errApi:"Erreur API.", errRetry:"Erreur. Réessayez." },
-  de: { identity:"Identität", name:"Name", role:"Rolle / Position", top5:"Top 5 Stärken (Pflicht)", top10:"Stärken 6–10 (optional)", context:"Kontext", goal:"Ziel des Debriefs", teamName:"Teamname", teamGoal:"Ziel des Debriefs", teamLeader:"Teamleiter", teamLeaderHint:"Klicken Sie ⭐ beim Mitglied, das das Team leitet", statsDominant:"Top 5 dominante Stärken", statsRare:"Seltene Stärken (1 Person)", statsAbsent:"Fehlende Stärken", department:"Abteilung / Bereich", phDepartment:"z. B. Marketing, Geschäftsführung, Produktion...", business:"Branche / Tätigkeitsbereich", phBusiness:"z. B. Luxus, Industrie, Finanzdienstleistungen...", members:"Mitglieder", addMember:"+ Mitglied hinzufügen", analyze:"Analysieren →", analyzeTeam:"Team analysieren →", back:"← Neues Debrief", backTeam:"← Neue Analyse", individual:"Individuell", team:"Team", headerSub:"Individuelles Debrief · Geben Sie die Top 5 oder Top 10 ein", headerSubTeam:"Teamanalyse · Fügen Sie Mitglieder und Stärken hinzu", executing:"Ausführung", influencing:"Einfluss", relationship:"Beziehung", thinking:"Denken", chatPlaceholder:"Vertiefen Sie eine Stärke...", teamChatPlaceholder:"Fragen zur Teamdynamik...", goalOptions:[{v:"dev",l:"Persönliche Entwicklung"},{v:"lead",l:"Leadership"},{v:"team",l:"Teamintegration"},{v:"perf",l:"Performance"},{v:"collab",l:"Zusammenarbeit"}], teamGoalOptions:[{v:"dynamics",l:"Teamdynamiken"},{v:"collab",l:"Zusammenarbeit verbessern"},{v:"blind",l:"Blinde Flecken erkennen"},{v:"perf",l:"Kollektive Performance"}], coachName:"Ihr Name (Coach)", downloadPdf:"⬇ Als PDF herunterladen", importPdf:"📄 Gallup-Bericht hierher ziehen oder klicken", importDrop:"PDF hier ablegen…", importing:"PDF wird gelesen...", importOk:"Stärken importiert ✓", importErr:"Lesen nicht möglich. Bitte prüfen Sie das Gallup-PDF oder geben Sie manuell ein.", importTeam:"📄 Bis zu 12 Gallup-Berichte hierher ziehen oder klicken", importTeamDrop:"PDFs hier ablegen…", importingTeam:"Berichte werden gelesen...", importTeamOk:(n)=>`${n} Mitglied(er) importiert ✓`, importTeamErr:"Keine lesbaren Berichte. Bitte prüfen Sie die Gallup-PDFs.", importTeamMax:"Maximal 12 Berichte.", letterGreeting:(n)=>`Liebe(r) ${n},`, letterIntro:"Hier ist das Debrief deiner Stärken, das Ergebnis unseres Gesprächs. Nimm dir Zeit, es zu lesen und nachwirken zu lassen.", letterClose:"Mit vollem Vertrauen,", pdfTitle:"StrengthsFinder Debrief", phName:"Vor- und Nachname", phRole:"z. B. CEO, Projektleiter...", phCoach:"z. B. Philippe Kassenbeck", phTeam:"z. B. Vorstand, Marketing-Team...", strength:"Stärke", optional:"optional", member:"Mitglied", analyzing:"Analyse läuft...", errMin3:"Geben Sie mindestens 3 Stärken ein.", errMin2:"Fügen Sie mindestens 2 Mitglieder mit Stärken hinzu.", errApi:"API-Fehler.", errRetry:"Fehler. Bitte erneut versuchen." },
-  en: { identity:"Identity", name:"Name", role:"Role / Position", top5:"Top 5 strengths (required)", top10:"Strengths 6–10 (optional)", context:"Context", goal:"Debrief objective", teamName:"Team name", teamGoal:"Debrief objective", teamLeader:"Team leader", teamLeaderHint:"Click ⭐ on the member who leads the team", statsDominant:"Top 5 dominant strengths", statsRare:"Rare strengths (1 person)", statsAbsent:"Absent strengths", department:"Department / Unit", phDepartment:"e.g. Marketing, Executive board, Production...", business:"Business / industry", phBusiness:"e.g. Luxury, Industry, Financial services...", members:"Members", addMember:"+ Add member", analyze:"Analyze →", analyzeTeam:"Analyze team →", back:"← New debrief", backTeam:"← New analysis", individual:"Individual", team:"Team", headerSub:"Individual debrief · Enter top 5 or top 10", headerSubTeam:"Team analysis · Add members and their strengths", executing:"Executing", influencing:"Influencing", relationship:"Relationship", thinking:"Thinking", chatPlaceholder:"Dive deeper into a strength...", teamChatPlaceholder:"Ask about team dynamics...", goalOptions:[{v:"dev",l:"Personal development"},{v:"lead",l:"Leadership"},{v:"team",l:"Team integration"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], teamGoalOptions:[{v:"dynamics",l:"Team dynamics"},{v:"collab",l:"Improve collaboration"},{v:"blind",l:"Identify blind spots"},{v:"perf",l:"Collective performance"}], coachName:"Your name (coach)", downloadPdf:"⬇ Download PDF", importPdf:"📄 Drag your Gallup report here, or click", importDrop:"Drop the PDF here…", importing:"Reading PDF...", importOk:"Strengths imported ✓", importErr:"Could not read it. Check it's the Gallup PDF, or enter manually.", importTeam:"📄 Drag up to 12 Gallup reports here, or click", importTeamDrop:"Drop the PDFs here…", importingTeam:"Reading reports...", importTeamOk:(n)=>`${n} member(s) imported ✓`, importTeamErr:"No readable reports. Check they are Gallup PDFs.", importTeamMax:"12 reports maximum.", letterGreeting:(n)=>`Dear ${n},`, letterIntro:"Here is the debrief of your strengths, the fruit of our conversation. Take the time to read it, return to it, and let these words resonate.", letterClose:"With all my confidence,", pdfTitle:"StrengthsFinder Debrief", phName:"First and last name", phRole:"e.g. CEO, Project manager...", phCoach:"e.g. Philippe Kassenbeck", phTeam:"e.g. Board, Marketing team...", strength:"Strength", optional:"optional", member:"Member", analyzing:"Analyzing...", errMin3:"Enter at least 3 strengths.", errMin2:"Add at least 2 members with strengths.", errApi:"API error.", errRetry:"Error. Please try again." },
+  fr: { identity:"Identité", name:"Nom", role:"Rôle / Poste", top5:"Top 5 forces (obligatoire)", top10:"Forces 6–10 (optionnel)", context:"Contexte", goal:"Objectif du debrief", teamName:"Nom de l'équipe", teamGoal:"Objectif du debrief", teamLeader:"Chef d'équipe", teamLeaderHint:"Cliquez ⭐ sur le membre qui dirige l'équipe", statsByPerson:"Les 5 forces par personne", statsByDomain:"Répartition par domaine de forces", statsRanking:"Classement pondéré des forces", department:"Département / Service", phDepartment:"ex. Marketing, Direction générale, Production...", business:"Nature du métier / secteur", phBusiness:"ex. Luxe, Industrie, Services financiers...", members:"Membres", addMember:"+ Ajouter un membre", analyze:"Analyser →", analyzeTeam:"Analyser l'équipe →", back:"← Nouveau debrief", backTeam:"← Nouvelle analyse", individual:"Individuel", team:"Équipe", headerSub:"Debrief individuel · Saisissez le top 5 ou top 10", headerSubTeam:"Analyse d'équipe · Ajoutez les membres et leurs forces", executing:"Exécution", influencing:"Influence", relationship:"Relation", thinking:"Réflexion", chatPlaceholder:"Approfondissez une force, posez une question...", teamChatPlaceholder:"Posez une question sur la dynamique d'équipe...", goalOptions:[{v:"dev",l:"Développement personnel"},{v:"lead",l:"Leadership"},{v:"team",l:"Intégration équipe"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], teamGoalOptions:[{v:"dynamics",l:"Dynamiques d'équipe"},{v:"collab",l:"Améliorer la collaboration"},{v:"blind",l:"Identifier les angles morts"},{v:"perf",l:"Performance collective"}], coachName:"Votre nom (coach)", downloadPdf:"⬇ Télécharger en PDF", importPdf:"📄 Glissez votre rapport Gallup ici, ou cliquez", importDrop:"Déposez le PDF ici…", importing:"Lecture du PDF...", importOk:"Forces importées ✓", importErr:"Lecture impossible. Vérifiez que c'est bien le PDF Gallup, ou saisissez à la main.", importTeam:"📄 Glissez jusqu'à 12 rapports Gallup ici, ou cliquez", importTeamDrop:"Déposez les PDF ici…", importingTeam:"Lecture des rapports...", importTeamOk:(n)=>`${n} membre(s) importé(s) ✓`, importTeamErr:"Aucun rapport lisible. Vérifiez que ce sont bien des PDF Gallup.", importTeamMax:"12 rapports maximum.", letterGreeting:(n)=>`Cher(e) ${n},`, letterIntro:"Voici le débrief de tes forces, fruit de notre échange. Prends le temps de le lire, d'y revenir, et de laisser ces mots résonner.", letterClose:"Avec toute ma confiance,", pdfTitle:"Débrief StrengthsFinder", phName:"Prénom Nom", phRole:"ex. CEO, Chef de projet...", phCoach:"ex. Philippe Kassenbeck", phTeam:"ex. Board, Équipe Marketing...", strength:"Force", optional:"optionnel", member:"Membre", analyzing:"Analyse en cours...", errMin3:"Saisissez au moins 3 forces.", errMin2:"Ajoutez au moins 2 membres avec des forces.", errApi:"Erreur API.", errRetry:"Erreur. Réessayez." },
+  de: { identity:"Identität", name:"Name", role:"Rolle / Position", top5:"Top 5 Stärken (Pflicht)", top10:"Stärken 6–10 (optional)", context:"Kontext", goal:"Ziel des Debriefs", teamName:"Teamname", teamGoal:"Ziel des Debriefs", teamLeader:"Teamleiter", teamLeaderHint:"Klicken Sie ⭐ beim Mitglied, das das Team leitet", statsByPerson:"Die 5 Stärken pro Person", statsByDomain:"Verteilung nach Stärkenbereich", statsRanking:"Gewichtetes Stärken-Ranking", department:"Abteilung / Bereich", phDepartment:"z. B. Marketing, Geschäftsführung, Produktion...", business:"Branche / Tätigkeitsbereich", phBusiness:"z. B. Luxus, Industrie, Finanzdienstleistungen...", members:"Mitglieder", addMember:"+ Mitglied hinzufügen", analyze:"Analysieren →", analyzeTeam:"Team analysieren →", back:"← Neues Debrief", backTeam:"← Neue Analyse", individual:"Individuell", team:"Team", headerSub:"Individuelles Debrief · Geben Sie die Top 5 oder Top 10 ein", headerSubTeam:"Teamanalyse · Fügen Sie Mitglieder und Stärken hinzu", executing:"Ausführung", influencing:"Einfluss", relationship:"Beziehung", thinking:"Denken", chatPlaceholder:"Vertiefen Sie eine Stärke...", teamChatPlaceholder:"Fragen zur Teamdynamik...", goalOptions:[{v:"dev",l:"Persönliche Entwicklung"},{v:"lead",l:"Leadership"},{v:"team",l:"Teamintegration"},{v:"perf",l:"Performance"},{v:"collab",l:"Zusammenarbeit"}], teamGoalOptions:[{v:"dynamics",l:"Teamdynamiken"},{v:"collab",l:"Zusammenarbeit verbessern"},{v:"blind",l:"Blinde Flecken erkennen"},{v:"perf",l:"Kollektive Performance"}], coachName:"Ihr Name (Coach)", downloadPdf:"⬇ Als PDF herunterladen", importPdf:"📄 Gallup-Bericht hierher ziehen oder klicken", importDrop:"PDF hier ablegen…", importing:"PDF wird gelesen...", importOk:"Stärken importiert ✓", importErr:"Lesen nicht möglich. Bitte prüfen Sie das Gallup-PDF oder geben Sie manuell ein.", importTeam:"📄 Bis zu 12 Gallup-Berichte hierher ziehen oder klicken", importTeamDrop:"PDFs hier ablegen…", importingTeam:"Berichte werden gelesen...", importTeamOk:(n)=>`${n} Mitglied(er) importiert ✓`, importTeamErr:"Keine lesbaren Berichte. Bitte prüfen Sie die Gallup-PDFs.", importTeamMax:"Maximal 12 Berichte.", letterGreeting:(n)=>`Liebe(r) ${n},`, letterIntro:"Hier ist das Debrief deiner Stärken, das Ergebnis unseres Gesprächs. Nimm dir Zeit, es zu lesen und nachwirken zu lassen.", letterClose:"Mit vollem Vertrauen,", pdfTitle:"StrengthsFinder Debrief", phName:"Vor- und Nachname", phRole:"z. B. CEO, Projektleiter...", phCoach:"z. B. Philippe Kassenbeck", phTeam:"z. B. Vorstand, Marketing-Team...", strength:"Stärke", optional:"optional", member:"Mitglied", analyzing:"Analyse läuft...", errMin3:"Geben Sie mindestens 3 Stärken ein.", errMin2:"Fügen Sie mindestens 2 Mitglieder mit Stärken hinzu.", errApi:"API-Fehler.", errRetry:"Fehler. Bitte erneut versuchen." },
+  en: { identity:"Identity", name:"Name", role:"Role / Position", top5:"Top 5 strengths (required)", top10:"Strengths 6–10 (optional)", context:"Context", goal:"Debrief objective", teamName:"Team name", teamGoal:"Debrief objective", teamLeader:"Team leader", teamLeaderHint:"Click ⭐ on the member who leads the team", statsByPerson:"The 5 strengths per person", statsByDomain:"Distribution by strength domain", statsRanking:"Weighted strengths ranking", department:"Department / Unit", phDepartment:"e.g. Marketing, Executive board, Production...", business:"Business / industry", phBusiness:"e.g. Luxury, Industry, Financial services...", members:"Members", addMember:"+ Add member", analyze:"Analyze →", analyzeTeam:"Analyze team →", back:"← New debrief", backTeam:"← New analysis", individual:"Individual", team:"Team", headerSub:"Individual debrief · Enter top 5 or top 10", headerSubTeam:"Team analysis · Add members and their strengths", executing:"Executing", influencing:"Influencing", relationship:"Relationship", thinking:"Thinking", chatPlaceholder:"Dive deeper into a strength...", teamChatPlaceholder:"Ask about team dynamics...", goalOptions:[{v:"dev",l:"Personal development"},{v:"lead",l:"Leadership"},{v:"team",l:"Team integration"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], teamGoalOptions:[{v:"dynamics",l:"Team dynamics"},{v:"collab",l:"Improve collaboration"},{v:"blind",l:"Identify blind spots"},{v:"perf",l:"Collective performance"}], coachName:"Your name (coach)", downloadPdf:"⬇ Download PDF", importPdf:"📄 Drag your Gallup report here, or click", importDrop:"Drop the PDF here…", importing:"Reading PDF...", importOk:"Strengths imported ✓", importErr:"Could not read it. Check it's the Gallup PDF, or enter manually.", importTeam:"📄 Drag up to 12 Gallup reports here, or click", importTeamDrop:"Drop the PDFs here…", importingTeam:"Reading reports...", importTeamOk:(n)=>`${n} member(s) imported ✓`, importTeamErr:"No readable reports. Check they are Gallup PDFs.", importTeamMax:"12 reports maximum.", letterGreeting:(n)=>`Dear ${n},`, letterIntro:"Here is the debrief of your strengths, the fruit of our conversation. Take the time to read it, return to it, and let these words resonate.", letterClose:"With all my confidence,", pdfTitle:"StrengthsFinder Debrief", phName:"First and last name", phRole:"e.g. CEO, Project manager...", phCoach:"e.g. Philippe Kassenbeck", phTeam:"e.g. Board, Marketing team...", strength:"Strength", optional:"optional", member:"Member", analyzing:"Analyzing...", errMin3:"Enter at least 3 strengths.", errMin2:"Add at least 2 members with strengths.", errApi:"API error.", errRetry:"Error. Please try again." },
 };
 
 // Sécurité : renvoie TOUJOURS un objet de libellés valide.
@@ -36,45 +36,102 @@ function getDomainCounts(strengths) {
   return c;
 }
 
-// Calcule le rapport chiffré d'une équipe à partir de toutes les forces (avec répétitions).
-// Renvoie : dominantes (top 5 par fréquence), rares (présentes 1 seule fois), absentes (chez personne).
-function getTeamStats(allStrengths) {
-  const counts = {};
-  allStrengths.forEach(s => { counts[s] = (counts[s] || 0) + 1; });
-  const present = Object.entries(counts)
-    .map(([name, count]) => ({ name, count, domain: getDomain(name) }))
-    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
-  const dominant = present.slice(0, 5);
-  const rare = present.filter(x => x.count === 1);
+// Calcule le rapport chiffré complet d'une équipe.
+// Pondération : 1re force = 5 pts, 2e = 4, 3e = 3, 4e = 2, 5e = 1.
+// members : [{ name, strengths:[5 forces ordonnées] }]
+function getTeamStats(members) {
+  const WEIGHTS = [5, 4, 3, 2, 1];
+  const points = {};   // force -> total de points pondérés
+  const counts = {};   // force -> nombre d'occurrences
+  members.forEach(m => {
+    m.strengths.filter(Boolean).slice(0, 5).forEach((s, i) => {
+      points[s] = (points[s] || 0) + (WEIGHTS[i] || 1);
+      counts[s] = (counts[s] || 0) + 1;
+    });
+  });
+  const totalPoints = Object.values(points).reduce((a, b) => a + b, 0) || 1;
+
+  // Classement pondéré (toutes forces présentes, triées par points décroissants).
+  const ranking = Object.entries(points)
+    .map(([name, pts]) => ({
+      name, pts, count: counts[name], domain: getDomain(name),
+      pct: Math.round((pts / totalPoints) * 1000) / 10,
+    }))
+    .sort((a, b) => b.pts - a.pts || a.name.localeCompare(b.name));
+
+  // Répartition par domaine (en points pondérés).
+  const domainPts = { Executing:0, Influencing:0, Relationship:0, Thinking:0 };
+  ranking.forEach(r => { domainPts[r.domain] += r.pts; });
+  const domains = Object.entries(domainPts).map(([key, pts]) => ({
+    key, pts,
+    pct: Math.round((pts / totalPoints) * 1000) / 10,
+    strengths: ranking.filter(r => r.domain === key).map(r => r.name),
+  }));
+
+  const rare = ranking.filter(r => r.count === 1);
   const absent = ALL34.filter(s => !counts[s]).map(name => ({ name, domain: getDomain(name) }));
-  return { dominant, rare, absent, total: allStrengths.length };
+
+  return { ranking, domains, rare, absent, totalPoints };
 }
 
-// Tableau visuel du rapport chiffré, affiché au-dessus du débrief d'équipe.
-function TeamStatsTable({ stats, L }) {
-  const domainColor = { executing:"#7C9A8E", influencing:"#D4A24E", relationship:"#C97A7A", thinking:"#6E8CB0" };
-  const Block = ({ title, items, showCount }) => (
-    <div style={{ flex:1, minWidth:"160px", background:"#fff", border:"1px solid #ececec", borderRadius:"12px", padding:"14px 16px" }}>
-      <div style={{ fontSize:"13px", fontWeight:600, color:"#555", marginBottom:"10px" }}>{title}</div>
-      {items.length === 0
-        ? <div style={{ color:"#bbb" }}>—</div>
-        : items.map((it, i) => (
-            <div key={i} style={{ display:"flex", alignItems:"center", gap:"8px", padding:"3px 0" }}>
-              <span style={{ width:"8px", height:"8px", borderRadius:"50%", background:domainColor[it.domain.toLowerCase()], flexShrink:0 }}></span>
-              <span style={{ flex:1, fontSize:"14px" }}>{it.name}</span>
-              {showCount && <span style={{ fontSize:"13px", color:"#999", fontWeight:600 }}>×{it.count}</span>}
-            </div>
-          ))}
-    </div>
-  );
+// Tableau visuel du rapport chiffré (version simple, à affiner ensuite).
+function TeamStatsTable({ stats, members, L }) {
+  const domainColor = { executing:"#7C6FD6", influencing:"#C9881F", relationship:"#3E84D6", thinking:"#2E9E78" };
+  const domainLabel = { Executing:L.executing, Influencing:L.influencing, Relationship:L.relationship, Thinking:L.thinking };
+
   return (
-    <div style={{ display:"flex", gap:"12px", flexWrap:"wrap", marginBottom:"20px" }}>
-      <Block title={L.statsDominant} items={stats.dominant} showCount={true} />
-      <Block title={L.statsRare} items={stats.rare} showCount={false} />
-      <Block title={L.statsAbsent} items={stats.absent} showCount={false} />
+    <div style={{ marginBottom:"24px" }}>
+
+      {/* 1. Forces par personne */}
+      <div style={{ fontSize:"15px", fontWeight:600, color:"#333", margin:"0 0 10px" }}>{L.statsByPerson}</div>
+      <div style={{ display:"flex", gap:"12px", flexWrap:"wrap", marginBottom:"24px" }}>
+        {members.filter(m => m.strengths.some(Boolean)).map((m, i) => (
+          <div key={i} style={{ flex:"1 1 200px", minWidth:"180px", background:"#fff", border:"1px solid #ececec", borderRadius:"12px", padding:"12px 14px" }}>
+            <div style={{ fontWeight:600, fontSize:"14px", marginBottom:"6px" }}>{m.name || `${L.member} ${i+1}`}</div>
+            {m.strengths.filter(Boolean).map((s, j) => (
+              <div key={j} style={{ display:"flex", alignItems:"center", gap:"7px", padding:"2px 0", fontSize:"13px" }}>
+                <span style={{ color:"#aaa", width:"14px" }}>{j+1}</span>
+                <span style={{ width:"7px", height:"7px", borderRadius:"50%", background:domainColor[getDomain(s).toLowerCase()] }}></span>
+                <span>{s}</span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      {/* 2. Répartition par domaine */}
+      <div style={{ fontSize:"15px", fontWeight:600, color:"#333", margin:"0 0 10px" }}>{L.statsByDomain}</div>
+      <div style={{ display:"flex", gap:"12px", flexWrap:"wrap", marginBottom:"24px" }}>
+        {stats.domains.sort((a,b)=>b.pts-a.pts).map((d, i) => (
+          <div key={i} style={{ flex:"1 1 200px", minWidth:"180px", background:"#fff", border:"1px solid #ececec", borderTop:`4px solid ${domainColor[d.key.toLowerCase()]}`, borderRadius:"12px", padding:"14px 16px" }}>
+            <div style={{ fontSize:"28px", fontWeight:700, color:domainColor[d.key.toLowerCase()] }}>{d.pct}%</div>
+            <div style={{ color:"#999", fontSize:"13px", marginBottom:"4px" }}>{d.pts} pts</div>
+            <div style={{ fontWeight:600, fontSize:"14px", marginBottom:"8px" }}>{domainLabel[d.key]}</div>
+            {d.strengths.map((s, j) => (
+              <div key={j} style={{ fontSize:"13px", padding:"1px 0" }}>{s}</div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      {/* 3. Classement pondéré */}
+      <div style={{ fontSize:"15px", fontWeight:600, color:"#333", margin:"0 0 10px" }}>{L.statsRanking}</div>
+      <div style={{ background:"#fff", border:"1px solid #ececec", borderRadius:"12px", overflow:"hidden", marginBottom:"8px" }}>
+        {stats.ranking.map((r, i) => (
+          <div key={i} style={{ display:"flex", alignItems:"center", gap:"10px", padding:"7px 14px", background: i%2 ? "#faf9f7" : "#fff", fontSize:"14px" }}>
+            <span style={{ color:"#aaa", width:"22px", textAlign:"right" }}>{i+1}</span>
+            <span style={{ width:"8px", height:"8px", borderRadius:"50%", background:domainColor[r.domain.toLowerCase()], flexShrink:0 }}></span>
+            <span style={{ flex:1, fontWeight:600 }}>{r.name}</span>
+            <span style={{ color:"#999", fontSize:"12px", width:"110px" }}>{domainLabel[r.domain]}</span>
+            <span style={{ fontWeight:700, width:"34px", textAlign:"right" }}>{r.pts}</span>
+            <span style={{ color:"#999", width:"48px", textAlign:"right" }}>{r.pct}%</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
+
 
 function DomainsBar({ strengths, L }) {
   const counts = getDomainCounts(strengths);
@@ -194,16 +251,21 @@ CONTEXT YOU ARE GIVEN — use ALL of it, do not ignore any field:
 - "Département / Service": the function within the organization. Frame strengths and blind spots through what THIS function is expected to deliver (e.g. a marketing team needs Influencing/Ideation; a production unit needs Executing/Discipline). Name explicitly when the team's collective profile fits or misfits its mission.
 - "Chef d'équipe": the member tagged [CHEF D'ÉQUIPE]. Analyze the leader–team dynamic specifically: how the leader's top strengths shape the team, where the leader amplifies or compensates the collective profile, and one concrete leadership posture to adopt given who they lead. If no leader is tagged, skip this and say nothing about it.
 
-OUTPUT STRUCTURE (use clear headings in ${langName}, no numbering word like "Section"):
-1. Team framing — open with EXACTLY 10 affirmative sentences (no bullet points, flowing but punchy) that define who this team is, read through its four CliftonStrengths domains: Executing, Influencing, Relationship, Thinking (conceptualization). Cover all four domains across the 10 sentences, weighting them by how present each domain is in the team. Each sentence is a clear statement about the team's collective character — not hedged, not vague. This is the cornerstone of the analysis.
-2. Dominant collective strengths — what the most represented themes produce concretely for THIS mission and sector.
-3. Complementarities — who balances whom, named by person.
-4. Collective blind spots — what the team structurally under-covers, read against its sector/function expectations. Refer to the absent and rare strengths.
-5. Leader–team dynamic — only if a leader is tagged (see above).
-6. Potential tensions — likely friction points between profiles.
-7. Recommendations — exactly 3 concrete actions, each explicitly tailored to the stated objective AND sector.
+A precise numeric report is given to you in the context (weighted ranking, domain distribution, rare and absent strengths). It is computed exactly — NEVER recompute or contradict these numbers. The visual tables are already shown to the user, so your job is INTERPRETATION, not listing.
 
-A precise numeric report (dominant / rare / absent strengths) is already displayed to the user above your text, so do NOT recompute counts — instead, interpret them meaningfully in sections 1, 2 and 4.
+OUTPUT STRUCTURE (use clear headings in ${langName}, no numbering word like "Section", no Markdown tables):
+
+1. Team framing — open with EXACTLY 10 affirmative sentences (flowing prose, no bullets) defining who this team is, read through its four domains: Executing, Influencing, Relationship, Thinking. Weight the sentences by how present each domain is (use the domain distribution). Each sentence is a firm, vivid statement — never hedged. Reference dominant strengths by name. Style example to match (tone and confidence):
+"Cette équipe pense avant d'agir. Avec Analytical, Learner, Intellection et Strategic dominants, elle décortique, questionne, cherche la logique avant de s'engager. Le risque d'over-analyse existe — mais quand elle décide, c'est solide. Le socle relationnel est massif : Relator en tête, accompagné d'Individualization et Harmony..."
+
+2. Blind spots (rare & absent strengths) — write 2 to 4 short "Zone aveugle" paragraphs, each naming a specific gap and its consequence. Match this exact style:
+"Zone aveugle relationnelle — Empathy, Includer, Connectedness sont tous absents. Ce groupe perçoit les individus avec finesse (Relator, Individualization forts) mais peut manquer de radar émotionnel collectif et de vigilance à la marginalisation."
+"Zone aveugle influence publique — Woo et Significance absents. Ce collectif ne cherche pas naturellement la visibilité ni le contact avec les inconnus — critique si leur rôle implique du développement commercial ou de la représentation externe."
+Base these strictly on the RARE and ABSENT lists given in context.
+
+3. Leader–team relationship — EXACTLY 6 lines on the global dynamic between the tagged leader and the team: how the leader's profile fits, amplifies or compensates the collective, and the posture to adopt. Only if a leader is tagged; otherwise omit this section entirely.
+
+4. Five concrete actions — propose EXACTLY 5 concrete, actionable recommendations to make the team work better, each tied to the findings above and to the stated objective and sector. Each action is specific and doable, not generic advice.
 
 Tone: warm, confident, truthful. Coach posture, not consultant: frame shadows as the flip side of strengths. Keep it tight and usable.
 
@@ -436,6 +498,16 @@ export default function Home() {
     if (leaderName) ctxLines.push(`Chef d'équipe: ${leaderName}`);
     ctxLines.push(`Objective: ${goalLabel}`);
     ctxLines.push(`Members:\n${membersDesc}`);
+    // Rapport chiffré exact (calculé par l'appli) injecté pour que l'agent s'y appuie sans recompter.
+    const stats = getTeamStats(validMembers);
+    const rankingTxt = stats.ranking.map((r,i) => `${i+1}. ${r.name} (${r.domain}) — ${r.pts} pts, ${r.pct}%`).join("\n");
+    const domainTxt = stats.domains.slice().sort((a,b)=>b.pts-a.pts).map(d => `${d.key}: ${d.pct}% (${d.pts} pts)`).join(" | ");
+    const rareTxt = stats.rare.map(r => r.name).join(", ") || "none";
+    const absentTxt = stats.absent.map(r => r.name).join(", ") || "none";
+    ctxLines.push(`\nWEIGHTED RANKING (exact, do not recompute):\n${rankingTxt}`);
+    ctxLines.push(`\nDOMAIN DISTRIBUTION: ${domainTxt}`);
+    ctxLines.push(`\nRARE strengths (only 1 person): ${rareTxt}`);
+    ctxLines.push(`\nABSENT strengths (nobody): ${absentTxt}`);
     const ctx = ctxLines.join("\n");
     setTeamContext(ctx);
     const allStrengths = validMembers.flatMap(m => m.strengths.filter(Boolean));
@@ -447,7 +519,7 @@ export default function Home() {
     try {
       const msgs = [{ role:"user", content: promptText }];
       const report = await callAPI(buildTeamSystem(lg, ctx), msgs);
-      setTeamReport({ text: report, strengths: allStrengths, stats: getTeamStats(allStrengths) });
+      setTeamReport({ text: report, strengths: allStrengths, stats, members: validMembers });
       setTeamHistory([{ role:"user", content: promptText }, { role:"assistant", content: report }]);
       setTeamChatMsgs([{ role:"ag", text: lg==="fr" ? "Analyse générée. Posez vos questions sur l'équipe." : lg==="de" ? "Analyse erstellt." : "Analysis complete. Ask your questions." }]);
     } catch(e) { alert(Lg.errApi); }
@@ -797,7 +869,7 @@ export default function Home() {
         <div>
           <button className="back-btn" onClick={() => { setTeamReport(null); setTeamChatMsgs([]); setTeamHistory([]); }}>{L.backTeam}</button>
           <DomainsBar strengths={teamReport.strengths} L={L} />
-          {teamReport.stats && <TeamStatsTable stats={teamReport.stats} L={L} />}
+          {teamReport.stats && <TeamStatsTable stats={teamReport.stats} members={teamReport.members} L={L} />}
           <div className="report-area">
             <div className="report-content"><RichText text={teamReport.text} /></div>
           </div>
