@@ -641,7 +641,7 @@ export default function Home() {
     throw new Error("jsPDF indisponible (tous les CDN ont échoué)");
   }
 
-  async function downloadPdf(recipientName, reportText) {
+  async function downloadPdf(recipientName, reportText, stats, members) {
     try {
       const jsPDF = await loadJsPDF();
       const doc = new jsPDF({ unit: "mm", format: "a4" });
@@ -671,6 +671,125 @@ export default function Home() {
       const greet = recipientName && recipientName.trim() ? recipientName.trim() : "";
       writeBlock(L.letterGreeting(greet), { size: 13, style: "bold", gap: 6 });
       writeBlock(L.letterIntro, { size: 11, style: "italic", gap: 8, color: [70, 70, 70] });
+
+      // ===== RAPPORT CHIFFRÉ (équipe uniquement) =====
+      if (stats && stats.ranking) {
+        const DC = { Executing:[124,111,214], Influencing:[201,136,31], Relationship:[62,132,214], Thinking:[46,158,120] };
+        const domLabel = { Executing:L.executing, Influencing:L.influencing, Relationship:L.relationship, Thinking:L.thinking };
+
+        // Bandeau de section violet.
+        const sectionBanner = (label) => {
+          ensureSpace(12);
+          doc.setFillColor(59, 50, 112);
+          doc.roundedRect(marginX, y, maxW, 8, 1.5, 1.5, "F");
+          doc.setFont("helvetica", "bold");
+          doc.setFontSize(11);
+          doc.setTextColor(255, 255, 255);
+          doc.text(label, marginX + 4, y + 5.5);
+          y += 13;
+        };
+
+        // 1. Forces par personne (en premier).
+        const mems = (members || []).filter(m => m.strengths.some(Boolean));
+        if (mems.length > 0) {
+          sectionBanner(L.statsByPerson);
+          // Disposition en 2 colonnes de cartes.
+          const colW = (maxW - 6) / 2;
+          let col = 0, rowStartY = y;
+          mems.forEach((m, idx) => {
+            const cardX = marginX + col * (colW + 6);
+            const cardLines = m.strengths.filter(Boolean).length;
+            const cardH = 8 + cardLines * 5 + 3;
+            if (col === 0) { ensureSpace(cardH); rowStartY = y; }
+            const cx = cardX, cy = rowStartY;
+            doc.setDrawColor(230, 230, 230);
+            doc.setFillColor(255, 255, 255);
+            doc.roundedRect(cx, cy - 4, colW, cardH, 1.5, 1.5, "FD");
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(9.5);
+            doc.setTextColor(40, 40, 40);
+            doc.text(m.name || `${L.member} ${idx+1}`, cx + 4, cy + 1);
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(8.5);
+            m.strengths.filter(Boolean).forEach((s, j) => {
+              const c = DC[getDomain(s)] || [120,120,120];
+              const ly = cy + 6 + j * 5;
+              doc.setTextColor(180, 180, 180);
+              doc.text(`${j+1}`, cx + 4, ly);
+              doc.setFillColor(c[0], c[1], c[2]);
+              doc.circle(cx + 8.5, ly - 1, 1, "F");
+              doc.setTextColor(50, 50, 50);
+              doc.text(s, cx + 11, ly);
+            });
+            if (col === 1) { y = rowStartY + cardH + 4; col = 0; }
+            else { col = 1; if (idx === mems.length - 1) y = rowStartY + cardH + 4; }
+          });
+          y += 4;
+        }
+
+        // 2. Répartition par domaine (lignes avec barre proportionnelle).
+        sectionBanner(L.statsByDomain);
+        const sorted = stats.domains.slice().sort((a,b)=>b.pts-a.pts);
+        sorted.forEach((d) => {
+          ensureSpace(8);
+          const c = DC[d.key] || [120,120,120];
+          doc.setFillColor(c[0], c[1], c[2]);
+          doc.circle(marginX + 1.5, y - 1, 1.3, "F");
+          doc.setFont("helvetica", "bold");
+          doc.setFontSize(10);
+          doc.setTextColor(40, 40, 40);
+          doc.text(`${domLabel[d.key]}`, marginX + 5, y);
+          doc.setTextColor(c[0], c[1], c[2]);
+          doc.text(`${d.pct}%`, marginX + 55, y);
+          doc.setTextColor(150, 150, 150);
+          doc.setFont("helvetica", "normal");
+          doc.text(`${d.pts} pts`, marginX + 72, y);
+          // Barre proportionnelle.
+          const barX = marginX + 90, barMaxW = maxW - 90;
+          doc.setFillColor(238, 238, 238);
+          doc.roundedRect(barX, y - 3, barMaxW, 3.5, 0.8, 0.8, "F");
+          doc.setFillColor(c[0], c[1], c[2]);
+          doc.roundedRect(barX, y - 3, barMaxW * d.pct / 100, 3.5, 0.8, 0.8, "F");
+          y += 7;
+        });
+        y += 4;
+
+        // 3. Classement pondéré (tableau).
+        sectionBanner(L.statsRanking);
+        doc.setFontSize(9);
+        stats.ranking.forEach((r, i) => {
+          ensureSpace(6.5);
+          if (i % 2 === 1) {
+            doc.setFillColor(250, 249, 247);
+            doc.rect(marginX, y - 4, maxW, 6, "F");
+          }
+          const c = DC[r.domain] || [120,120,120];
+          doc.setTextColor(170, 170, 170);
+          doc.setFont("helvetica", "normal");
+          doc.text(`${i+1}`, marginX + 1, y);
+          doc.setFillColor(c[0], c[1], c[2]);
+          doc.circle(marginX + 8, y - 1, 1.1, "F");
+          doc.setTextColor(40, 40, 40);
+          doc.setFont("helvetica", "bold");
+          doc.text(r.name, marginX + 12, y);
+          doc.setTextColor(c[0], c[1], c[2]);
+          doc.setFont("helvetica", "normal");
+          doc.setFontSize(8);
+          doc.text(domLabel[r.domain], marginX + 95, y);
+          doc.setFont("helvetica", "bold");
+          doc.setFontSize(9);
+          doc.text(`${r.pts}`, marginX + 150, y, { align: "right" });
+          doc.setTextColor(150, 150, 150);
+          doc.setFont("helvetica", "normal");
+          doc.text(`${r.pct}%`, marginX + 166, y, { align: "right" });
+          y += 6;
+        });
+        y += 6;
+
+        // Nouvelle page pour le débrief texte, plus aéré.
+        doc.addPage();
+        y = marginTop;
+      }
 
       // Écrit le débrief en interprétant le Markdown léger : "## Titre" -> titre gras.
       (reportText || "").split("\n").forEach((raw) => {
@@ -940,7 +1059,7 @@ export default function Home() {
           <div className="report-area">
             <div className="report-content"><RichText text={teamReport.text} /></div>
           </div>
-          <button className="pdf-btn" onClick={() => downloadPdf(teamName, teamReport.text)}>{L.downloadPdf}</button>
+          <button className="pdf-btn" onClick={() => downloadPdf(teamName, teamReport.text, teamReport.stats, teamReport.members)}>{L.downloadPdf}</button>
           <ChatArea messages={teamChatMsgs} chatAreaRef={teamChatRef} />
           <div className="chat-input-row">
             <textarea rows={2} value={teamChatInput} onChange={e => setTeamChatInput(e.target.value)}
