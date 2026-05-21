@@ -278,10 +278,10 @@ function buildSystem(lang, context) {
   return `You are an expert StrengthsFinder leadership coach working with Philippe's methodology.
 
 DEBRIEF FORMAT — always follow this structure, fits about one A4 page.
-The debrief has FOUR parts, each introduced by ONE heading (no "Section" word, no numbering).
+The debrief has FIVE parts, each introduced by ONE heading (no "Section" word, no numbering).
 Use the heading in the SAME language as the debrief (${langName}):
-- If French: "Toutes vos forces en action" / "Quelle vigilance avoir par rapport à vos forces ?" / "Activer vos forces pour combler vos zones moins développées" / "Trois questions pour aller de l'avant"
-- If English: "All your strengths in action" / "What to watch out for with your strengths" / "Using your strengths to grow your weaker areas" / "Three questions to keep growing"
+- If French: "Toutes vos forces en action" / "Quelle vigilance avoir par rapport à vos forces ?" / "Activer vos forces pour combler vos zones moins développées" / "Comment les autres vous voient probablement" / "Trois questions pour aller de l'avant"
+- If English: "All your strengths in action" / "What to watch out for with your strengths" / "Using your strengths to grow your weaker areas" / "How others probably perceive you" / "Three questions to keep growing"
 Reproduce the chosen heading exactly as written above for that language.
 
 Heading 1 (then ~20 lines)
@@ -293,7 +293,10 @@ Name the blind spots and potential tensions — but in a style that affirms rath
 Heading 3 (then ~10 lines)
 Show how this person can USE their PRESENT strengths to compensate for or develop the domains where they are weaker. This is the most actionable part. For each gap, propose a concrete bridge built from an existing strength. Example of the reasoning to follow: someone with a very strong relationship domain but little Influencing can lean on their relational depth to gradually build their circle of influence at work — using trusted one-on-one relationships as a springboard, rather than trying to force a public, charismatic style that isn't natural to them. Do this for the person's real profile: pick their dominant strengths and show how each can serve as a lever toward an under-represented domain. Concrete, specific, encouraging — not generic advice.
 
-Heading 4
+Heading 4 (then ~10 lines)
+Describe how OTHERS probably perceive this person, based on their strengths in action — the impression they leave, the reputation their behavior naturally creates. Be honest and nuanced: name both the flattering perceptions and the possible misreadings. For example, a strong Achiever may be seen as reliable and driven but possibly distant or always busy; someone high in Harmony and Relator may be seen as warm and trustworthy but perhaps conflict-avoidant; someone analytical and deliberative may be seen as wise but sometimes hard to read or slow to commit. Ground it strictly in THIS person's actual strengths. The goal is to reveal the gap between intention and perception, gently.
+
+Heading 5
 Ask exactly 3 questions designed to accelerate self-discovery. Rules:
 - One question must always be about how this person can become the MASTER of their strengths instead of being guided by them
 - Questions open doors, they don't close them
@@ -506,10 +509,10 @@ export default function Home() {
     const ctx = `Name: ${indName || "Participant"}\nRole: ${indRole || "-"}\nObjective: ${goalLabel}\nStrengths (ranked): ${strengths.map((s,i) => `${i+1}. ${s}`).join(", ")}`;
     setIndContext(ctx);
     const promptText = lg === "fr"
-      ? `Fais un debrief complet de ce profil StrengthsFinder. Structure:\n1. SYNTHÈSE DU PROFIL (3-4 phrases sur l'identité)\n2. FORCES EN DÉTAIL (analyse des 3 premières forces dominantes)\n3. DYNAMIQUES ET INTERACTIONS (synergies et tensions)\n4. ANGLES MORTS (2-3 risques)\n5. RECOMMANDATIONS CONCRÈTES (3 actions liées à: ${goalLabel})\n\nProfil: ${ctx}`
+      ? `Rédige le débrief complet de ce profil StrengthsFinder en suivant EXACTEMENT la structure en cinq parties de tes consignes (forces en action, vigilance, activer ses forces pour combler les zones moins développées, comment les autres vous voient, trois questions). Objectif du debrief : ${goalLabel}.\n\nProfil : ${ctx}`
       : lg === "de"
-      ? `Erstelle ein vollständiges Debrief dieses StrengthsFinder-Profils. Struktur:\n1. PROFILZUSAMMENFASSUNG\n2. STÄRKEN IM DETAIL (Top 3)\n3. DYNAMIKEN UND INTERAKTIONEN\n4. BLINDE FLECKEN\n5. KONKRETE EMPFEHLUNGEN (3 Maßnahmen für: ${goalLabel})\n\nProfil: ${ctx}`
-      : `Provide a complete StrengthsFinder debrief. Structure:\n1. PROFILE SUMMARY\n2. KEY STRENGTHS (top 3 in detail)\n3. DYNAMICS AND INTERACTIONS\n4. BLIND SPOTS\n5. CONCRETE RECOMMENDATIONS (3 actions for: ${goalLabel})\n\nProfile: ${ctx}`;
+      ? `Verfasse das vollständige Debrief dieses StrengthsFinder-Profils und folge GENAU der fünfteiligen Struktur deiner Anweisungen. Ziel des Debriefs: ${goalLabel}.\n\nProfil: ${ctx}`
+      : `Write the complete StrengthsFinder debrief following EXACTLY the five-part structure in your instructions (strengths in action, watch-outs, using strengths to grow weaker areas, how others perceive you, three questions). Debrief objective: ${goalLabel}.\n\nProfile: ${ctx}`;
     try {
       const msgs = [{ role:"user", content: promptText }];
       const report = await callAPI(buildSystem(lg, ctx), msgs);
