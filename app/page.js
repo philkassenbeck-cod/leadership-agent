@@ -294,7 +294,7 @@ Keep the SAME five-section structure and the same warm tone for every level; onl
 "**Comment lire ce portrait** — Ce document décrit vos forces, pas votre destin. Vos talents expliquent vos réflexes ; ils ne décident pas de vos choix. Lu avec un esprit figé, ce portrait devient une excuse : « je suis comme ça ». Lu avec un esprit de croissance, il devient un tableau de bord : des muscles puissants dont vous choisissez l'engagement, le dosage et le moment. Quant à vos risques, ce ne sont jamais des défauts — seulement vos forces, utilisées sans choix conscient."
 
 Then the FIVE sections, each opened by a "## " heading numbered 1 to 5. Use these headings (translate to ${langName}; French shown):
-"## 1. Votre portrait de leadership"
+"## 1. Vos forces en action"
 "## 2. Vos angles morts et vos risques"
 "## 3. Utiliser vos forces pour compenser vos fragilités"
 "## 4. Comment les autres vous perçoivent"
@@ -898,7 +898,7 @@ export default function Home() {
       const {
         Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
         Footer, AlignmentType, LevelFormat, TabStopType, BorderStyle,
-        WidthType, ShadingType, PageNumber,
+        WidthType, ShadingType, PageNumber, ImageRun,
       } = D;
 
       const FONT = "Arial";
@@ -937,7 +937,7 @@ export default function Home() {
         });
       }
       function sectionTitle(line) {
-        // line ex. "## 1. Votre portrait de leadership" ou "## La signature de l'équipe"
+        // line ex. "## 1. Vos forces en action" ou "## La signature de l'équipe"
         const clean = line.replace(/^#{1,6}\s+/, "");
         const m = clean.match(/^(\d+\.)\s*(.*)$/);
         const num = m ? m[1] : "", rest = m ? m[2] : clean;
@@ -1009,11 +1009,25 @@ export default function Home() {
         numbering:{ config:[{ reference:"bullets", levels:[{ level:0, format:LevelFormat.BULLET, text:"—", alignment:AlignmentType.LEFT, style:{ paragraph:{ indent:{ left:360, hanging:360 } } } }] }] },
         sections:[{
           properties:{ page:{ size:{ width:11906, height:16838 }, margin:{ top:1280, right:1440, bottom:1280, left:1440 } } },
-          footers:{ default: new Footer({ children:[ new Paragraph({ tabStops:[{ type:TabStopType.RIGHT, position:9026 }], children:[
-            new TextRun({ text:"Débrief StrengthsFinder — Confidentiel", font:FONT, size:16, color:GREY, italics:true }),
-            new TextRun({ text:"\t", font:FONT }),
-            new TextRun({ children:[PageNumber.CURRENT], font:FONT, size:16, color:GREY }),
-          ] }) ] }) },
+          footers:{ default: new Footer({ children:[
+            // Logo Optimup centré
+            new Paragraph({ alignment:AlignmentType.CENTER, spacing:{ after:40 }, children:[
+              new ImageRun({
+                data: Uint8Array.from(atob(OPTIMUP_LOGO.split(",")[1]), c => c.charCodeAt(0)),
+                transformation:{ width:110, height:Math.round(110 * OPTIMUP_LOGO_RATIO) },
+              }),
+            ] }),
+            // Ligne contact en orange
+            new Paragraph({ alignment:AlignmentType.CENTER, spacing:{ after:60 }, children:[
+              new TextRun({ text:"Débrief des forces et talents par Optimup! · Rue Pedro Meylan 1, 1205 Genève · pkassenbeck@optimup.ch", font:FONT, size:15, color:ACCENT }),
+            ] }),
+            // Confidentiel + numéro de page
+            new Paragraph({ tabStops:[{ type:TabStopType.RIGHT, position:9026 }], children:[
+              new TextRun({ text:"Débrief StrengthsFinder — Confidentiel", font:FONT, size:16, color:GREY, italics:true }),
+              new TextRun({ text:"\t", font:FONT }),
+              new TextRun({ children:[PageNumber.CURRENT], font:FONT, size:16, color:GREY }),
+            ] }),
+          ] }) },
           children,
         }],
       });
