@@ -969,7 +969,6 @@ export default function Home() {
 
       // ---- Construit le corps à partir du markdown léger du rapport ----
       const children = [
-        new Paragraph({ spacing:{ after:40 }, children:[ new TextRun({ text:"DÉBRIEF STRENGTHSFINDER", font:FONT, size:20, bold:true, color:ACCENT, characterSpacing:40 }) ] }),
         new Paragraph({ spacing:{ after:60 }, children:[ new TextRun({ text:"Portrait de talents", font:FONT, size:52, bold:true, color:DARK }) ] }),
         new Paragraph({ spacing:{ after:280 }, border:{ bottom:{ style:BorderStyle.SINGLE, size:12, color:ACCENT, space:8 } },
           children:[ new TextRun({ text: (subtitle ? recipientName + "  ·  " + subtitle : recipientName), font:FONT, size:26, color:GREY }) ] }),
@@ -1021,9 +1020,8 @@ export default function Home() {
             new Paragraph({ alignment:AlignmentType.CENTER, spacing:{ after:60 }, children:[
               new TextRun({ text:"Débrief des forces et talents par Optimup! · Rue Pedro Meylan 1, 1205 Genève · pkassenbeck@optimup.ch", font:FONT, size:15, color:ACCENT }),
             ] }),
-            // Confidentiel + numéro de page
+            // Numéro de page
             new Paragraph({ tabStops:[{ type:TabStopType.RIGHT, position:9026 }], children:[
-              new TextRun({ text:"Débrief StrengthsFinder — Confidentiel", font:FONT, size:16, color:GREY, italics:true }),
               new TextRun({ text:"\t", font:FONT }),
               new TextRun({ children:[PageNumber.CURRENT], font:FONT, size:16, color:GREY }),
             ] }),
