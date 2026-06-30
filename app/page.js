@@ -295,7 +295,7 @@ Then the FIVE sections, each opened by a "## " heading numbered 1 to 5. Use thes
 "## 5. Deux questions puissantes pour avancer"
 
 ## 1 — Portrait (4 short paragraphs)
-Name the person's signature leadership style in a vivid 3–4 word formula in bold (e.g. "**leadership d'ancrage**", "**leadership de vision incarnée**"). Tell the story of how their talents work together as a system — not a list, a living mechanism. Group their strengths into two coherent families (the way a two-column reframe would) and show the loop between them. Close on the triple value they bring to a leadership team, with three bolded nouns. Reference their dominant strengths by name.
+Name the person's signature talent-based leadership style in a vivid 3–4 word formula in bold (e.g. "**leadership d'ancrage**", "**leadership de vision incarnée**"). Tell the story of how their talents work together as a system — not a list, a living mechanism. Group their strengths into two coherent families (the way a two-column reframe would) and show the loop between them. Close on the triple value they bring to a leadership team, with three bolded nouns. Reference their dominant strengths by name.
 
 ## 2 — Angles morts (2 paragraphs, then ONE call-out, then 1–2 paragraphs)
 Every strength casts a shadow. Frame each risk as the flip side of a strength ("ce qui vous rend puissant ici peut parfois..."), never as a defect. After the first paragraph, insert ONE call-out line that starts exactly with "**Votre risque majeur** —" naming the single most important strength COMBINATION (e.g. "Activateur + Assurance") and its systemic effect, with one bolded key phrase inside. Then continue with the remaining risks, including what their UNDER-represented domains expose them to.
@@ -961,7 +961,7 @@ export default function Home() {
       // ---- Construit le corps à partir du markdown léger du rapport ----
       const children = [
         new Paragraph({ spacing:{ after:40 }, children:[ new TextRun({ text:"DÉBRIEF STRENGTHSFINDER", font:FONT, size:20, bold:true, color:ACCENT, characterSpacing:40 }) ] }),
-        new Paragraph({ spacing:{ after:60 }, children:[ new TextRun({ text:"Portrait de leadership", font:FONT, size:52, bold:true, color:DARK }) ] }),
+        new Paragraph({ spacing:{ after:60 }, children:[ new TextRun({ text:"Portrait de talents", font:FONT, size:52, bold:true, color:DARK }) ] }),
         new Paragraph({ spacing:{ after:280 }, border:{ bottom:{ style:BorderStyle.SINGLE, size:12, color:ACCENT, space:8 } },
           children:[ new TextRun({ text: (subtitle ? recipientName + "  ·  " + subtitle : recipientName), font:FONT, size:26, color:GREY }) ] }),
       ];
