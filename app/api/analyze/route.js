@@ -14,7 +14,7 @@ export async function POST(req) {
       return Response.json({ error: "No messages provided." }, { status: 400 });
     }
     const response = await client.messages.create({
-      model: "claude-sonnet-4-6",
+      model: "claude-sonnet-5",
       max_tokens: 4000,
       system: systemPrompt,
       messages,
