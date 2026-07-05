@@ -13,9 +13,9 @@ const DOMAINS = {
 };
 
 const LABELS = {
-  fr: { identity:"Identité", name:"Nom", role:"Rôle / Poste", top5:"Top 5 forces (obligatoire)", top10:"Forces 6–10 (optionnel)", context:"Contexte", goal:"Objectif du debrief", teamName:"Nom de l'équipe", teamGoal:"Objectif du debrief", teamLeader:"Chef d'équipe", teamLeaderHint:"Cliquez ⭐ sur le membre qui dirige l'équipe", statsByPerson:"Les 5 forces par personne", statsByDomain:"Répartition par domaine de forces", statsRanking:"Classement pondéré des forces", statsPresent:"Talents présents", statsDomainCol:"Domaine", statsSocio:"Synergie et antagonisme (Fauvet)", socioSynergy:"Synergie", socioAntagonism:"Antagonisme", socioNeutral:"Neutre / latence", socioSub:"Cohésion interne (EGO) vs autonomie & ouverture (ECO)", department:"Département / Service", phDepartment:"ex. Marketing, Direction générale, Production...", business:"Nature du métier / secteur", phBusiness:"ex. Luxe, Industrie, Services financiers...", members:"Membres", addMember:"+ Ajouter un membre", analyze:"Analyser →", analyzeTeam:"Analyser l'équipe →", back:"← Nouveau debrief", backTeam:"← Nouvelle analyse", individual:"Individuel", team:"Équipe", headerSub:"Debrief individuel · Saisissez le top 5 ou top 10", headerSubTeam:"Analyse d'équipe · Ajoutez les membres et leurs forces", executing:"Exécution", influencing:"Influence", relationship:"Relation", thinking:"Pensée stratégique", chatPlaceholder:"Approfondissez une force, posez une question...", teamChatPlaceholder:"Posez une question sur la dynamique d'équipe...", goalOptions:[{v:"dev",l:"Développement personnel"},{v:"team",l:"Intégration dans une équipe"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], level:"Niveau de responsabilité", levelOptions:[{v:"leader",l:"Dirigeant·e / leader"},{v:"manager",l:"Manager / encadrant·e"},{v:"ic",l:"Sans responsabilité d'encadrement"}], teamGoalOptions:[{v:"dynamics",l:"Dynamiques d'équipe"},{v:"collab",l:"Améliorer la collaboration"},{v:"blind",l:"Identifier les angles morts"},{v:"perf",l:"Performance collective"}], coachName:"Votre nom (coach)", downloadPdf:"⬇ Télécharger en PDF", downloadWord:"⬇ Télécharger en Word", importPdf:"📄 Glissez votre rapport Gallup ici, ou cliquez", importDrop:"Déposez le PDF ici…", importing:"Lecture du PDF...", importOk:"Forces importées ✓", importErr:"Lecture impossible. Vérifiez que c'est bien le PDF Gallup, ou saisissez à la main.", importTeam:"📄 Glissez jusqu'à 15 rapports Gallup ici, ou cliquez", importTeamDrop:"Déposez les PDF ici…", importingTeam:"Lecture des rapports...", importTeamOk:(n)=>`${n} membre(s) importé(s) ✓`, importTeamErr:"Aucun rapport lisible. Vérifiez que ce sont bien des PDF Gallup.", importTeamMax:"15 rapports maximum.", letterGreeting:(n)=>`Cher(e) ${n},`, letterIntro:"Voici le débrief de tes forces, fruit de notre échange. Prends le temps de le lire, d'y revenir, et de laisser ces mots résonner.", letterClose:"Avec toute ma confiance,", pdfTitle:"Débrief StrengthsFinder", phName:"Prénom Nom", phRole:"ex. CEO, Chef de projet...", phCoach:"ex. Philippe Kassenbeck", phTeam:"ex. Board, Équipe Marketing...", strength:"Force", optional:"optionnel", member:"Membre", analyzing:"Analyse en cours...", errMin3:"Saisissez au moins 3 forces.", errMin2:"Ajoutez au moins 2 membres avec des forces.", errApi:"Erreur API.", errRetry:"Erreur. Réessayez.", authSub:"Accès réservé", authTitle:"Connexion", authPassword:"Mot de passe", authPlaceholder:"Votre mot de passe ou code d'accès", authLogin:"Entrer →", authChecking:"Vérification...", authWrong:"Mot de passe invalide ou expiré.", logout:"Déconnexion", codesBtn:"🔑 Codes d'accès", adminCodes:"Générer un code d'accès", codeDays:"Durée de validité (jours)", generateCode:"Générer le code", copyCode:"Copier", copied:"Copié ✓", codeExpires:"Valable jusqu'au", codeHint:"Donnez ce code à votre client : il pourra se connecter jusqu'à la date d'expiration.", pair:"Binôme", headerSubPair:"Débrief binôme · Analysez l'interaction entre deux personnes", pairRelation:"Nature de la relation", pairRelationOptions:[{v:"peers",l:"Pairs / collègues"},{v:"manager",l:"Manager – collaborateur"},{v:"cofounders",l:"Co-fondateurs / associés"},{v:"transverse",l:"Collaboration transverse"}], analyzePair:"Analyser le binôme →", backPair:"← Nouveau binôme", pairChatPlaceholder:"Posez une question sur la dynamique du binôme...", importPair:"📄 Glissez les 2 rapports Gallup ici, ou cliquez", importPairDrop:"Déposez les 2 PDF ici…", importPairOk:"Binôme importé ✓", importPairErr:"Il faut 2 rapports Gallup lisibles.", statsShared:"Forces communes", statsComplement:"Les deux profils comparés", statsFriction:"Points de friction potentiels", pairNoShared:"Aucune force commune dans les tops — deux profils très différents.", pairNoFriction:"Aucune paire de tension classique détectée.", errPairMin:"Saisissez au moins 3 forces pour chacune des deux personnes.", personA:"Personne A", personB:"Personne B", cnv:"CNV", headerSubCnv:"Outil de résolution de conflit · Communication NonViolente (O·S·B·D)", cnvSituationLabel:"Décrivez la situation", cnvSituationPh:"Racontez les faits et ce que vous ressentez, avec vos mots…", cnvWithLabel:"À qui s'adresse le message", cnvWithPh:"ex. mon associé, un collaborateur, un client… (optionnel)", cnvGoalLabel:"Ce que vous aimeriez", cnvGoalPh:"ce que vous voudriez obtenir de cet échange (optionnel)", analyzeCnv:"Générer le message CNV →", backCnv:"← Nouvelle situation", cnvChatPlaceholder:"Affinez votre message, testez une reformulation…", errCnvMin:"Décrivez d'abord la situation." },
-  de: { identity:"Identität", name:"Name", role:"Rolle / Position", top5:"Top 5 Stärken (Pflicht)", top10:"Stärken 6–10 (optional)", context:"Kontext", goal:"Ziel des Debriefs", teamName:"Teamname", teamGoal:"Ziel des Debriefs", teamLeader:"Teamleiter", teamLeaderHint:"Klicken Sie ⭐ beim Mitglied, das das Team leitet", statsByPerson:"Die 5 Stärken pro Person", statsByDomain:"Verteilung nach Stärkenbereich", statsRanking:"Gewichtetes Stärken-Ranking", statsPresent:"Vorhandene Talente", statsDomainCol:"Bereich", statsSocio:"Synergie und Antagonismus (Fauvet)", socioSynergy:"Synergie", socioAntagonism:"Antagonismus", socioNeutral:"Neutral / latent", socioSub:"Innerer Zusammenhalt (EGO) vs. Autonomie & Offenheit (ECO)", department:"Abteilung / Bereich", phDepartment:"z. B. Marketing, Geschäftsführung, Produktion...", business:"Branche / Tätigkeitsbereich", phBusiness:"z. B. Luxus, Industrie, Finanzdienstleistungen...", members:"Mitglieder", addMember:"+ Mitglied hinzufügen", analyze:"Analysieren →", analyzeTeam:"Team analysieren →", back:"← Neues Debrief", backTeam:"← Neue Analyse", individual:"Individuell", team:"Team", headerSub:"Individuelles Debrief · Geben Sie die Top 5 oder Top 10 ein", headerSubTeam:"Teamanalyse · Fügen Sie Mitglieder und Stärken hinzu", executing:"Ausführung", influencing:"Einfluss", relationship:"Beziehung", thinking:"Strategisches Denken", chatPlaceholder:"Vertiefen Sie eine Stärke...", teamChatPlaceholder:"Fragen zur Teamdynamik...", goalOptions:[{v:"dev",l:"Persönliche Entwicklung"},{v:"team",l:"Teamintegration"},{v:"perf",l:"Performance"},{v:"collab",l:"Zusammenarbeit"}], level:"Verantwortungsebene", levelOptions:[{v:"leader",l:"Führungskraft / Leader"},{v:"manager",l:"Manager / Teamleiter"},{v:"ic",l:"Ohne Führungsverantwortung"}], teamGoalOptions:[{v:"dynamics",l:"Teamdynamiken"},{v:"collab",l:"Zusammenarbeit verbessern"},{v:"blind",l:"Blinde Flecken erkennen"},{v:"perf",l:"Kollektive Performance"}], coachName:"Ihr Name (Coach)", downloadPdf:"⬇ Als PDF herunterladen", downloadWord:"⬇ Als Word herunterladen", importPdf:"📄 Gallup-Bericht hierher ziehen oder klicken", importDrop:"PDF hier ablegen…", importing:"PDF wird gelesen...", importOk:"Stärken importiert ✓", importErr:"Lesen nicht möglich. Bitte prüfen Sie das Gallup-PDF oder geben Sie manuell ein.", importTeam:"📄 Bis zu 15 Gallup-Berichte hierher ziehen oder klicken", importTeamDrop:"PDFs hier ablegen…", importingTeam:"Berichte werden gelesen...", importTeamOk:(n)=>`${n} Mitglied(er) importiert ✓`, importTeamErr:"Keine lesbaren Berichte. Bitte prüfen Sie die Gallup-PDFs.", importTeamMax:"Maximal 15 Berichte.", letterGreeting:(n)=>`Liebe(r) ${n},`, letterIntro:"Hier ist das Debrief deiner Stärken, das Ergebnis unseres Gesprächs. Nimm dir Zeit, es zu lesen und nachwirken zu lassen.", letterClose:"Mit vollem Vertrauen,", pdfTitle:"StrengthsFinder Debrief", phName:"Vor- und Nachname", phRole:"z. B. CEO, Projektleiter...", phCoach:"z. B. Philippe Kassenbeck", phTeam:"z. B. Vorstand, Marketing-Team...", strength:"Stärke", optional:"optional", member:"Mitglied", analyzing:"Analyse läuft...", errMin3:"Geben Sie mindestens 3 Stärken ein.", errMin2:"Fügen Sie mindestens 2 Mitglieder mit Stärken hinzu.", errApi:"API-Fehler.", errRetry:"Fehler. Bitte erneut versuchen.", authSub:"Zugang beschränkt", authTitle:"Anmeldung", authPassword:"Passwort", authPlaceholder:"Ihr Passwort oder Zugangscode", authLogin:"Eintreten →", authChecking:"Prüfung...", authWrong:"Passwort ungültig oder abgelaufen.", logout:"Abmelden", codesBtn:"🔑 Zugangscodes", adminCodes:"Zugangscode generieren", codeDays:"Gültigkeitsdauer (Tage)", generateCode:"Code generieren", copyCode:"Kopieren", copied:"Kopiert ✓", codeExpires:"Gültig bis", codeHint:"Geben Sie diesen Code an Ihren Kunden weiter: er kann sich bis zum Ablaufdatum anmelden.", pair:"Duo", headerSubPair:"Duo-Debrief · Analysieren Sie die Interaktion zwischen zwei Personen", pairRelation:"Art der Beziehung", pairRelationOptions:[{v:"peers",l:"Kollegen / auf Augenhöhe"},{v:"manager",l:"Führungskraft – Mitarbeiter"},{v:"cofounders",l:"Mitgründer / Partner"},{v:"transverse",l:"Bereichsübergreifend"}], analyzePair:"Duo analysieren →", backPair:"← Neues Duo", pairChatPlaceholder:"Frage zur Dynamik des Duos...", importPair:"📄 Die 2 Gallup-Berichte hierher ziehen oder klicken", importPairDrop:"Die 2 PDFs hier ablegen…", importPairOk:"Duo importiert ✓", importPairErr:"Es braucht 2 lesbare Gallup-Berichte.", statsShared:"Gemeinsame Stärken", statsComplement:"Beide Profile im Vergleich", statsFriction:"Mögliche Reibungspunkte", pairNoShared:"Keine gemeinsame Stärke in den Tops — zwei sehr unterschiedliche Profile.", pairNoFriction:"Kein klassisches Spannungspaar erkannt.", errPairMin:"Geben Sie für jede der beiden Personen mindestens 3 Stärken ein.", personA:"Person A", personB:"Person B", cnv:"GFK", headerSubCnv:"Konfliktlösungs-Tool · Gewaltfreie Kommunikation (B·G·B·B)", cnvSituationLabel:"Beschreiben Sie die Situation", cnvSituationPh:"Schildern Sie die Fakten und was Sie fühlen, in Ihren Worten…", cnvWithLabel:"An wen richtet sich die Botschaft", cnvWithPh:"z. B. mein Partner, ein Mitarbeiter, ein Kunde… (optional)", cnvGoalLabel:"Was Sie sich wünschen", cnvGoalPh:"was Sie aus diesem Gespräch erreichen möchten (optional)", analyzeCnv:"GFK-Botschaft erstellen →", backCnv:"← Neue Situation", cnvChatPlaceholder:"Verfeinern Sie Ihre Botschaft…", errCnvMin:"Beschreiben Sie zuerst die Situation." },
-  en: { identity:"Identity", name:"Name", role:"Role / Position", top5:"Top 5 strengths (required)", top10:"Strengths 6–10 (optional)", context:"Context", goal:"Debrief objective", teamName:"Team name", teamGoal:"Debrief objective", teamLeader:"Team leader", teamLeaderHint:"Click ⭐ on the member who leads the team", statsByPerson:"The 5 strengths per person", statsByDomain:"Distribution by strength domain", statsRanking:"Weighted strengths ranking", statsPresent:"Present talents", statsDomainCol:"Domain", statsSocio:"Synergy and antagonism (Fauvet)", socioSynergy:"Synergy", socioAntagonism:"Antagonism", socioNeutral:"Neutral / latent", socioSub:"Internal cohesion (EGO) vs autonomy & openness (ECO)", department:"Department / Unit", phDepartment:"e.g. Marketing, Executive board, Production...", business:"Business / industry", phBusiness:"e.g. Luxury, Industry, Financial services...", members:"Members", addMember:"+ Add member", analyze:"Analyze →", analyzeTeam:"Analyze team →", back:"← New debrief", backTeam:"← New analysis", individual:"Individual", team:"Team", headerSub:"Individual debrief · Enter top 5 or top 10", headerSubTeam:"Team analysis · Add members and their strengths", executing:"Executing", influencing:"Influencing", relationship:"Relationship", thinking:"Strategic Thinking", chatPlaceholder:"Dive deeper into a strength...", teamChatPlaceholder:"Ask about team dynamics...", goalOptions:[{v:"dev",l:"Personal development"},{v:"team",l:"Team integration"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], level:"Level of responsibility", levelOptions:[{v:"leader",l:"Executive / leader"},{v:"manager",l:"Manager / team lead"},{v:"ic",l:"No management responsibility"}], teamGoalOptions:[{v:"dynamics",l:"Team dynamics"},{v:"collab",l:"Improve collaboration"},{v:"blind",l:"Identify blind spots"},{v:"perf",l:"Collective performance"}], coachName:"Your name (coach)", downloadPdf:"⬇ Download PDF", downloadWord:"⬇ Download Word", importPdf:"📄 Drag your Gallup report here, or click", importDrop:"Drop the PDF here…", importing:"Reading PDF...", importOk:"Strengths imported ✓", importErr:"Could not read it. Check it's the Gallup PDF, or enter manually.", importTeam:"📄 Drag up to 15 Gallup reports here, or click", importTeamDrop:"Drop the PDFs here…", importingTeam:"Reading reports...", importTeamOk:(n)=>`${n} member(s) imported ✓`, importTeamErr:"No readable reports. Check they are Gallup PDFs.", importTeamMax:"15 reports maximum.", letterGreeting:(n)=>`Dear ${n},`, letterIntro:"Here is the debrief of your strengths, the fruit of our conversation. Take the time to read it, return to it, and let these words resonate.", letterClose:"With all my confidence,", pdfTitle:"StrengthsFinder Debrief", phName:"First and last name", phRole:"e.g. CEO, Project manager...", phCoach:"e.g. Philippe Kassenbeck", phTeam:"e.g. Board, Marketing team...", strength:"Strength", optional:"optional", member:"Member", analyzing:"Analyzing...", errMin3:"Enter at least 3 strengths.", errMin2:"Add at least 2 members with strengths.", errApi:"API error.", errRetry:"Error. Please try again.", authSub:"Restricted access", authTitle:"Sign in", authPassword:"Password", authPlaceholder:"Your password or access code", authLogin:"Enter →", authChecking:"Checking...", authWrong:"Invalid or expired password.", logout:"Log out", codesBtn:"🔑 Access codes", adminCodes:"Generate an access code", codeDays:"Validity (days)", generateCode:"Generate code", copyCode:"Copy", copied:"Copied ✓", codeExpires:"Valid until", codeHint:"Give this code to your client: they can sign in until the expiry date.", pair:"Pair", headerSubPair:"Pair debrief · Analyze the interaction between two people", pairRelation:"Nature of the relationship", pairRelationOptions:[{v:"peers",l:"Peers / colleagues"},{v:"manager",l:"Manager – report"},{v:"cofounders",l:"Co-founders / partners"},{v:"transverse",l:"Cross-functional"}], analyzePair:"Analyze the pair →", backPair:"← New pair", pairChatPlaceholder:"Ask about the pair's dynamic...", importPair:"📄 Drag the 2 Gallup reports here, or click", importPairDrop:"Drop the 2 PDFs here…", importPairOk:"Pair imported ✓", importPairErr:"Two readable Gallup reports are required.", statsShared:"Shared strengths", statsComplement:"Both profiles compared", statsFriction:"Potential friction points", pairNoShared:"No shared strength in the tops — two very different profiles.", pairNoFriction:"No classic tension pair detected.", errPairMin:"Enter at least 3 strengths for each of the two people.", personA:"Person A", personB:"Person B", cnv:"NVC", headerSubCnv:"Conflict-resolution tool · Nonviolent Communication (O·F·N·R)", cnvSituationLabel:"Describe the situation", cnvSituationPh:"Tell the facts and what you feel, in your own words…", cnvWithLabel:"Who is the message for", cnvWithPh:"e.g. my partner, a report, a client… (optional)", cnvGoalLabel:"What you'd like", cnvGoalPh:"what you'd want from this exchange (optional)", analyzeCnv:"Generate the NVC message →", backCnv:"← New situation", cnvChatPlaceholder:"Refine your message, try a rephrasing…", errCnvMin:"Describe the situation first." },
+  fr: { identity:"Identité", name:"Nom", role:"Rôle / Poste", top5:"Top 5 forces (obligatoire)", top10:"Forces 6–10 (optionnel)", context:"Contexte", goal:"Objectif du debrief", teamName:"Nom de l'équipe", teamGoal:"Objectif du debrief", teamLeader:"Chef d'équipe", teamLeaderHint:"Cliquez ⭐ sur le membre qui dirige l'équipe", statsByPerson:"Les 5 forces par personne", statsByDomain:"Répartition par domaine de forces", statsRanking:"Classement pondéré des forces", statsPresent:"Talents présents", statsDomainCol:"Domaine", statsSocio:"Synergie et antagonisme (Fauvet)", socioSynergy:"Synergie", socioAntagonism:"Antagonisme", socioNeutral:"Neutre / latence", socioSub:"Cohésion interne (EGO) vs autonomie & ouverture (ECO)", statsAbsent:"Forces absentes de l'équipe", department:"Département / Service", phDepartment:"ex. Marketing, Direction générale, Production...", business:"Nature du métier / secteur", phBusiness:"ex. Luxe, Industrie, Services financiers...", members:"Membres", addMember:"+ Ajouter un membre", analyze:"Analyser →", analyzeTeam:"Analyser l'équipe →", back:"← Nouveau debrief", backTeam:"← Nouvelle analyse", individual:"Individuel", team:"Équipe", headerSub:"Debrief individuel · Saisissez le top 5 ou top 10", headerSubTeam:"Analyse d'équipe · Ajoutez les membres et leurs forces", executing:"Exécution", influencing:"Influence", relationship:"Relation", thinking:"Pensée stratégique", chatPlaceholder:"Approfondissez une force, posez une question...", teamChatPlaceholder:"Posez une question sur la dynamique d'équipe...", goalOptions:[{v:"dev",l:"Développement personnel"},{v:"team",l:"Intégration dans une équipe"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], level:"Niveau de responsabilité", levelOptions:[{v:"leader",l:"Dirigeant·e / leader"},{v:"manager",l:"Manager / encadrant·e"},{v:"ic",l:"Sans responsabilité d'encadrement"}], teamGoalOptions:[{v:"dynamics",l:"Dynamiques d'équipe"},{v:"collab",l:"Améliorer la collaboration"},{v:"blind",l:"Identifier les angles morts"},{v:"perf",l:"Performance collective"}], coachName:"Votre nom (coach)", downloadPdf:"⬇ Télécharger en PDF", downloadWord:"⬇ Télécharger en Word", importPdf:"📄 Glissez votre rapport Gallup ici, ou cliquez", importDrop:"Déposez le PDF ici…", importing:"Lecture du PDF...", importOk:"Forces importées ✓", importErr:"Lecture impossible. Vérifiez que c'est bien le PDF Gallup, ou saisissez à la main.", importTeam:"📄 Glissez jusqu'à 15 rapports Gallup ici, ou cliquez", importTeamDrop:"Déposez les PDF ici…", importingTeam:"Lecture des rapports...", importTeamOk:(n)=>`${n} membre(s) importé(s) ✓`, importTeamErr:"Aucun rapport lisible. Vérifiez que ce sont bien des PDF Gallup.", importTeamMax:"15 rapports maximum.", letterGreeting:(n)=>`Cher(e) ${n},`, letterIntro:"Voici le débrief de tes forces, fruit de notre échange. Prends le temps de le lire, d'y revenir, et de laisser ces mots résonner.", letterClose:"Avec toute ma confiance,", pdfTitle:"Débrief StrengthsFinder", phName:"Prénom Nom", phRole:"ex. CEO, Chef de projet...", phCoach:"ex. Philippe Kassenbeck", phTeam:"ex. Board, Équipe Marketing...", strength:"Force", optional:"optionnel", member:"Membre", analyzing:"Analyse en cours...", errMin3:"Saisissez au moins 3 forces.", errMin2:"Ajoutez au moins 2 membres avec des forces.", errApi:"Erreur API.", errRetry:"Erreur. Réessayez.", authSub:"Accès réservé", authTitle:"Connexion", authPassword:"Mot de passe", authPlaceholder:"Votre mot de passe ou code d'accès", authLogin:"Entrer →", authChecking:"Vérification...", authWrong:"Mot de passe invalide ou expiré.", logout:"Déconnexion", codesBtn:"🔑 Codes d'accès", adminCodes:"Générer un code d'accès", codeDays:"Durée de validité (jours)", generateCode:"Générer le code", copyCode:"Copier", copied:"Copié ✓", codeExpires:"Valable jusqu'au", codeHint:"Donnez ce code à votre client : il pourra se connecter jusqu'à la date d'expiration.", pair:"Binôme", headerSubPair:"Débrief binôme · Analysez l'interaction entre deux personnes", pairRelation:"Nature de la relation", pairRelationOptions:[{v:"peers",l:"Pairs / collègues"},{v:"manager",l:"Manager – collaborateur"},{v:"cofounders",l:"Co-fondateurs / associés"},{v:"transverse",l:"Collaboration transverse"}], analyzePair:"Analyser le binôme →", backPair:"← Nouveau binôme", pairChatPlaceholder:"Posez une question sur la dynamique du binôme...", importPair:"📄 Glissez les 2 rapports Gallup ici, ou cliquez", importPairDrop:"Déposez les 2 PDF ici…", importPairOk:"Binôme importé ✓", importPairErr:"Il faut 2 rapports Gallup lisibles.", statsShared:"Forces communes", statsComplement:"Les deux profils comparés", statsFriction:"Points de friction potentiels", pairNoShared:"Aucune force commune dans les tops — deux profils très différents.", pairNoFriction:"Aucune paire de tension classique détectée.", errPairMin:"Saisissez au moins 3 forces pour chacune des deux personnes.", personA:"Personne A", personB:"Personne B" },
+  de: { identity:"Identität", name:"Name", role:"Rolle / Position", top5:"Top 5 Stärken (Pflicht)", top10:"Stärken 6–10 (optional)", context:"Kontext", goal:"Ziel des Debriefs", teamName:"Teamname", teamGoal:"Ziel des Debriefs", teamLeader:"Teamleiter", teamLeaderHint:"Klicken Sie ⭐ beim Mitglied, das das Team leitet", statsByPerson:"Die 5 Stärken pro Person", statsByDomain:"Verteilung nach Stärkenbereich", statsRanking:"Gewichtetes Stärken-Ranking", statsPresent:"Vorhandene Talente", statsDomainCol:"Bereich", statsSocio:"Synergie und Antagonismus (Fauvet)", socioSynergy:"Synergie", socioAntagonism:"Antagonismus", socioNeutral:"Neutral / latent", socioSub:"Innerer Zusammenhalt (EGO) vs. Autonomie & Offenheit (ECO)", statsAbsent:"Im Team fehlende Stärken", department:"Abteilung / Bereich", phDepartment:"z. B. Marketing, Geschäftsführung, Produktion...", business:"Branche / Tätigkeitsbereich", phBusiness:"z. B. Luxus, Industrie, Finanzdienstleistungen...", members:"Mitglieder", addMember:"+ Mitglied hinzufügen", analyze:"Analysieren →", analyzeTeam:"Team analysieren →", back:"← Neues Debrief", backTeam:"← Neue Analyse", individual:"Individuell", team:"Team", headerSub:"Individuelles Debrief · Geben Sie die Top 5 oder Top 10 ein", headerSubTeam:"Teamanalyse · Fügen Sie Mitglieder und Stärken hinzu", executing:"Ausführung", influencing:"Einfluss", relationship:"Beziehung", thinking:"Strategisches Denken", chatPlaceholder:"Vertiefen Sie eine Stärke...", teamChatPlaceholder:"Fragen zur Teamdynamik...", goalOptions:[{v:"dev",l:"Persönliche Entwicklung"},{v:"team",l:"Teamintegration"},{v:"perf",l:"Performance"},{v:"collab",l:"Zusammenarbeit"}], level:"Verantwortungsebene", levelOptions:[{v:"leader",l:"Führungskraft / Leader"},{v:"manager",l:"Manager / Teamleiter"},{v:"ic",l:"Ohne Führungsverantwortung"}], teamGoalOptions:[{v:"dynamics",l:"Teamdynamiken"},{v:"collab",l:"Zusammenarbeit verbessern"},{v:"blind",l:"Blinde Flecken erkennen"},{v:"perf",l:"Kollektive Performance"}], coachName:"Ihr Name (Coach)", downloadPdf:"⬇ Als PDF herunterladen", downloadWord:"⬇ Als Word herunterladen", importPdf:"📄 Gallup-Bericht hierher ziehen oder klicken", importDrop:"PDF hier ablegen…", importing:"PDF wird gelesen...", importOk:"Stärken importiert ✓", importErr:"Lesen nicht möglich. Bitte prüfen Sie das Gallup-PDF oder geben Sie manuell ein.", importTeam:"📄 Bis zu 15 Gallup-Berichte hierher ziehen oder klicken", importTeamDrop:"PDFs hier ablegen…", importingTeam:"Berichte werden gelesen...", importTeamOk:(n)=>`${n} Mitglied(er) importiert ✓`, importTeamErr:"Keine lesbaren Berichte. Bitte prüfen Sie die Gallup-PDFs.", importTeamMax:"Maximal 15 Berichte.", letterGreeting:(n)=>`Liebe(r) ${n},`, letterIntro:"Hier ist das Debrief deiner Stärken, das Ergebnis unseres Gesprächs. Nimm dir Zeit, es zu lesen und nachwirken zu lassen.", letterClose:"Mit vollem Vertrauen,", pdfTitle:"StrengthsFinder Debrief", phName:"Vor- und Nachname", phRole:"z. B. CEO, Projektleiter...", phCoach:"z. B. Philippe Kassenbeck", phTeam:"z. B. Vorstand, Marketing-Team...", strength:"Stärke", optional:"optional", member:"Mitglied", analyzing:"Analyse läuft...", errMin3:"Geben Sie mindestens 3 Stärken ein.", errMin2:"Fügen Sie mindestens 2 Mitglieder mit Stärken hinzu.", errApi:"API-Fehler.", errRetry:"Fehler. Bitte erneut versuchen.", authSub:"Zugang beschränkt", authTitle:"Anmeldung", authPassword:"Passwort", authPlaceholder:"Ihr Passwort oder Zugangscode", authLogin:"Eintreten →", authChecking:"Prüfung...", authWrong:"Passwort ungültig oder abgelaufen.", logout:"Abmelden", codesBtn:"🔑 Zugangscodes", adminCodes:"Zugangscode generieren", codeDays:"Gültigkeitsdauer (Tage)", generateCode:"Code generieren", copyCode:"Kopieren", copied:"Kopiert ✓", codeExpires:"Gültig bis", codeHint:"Geben Sie diesen Code an Ihren Kunden weiter: er kann sich bis zum Ablaufdatum anmelden.", pair:"Duo", headerSubPair:"Duo-Debrief · Analysieren Sie die Interaktion zwischen zwei Personen", pairRelation:"Art der Beziehung", pairRelationOptions:[{v:"peers",l:"Kollegen / auf Augenhöhe"},{v:"manager",l:"Führungskraft – Mitarbeiter"},{v:"cofounders",l:"Mitgründer / Partner"},{v:"transverse",l:"Bereichsübergreifend"}], analyzePair:"Duo analysieren →", backPair:"← Neues Duo", pairChatPlaceholder:"Frage zur Dynamik des Duos...", importPair:"📄 Die 2 Gallup-Berichte hierher ziehen oder klicken", importPairDrop:"Die 2 PDFs hier ablegen…", importPairOk:"Duo importiert ✓", importPairErr:"Es braucht 2 lesbare Gallup-Berichte.", statsShared:"Gemeinsame Stärken", statsComplement:"Beide Profile im Vergleich", statsFriction:"Mögliche Reibungspunkte", pairNoShared:"Keine gemeinsame Stärke in den Tops — zwei sehr unterschiedliche Profile.", pairNoFriction:"Kein klassisches Spannungspaar erkannt.", errPairMin:"Geben Sie für jede der beiden Personen mindestens 3 Stärken ein.", personA:"Person A", personB:"Person B" },
+  en: { identity:"Identity", name:"Name", role:"Role / Position", top5:"Top 5 strengths (required)", top10:"Strengths 6–10 (optional)", context:"Context", goal:"Debrief objective", teamName:"Team name", teamGoal:"Debrief objective", teamLeader:"Team leader", teamLeaderHint:"Click ⭐ on the member who leads the team", statsByPerson:"The 5 strengths per person", statsByDomain:"Distribution by strength domain", statsRanking:"Weighted strengths ranking", statsPresent:"Present talents", statsDomainCol:"Domain", statsSocio:"Synergy and antagonism (Fauvet)", socioSynergy:"Synergy", socioAntagonism:"Antagonism", socioNeutral:"Neutral / latent", socioSub:"Internal cohesion (EGO) vs autonomy & openness (ECO)", statsAbsent:"Strengths absent from the team", department:"Department / Unit", phDepartment:"e.g. Marketing, Executive board, Production...", business:"Business / industry", phBusiness:"e.g. Luxury, Industry, Financial services...", members:"Members", addMember:"+ Add member", analyze:"Analyze →", analyzeTeam:"Analyze team →", back:"← New debrief", backTeam:"← New analysis", individual:"Individual", team:"Team", headerSub:"Individual debrief · Enter top 5 or top 10", headerSubTeam:"Team analysis · Add members and their strengths", executing:"Executing", influencing:"Influencing", relationship:"Relationship", thinking:"Strategic Thinking", chatPlaceholder:"Dive deeper into a strength...", teamChatPlaceholder:"Ask about team dynamics...", goalOptions:[{v:"dev",l:"Personal development"},{v:"team",l:"Team integration"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], level:"Level of responsibility", levelOptions:[{v:"leader",l:"Executive / leader"},{v:"manager",l:"Manager / team lead"},{v:"ic",l:"No management responsibility"}], teamGoalOptions:[{v:"dynamics",l:"Team dynamics"},{v:"collab",l:"Improve collaboration"},{v:"blind",l:"Identify blind spots"},{v:"perf",l:"Collective performance"}], coachName:"Your name (coach)", downloadPdf:"⬇ Download PDF", downloadWord:"⬇ Download Word", importPdf:"📄 Drag your Gallup report here, or click", importDrop:"Drop the PDF here…", importing:"Reading PDF...", importOk:"Strengths imported ✓", importErr:"Could not read it. Check it's the Gallup PDF, or enter manually.", importTeam:"📄 Drag up to 15 Gallup reports here, or click", importTeamDrop:"Drop the PDFs here…", importingTeam:"Reading reports...", importTeamOk:(n)=>`${n} member(s) imported ✓`, importTeamErr:"No readable reports. Check they are Gallup PDFs.", importTeamMax:"15 reports maximum.", letterGreeting:(n)=>`Dear ${n},`, letterIntro:"Here is the debrief of your strengths, the fruit of our conversation. Take the time to read it, return to it, and let these words resonate.", letterClose:"With all my confidence,", pdfTitle:"StrengthsFinder Debrief", phName:"First and last name", phRole:"e.g. CEO, Project manager...", phCoach:"e.g. Philippe Kassenbeck", phTeam:"e.g. Board, Marketing team...", strength:"Strength", optional:"optional", member:"Member", analyzing:"Analyzing...", errMin3:"Enter at least 3 strengths.", errMin2:"Add at least 2 members with strengths.", errApi:"API error.", errRetry:"Error. Please try again.", authSub:"Restricted access", authTitle:"Sign in", authPassword:"Password", authPlaceholder:"Your password or access code", authLogin:"Enter →", authChecking:"Checking...", authWrong:"Invalid or expired password.", logout:"Log out", codesBtn:"🔑 Access codes", adminCodes:"Generate an access code", codeDays:"Validity (days)", generateCode:"Generate code", copyCode:"Copy", copied:"Copied ✓", codeExpires:"Valid until", codeHint:"Give this code to your client: they can sign in until the expiry date.", pair:"Pair", headerSubPair:"Pair debrief · Analyze the interaction between two people", pairRelation:"Nature of the relationship", pairRelationOptions:[{v:"peers",l:"Peers / colleagues"},{v:"manager",l:"Manager – report"},{v:"cofounders",l:"Co-founders / partners"},{v:"transverse",l:"Cross-functional"}], analyzePair:"Analyze the pair →", backPair:"← New pair", pairChatPlaceholder:"Ask about the pair's dynamic...", importPair:"📄 Drag the 2 Gallup reports here, or click", importPairDrop:"Drop the 2 PDFs here…", importPairOk:"Pair imported ✓", importPairErr:"Two readable Gallup reports are required.", statsShared:"Shared strengths", statsComplement:"Both profiles compared", statsFriction:"Potential friction points", pairNoShared:"No shared strength in the tops — two very different profiles.", pairNoFriction:"No classic tension pair detected.", errPairMin:"Enter at least 3 strengths for each of the two people.", personA:"Person A", personB:"Person B" },
 };
 
 // Sécurité : renvoie TOUJOURS un objet de libellés valide.
@@ -522,7 +522,6 @@ A precise numeric report is given in context (weighted ranking, domain distribut
 REFERENCE FRAMEWORKS you must use (Philippe's methodology — use the exact vocabulary):
 - Jean-Christian FAUVET (sociodynamique): « synergie et antagonisme ne s'opposent pas, ils se composent pour créer la dynamique organisationnelle ». SYNERGY = team EGO = internal cohesion, belonging, shared culture (risk: insularity / "tyrannie de la gentillesse" / faux consensus). ANTAGONISM = team ECO = openness, external responsiveness, individual autonomy, challenge (NOT conflict — it is the differentiation energy). Fauvet's OPTIMAL "zone évolutive" = HIGH synergy AND HIGH antagonism together = productive tension ("triangles d'or": engaged actors who challenge without breaking the bond). Actor positions on the grid: allié, opposant, hésitant, triangle d'or/déchiré, passif. Positions are NOT fixed — they move with recognition, involvement, and whether concerns are heard.
 - Peter HAWKINS: high-performing teams master FIVE disciplines — Commissioning (mandat/raison d'être reçue des parties prenantes), Clarifying (vision, valeurs, rôles, objectifs partagés en interne), Co-creating (travailler et innover ensemble au quotidien), Connecting (engager et créer de la valeur pour les parties prenantes externes), Core Learning (réfléchir, apprendre, se renouveler).
-- Patrick LENCIONI: pyramide de la performance — Confiance → Conflit constructif → Engagement/décision → Responsabilité mutuelle → Résultats. Chaque étage repose sur celui d'en dessous ; « la confiance est l'ascenseur du leadership ».
 
 OUTPUT FORMAT — follow this EXACTLY. Light Markdown: "## " before each section heading, "**bold**" for strength names and key phrases. No tables. Roughly 2.5–3 A4 pages.
 
@@ -551,13 +550,16 @@ The exact rates are in context (FAUVET SOCIODYNAMICS). NEVER recompute them — 
 Insert ONE call-out starting exactly "**Le mouvement sociodynamique à provoquer** —" naming the single most useful shift for this team (e.g. converting false consensus into productive antagonism, or turning scattered autonomy into shared cohesion) with one bolded key phrase.
 
 "## 5. Les 5 disciplines de Hawkins passées au crible"
-Screen the team's collective profile through Peter Hawkins' FIVE disciplines of high-performing teams. For EACH discipline, ONE to TWO sentences: what this team's profile naturally serves, and what is missing or at risk — grounded in the domain distribution, the sociodynamics and the absent/rare strengths. Keep Hawkins' names, in this order:
-1. **Commissioning (Mandat)** — clarity on the team's raison d'être and the mandate received from stakeholders;
-2. **Clarifying (Clarifier)** — shared vision, values, roles and objectives internally;
-3. **Co-creating (Co-créer)** — how the team works and innovates together day to day;
-4. **Connecting (Connecter)** — how the team engages and creates value for its external stakeholders;
-5. **Core Learning (Apprentissage)** — the team's capacity to reflect, learn and renew itself.
-End with ONE sentence linking the team's WEAKEST Hawkins discipline to Lencioni's pyramid (Confiance → Conflit constructif → Engagement → Responsabilité → Résultats): name where Lencioni's chain is most likely to break FIRST for this team, and why.
+Screen the team's collective profile through Peter Hawkins' FIVE disciplines of high-performing teams. This is the RICHEST section of the debrief — develop it fully. For EACH of the five disciplines, produce a "### " sub-heading with the discipline name, then THREE labelled elements (each on its own line):
+- "**Lecture :**" — 1 to 2 sentences: what the team's real profile (domain distribution, sociodynamics, present strengths) naturally serves here, and what is missing or at risk;
+- "**Profils qui peuvent porter cette discipline :**" — name the specific CliftonStrengths / profiles that structurally strengthen THIS discipline; state clearly which the team ALREADY has (name the members carrying them where useful) and which are ABSENT and should be recruited, borrowed from outside, or consciously developed. Ground this strictly in the present / rare / absent strengths given in context;
+- "**Question puissante :**" — EXACTLY ONE open, non-yes/no coaching question in italics that opens this discipline for the team.
+The five disciplines, in this order (keep Hawkins' names; the strengths in brackets are anchoring suggestions — adapt to the team's real profile, translate names to ${langName}):
+1. **Commissioning (Mandat)** — clarté sur la raison d'être et le mandat reçu des parties prenantes [Stratégique, Futuriste, Croyance, Signifiance, Commandement, Focalisation];
+2. **Clarifying (Clarifier)** — vision, valeurs, rôles et objectifs partagés en interne [Arrangeur, Responsabilité, Équitable, Discipline, Analytique, Communication];
+3. **Co-creating (Co-créer)** — travailler et innover ensemble au quotidien [Idéation, Activateur, Arrangeur, Adaptabilité, Positivité, Charisme, Harmonie];
+4. **Connecting (Connecter)** — engager et créer de la valeur pour les parties prenantes externes [Charisme, Communication, Relationnel, Individualisation, Empathie, Signifiance];
+5. **Core Learning (Apprentissage)** — réfléchir, apprendre et se renouveler [Studieux, Input, Intellection, Analytique, Contexte, Prudent].
 
 "## 6. Comment cette équipe est perçue de l'extérieur"
 Describe, grounded strictly in the real profile, how the team is likely seen by clients/partners/board AT FIRST (the flattering impression its dominant strengths create) and OVER TIME or under scrutiny (the misreadings and risks the same strengths produce). End with ONE italic call-out: the "silent question" outsiders or the wider organization might be asking about this team — "*La question silencieuse de l'organisation pourrait être : « ... »*".
@@ -618,44 +620,6 @@ Introduce Communication NonViolente in one line (Observation, Sentiment, Besoin,
 Tone: warm, truthful, concrete. Coach posture: every friction is the flip side of a complementarity; the aim is conscious cooperation, not fixing anyone. Do NOT write any closing salutation or signature — the document adds it automatically.
 
 Context: ${context}`;
-}
-
-// Prompt système de l'OUTIL CNV autonome : transforme une situation de conflit
-// en message structuré Observation · Sentiment · Besoin · Demande (Marshall Rosenberg).
-function buildCnvSystem(lang, context) {
-  const langName = lang === "fr" ? "French" : lang === "de" ? "German" : "English";
-  return `You are an expert Nonviolent Communication (NVC / CNV, Marshall Rosenberg) coach writing in Philippe's voice. You help the user transform a tense or conflictual situation into a clear, respectful message using the FOUR steps of NVC: Observation, Sentiment, Besoin, Demande (OSBD).
-
-LANGUAGE: Write the ENTIRE output in ${langName}, every heading and sentence, regardless of the language of these instructions.
-
-STRICT DEFINITIONS — respect them exactly:
-- OBSERVATION: a specific, factual description of what happened, WITHOUT judgment, interpretation or generalization (ban "toujours", "jamais", "tu es…"). Only what a camera could capture.
-- SENTIMENT: the real emotion felt — NOT a thought disguised as a feeling. "Je me sens ignoré / trahi / manipulé" are interpretations, not feelings; prefer real emotions (seul, frustré, inquiet, triste, en colère, déçu).
-- BESOIN: the universal human need underneath the feeling (reconnaissance, respect, clarté, sécurité, coopération, autonomie, considération…), never a strategy or a person.
-- DEMANDE: a concrete, positive, actionable and NEGOTIABLE request (not a demand or ultimatum), in the present, doable now. A request the other can say no to.
-
-OUTPUT FORMAT — follow EXACTLY. Light Markdown: "## " before each heading, "**bold**" for the four labels and key phrases. No tables.
-Start with a 2-line foreword: CNV is a posture (connection), not a technique to win; the goal is to be heard AND to hear.
-
-Then FOUR sections, each opened by "## " numbered 1 to 4 (translate to ${langName}; French shown):
-
-"## 1. Votre message en CNV"
-The ready-to-use message, tailored to THIS situation, written in the first person and ready to say aloud, as EXACTLY four labelled lines:
-"**Observation :** …", "**Sentiment :** …", "**Besoin :** …", "**Demande :** …".
-
-"## 2. Une variante (plus douce ou plus affirmée)"
-A second phrasing of the same four steps — softer OR more assertive depending on what the situation seems to need — kept short, same four labels.
-
-"## 3. Les pièges à éviter ici"
-2 to 4 bullets starting with "— ", specific to THIS situation: the judgments/interpretations to turn back into observations (quote the risky phrasing and reformulate it), the false feelings to replace, any non-negotiable demand to soften into a real request.
-
-"## 4. Votre canevas vierge"
-The four labels, each followed by a short guiding question in italics, so the user can prepare their own message next time:
-"**Observation :** *Quel fait précis, sans interprétation ni jugement ?*" — and the same for Sentiment (*Quelle émotion réelle, pas une pensée ?*), Besoin (*Quel besoin universel derrière l'émotion ?*), Demande (*Quelle demande concrète, positive et négociable ?*).
-
-Tone: warm, human, concrete. Do NOT write any closing salutation or signature — the document adds it automatically.
-
-Situation: ${context}`;
 }
 
 // Porte d'entrée : demande le mot de passe (maître ou code d'accès) avant l'app.
@@ -842,18 +806,6 @@ export default function Home() {
   const [pairImportStatus, setPairImportStatus] = useState("");
   const [pairDragOver, setPairDragOver] = useState(false);
 
-  // CNV (résolution de conflit) state
-  const [cnvSituation, setCnvSituation] = useState("");
-  const [cnvWith, setCnvWith] = useState("");
-  const [cnvGoal, setCnvGoal] = useState("");
-  const [cnvLoading, setCnvLoading] = useState(false);
-  const [cnvReport, setCnvReport] = useState(null);
-  const [cnvChatMsgs, setCnvChatMsgs] = useState([]);
-  const [cnvHistory, setCnvHistory] = useState([]);
-  const [cnvContext, setCnvContext] = useState("");
-  const [cnvChatInput, setCnvChatInput] = useState("");
-  const [cnvChatLoading, setCnvChatLoading] = useState(false);
-  const cnvChatRef = useRef(null);
 
   const L = getLabels(lang);
 
@@ -987,7 +939,7 @@ export default function Home() {
       setIndReport({ text: report, strengths });
       setIndHistory([{ role:"user", content: promptText }, { role:"assistant", content: report }]);
       setIndChatMsgs([{ role:"ag", text: lg==="fr" ? "Debrief généré. Posez vos questions pour approfondir." : lg==="de" ? "Debrief erstellt. Stellen Sie Ihre Fragen." : "Debrief complete. Ask your questions." }]);
-    } catch(e) { alert(Lg.errApi); }
+    } catch(e) { alert(Lg.errApi + (e && e.message ? "\n\n" + e.message : "")); }
     setIndLoading(false);
   }
 
@@ -1068,7 +1020,7 @@ export default function Home() {
       setTeamReport({ text: report, strengths: allStrengths, stats, members: validMembers });
       setTeamHistory([{ role:"user", content: promptText }, { role:"assistant", content: report }]);
       setTeamChatMsgs([{ role:"ag", text: lg==="fr" ? "Analyse générée. Posez vos questions sur l'équipe." : lg==="de" ? "Analyse erstellt." : "Analysis complete. Ask your questions." }]);
-    } catch(e) { alert(Lg.errApi); }
+    } catch(e) { alert(Lg.errApi + (e && e.message ? "\n\n" + e.message : "")); }
     setTeamLoading(false);
   }
 
@@ -1163,7 +1115,7 @@ export default function Home() {
       setPairReport({ text: report, stats, a: { ...pairA, name: nameA }, b: { ...pairB, name: nameB }, strengths: [...aS, ...bS] });
       setPairHistory([{ role:"user", content: promptText }, { role:"assistant", content: report }]);
       setPairChatMsgs([{ role:"ag", text: lg==="fr" ? "Débrief du binôme généré. Posez vos questions pour approfondir." : lg==="de" ? "Duo-Debrief erstellt. Stellen Sie Ihre Fragen." : "Pair debrief complete. Ask your questions." }]);
-    } catch(e) { alert(Lg.errApi); }
+    } catch(e) { alert(Lg.errApi + (e && e.message ? "\n\n" + e.message : "")); }
     setPairLoading(false);
   }
 
@@ -1184,51 +1136,6 @@ export default function Home() {
     } catch(e) { setPairChatMsgs([...newMsgs, { role:"ag", text:L.errRetry }]); }
     setPairChatLoading(false);
     scrollChat(pairChatRef);
-  }
-
-  // CNV (résolution de conflit) analysis
-  async function analyzeCnv(langOverride) {
-    const lg = (typeof langOverride === "string" && LABELS[langOverride]) ? langOverride : lang;
-    const Lg = getLabels(lg);
-    if (!cnvSituation.trim()) { alert(Lg.errCnvMin); return; }
-    setCnvLoading(true);
-    const ctxLines = [`Situation described by the user: ${cnvSituation.trim()}`];
-    if (cnvWith.trim()) ctxLines.push(`The message is addressed to: ${cnvWith.trim()}`);
-    if (cnvGoal.trim()) ctxLines.push(`What the user would like to obtain: ${cnvGoal.trim()}`);
-    const ctx = ctxLines.join("\n");
-    setCnvContext(ctx);
-    const promptText = lg === "fr"
-      ? `Transforme cette situation en message de Communication NonViolente en suivant EXACTEMENT la structure de tes consignes (message O·S·B·D prêt à dire, une variante, les pièges à éviter, puis le canevas vierge).\n\n${ctx}`
-      : lg === "de"
-      ? `Verwandle diese Situation GENAU gemäß der Struktur deiner Anweisungen in eine Botschaft der Gewaltfreien Kommunikation (fertige B·G·B·B-Botschaft, eine Variante, die Fallstricke, dann die leere Vorlage).\n\n${ctx}`
-      : `Transform this situation into a Nonviolent Communication message following EXACTLY the structure in your instructions (ready-to-say O·F·N·R message, one variant, the pitfalls, then the blank canvas).\n\n${ctx}`;
-    try {
-      const msgs = [{ role:"user", content: promptText }];
-      const report = await callAPI(buildCnvSystem(lg, ctx), msgs);
-      setCnvReport({ text: report });
-      setCnvHistory([{ role:"user", content: promptText }, { role:"assistant", content: report }]);
-      setCnvChatMsgs([{ role:"ag", text: lg==="fr" ? "Message CNV généré. Affinez-le ou testez une reformulation." : lg==="de" ? "GFK-Botschaft erstellt. Verfeinern Sie sie." : "NVC message ready. Refine it or try a rephrasing." }]);
-    } catch(e) { alert(Lg.errApi); }
-    setCnvLoading(false);
-  }
-
-  async function sendCnvChat() {
-    if (cnvChatLoading || !cnvChatInput.trim()) return;
-    const text = cnvChatInput.trim();
-    setCnvChatInput("");
-    const newMsgs = [...cnvChatMsgs, { role:"us", text }];
-    setCnvChatMsgs(newMsgs);
-    const newHistory = [...cnvHistory, { role:"user", content: text }];
-    setCnvHistory(newHistory);
-    setCnvChatLoading(true);
-    scrollChat(cnvChatRef);
-    try {
-      const reply = await callAPI(buildCnvSystem(lang, cnvContext), newHistory);
-      setCnvChatMsgs([...newMsgs, { role:"ag", text: reply }]);
-      setCnvHistory([...newHistory, { role:"assistant", content: reply }]);
-    } catch(e) { setCnvChatMsgs([...newMsgs, { role:"ag", text:L.errRetry }]); }
-    setCnvChatLoading(false);
-    scrollChat(cnvChatRef);
   }
 
   // Charge jsPDF depuis un CDN (une seule fois), avec un CDN de secours.
@@ -1510,7 +1417,7 @@ export default function Home() {
 
   // Génère un .docx à la charte Optimup (Arial, orange #E8590C, encadrés à filet gauche).
   // recipientName : prénom ; reportText : markdown léger du débrief ; subtitle : rôle/poste ou nom d'équipe.
-  async function downloadWord(recipientName, reportText, subtitle, headStrengths) {
+  async function downloadWord(recipientName, reportText, subtitle, headStrengths, stats) {
     try {
       const D = await loadDocx();
       const {
@@ -1585,6 +1492,44 @@ export default function Home() {
           rows:[ new TableRow({ children:[ mkCol(col1,0), mkCol(col2,5) ] }) ] });
       }
 
+      // Classement pondéré des forces + forces absentes (équipe uniquement).
+      function statsBlocks(stats) {
+        const domName = { Executing:L.executing, Influencing:L.influencing, Relationship:L.relationship, Thinking:L.thinking };
+        const cell = (t, w, opts = {}) => new TableCell({
+          width:{ size:w, type:WidthType.DXA }, borders:noB,
+          ...(opts.fill ? { shading:{ fill:opts.fill, type:ShadingType.CLEAR } } : {}),
+          margins:{ top:50, bottom:50, left:120, right:120 },
+          children:[ new Paragraph({ alignment: opts.align || AlignmentType.LEFT, children:[
+            new TextRun({ text:String(t), font:FONT, size: opts.size || 18, bold: !!opts.bold, color: opts.color || DARK }) ] }) ],
+        });
+        const W = [700, 3800, 2400, 1000, 1126];
+        const head = new TableRow({ tableHeader:true, children:[
+          cell("#", W[0], { fill:ACCENT, color:"FFFFFF", bold:true, size:16, align:AlignmentType.RIGHT }),
+          cell(L.strength, W[1], { fill:ACCENT, color:"FFFFFF", bold:true, size:16 }),
+          cell(L.statsDomainCol, W[2], { fill:ACCENT, color:"FFFFFF", bold:true, size:16 }),
+          cell("Pts", W[3], { fill:ACCENT, color:"FFFFFF", bold:true, size:16, align:AlignmentType.RIGHT }),
+          cell("%", W[4], { fill:ACCENT, color:"FFFFFF", bold:true, size:16, align:AlignmentType.RIGHT }),
+        ] });
+        const rows = [head, ...stats.ranking.map((r, i) => {
+          const f = i % 2 ? "FAF9F7" : null;
+          return new TableRow({ children:[
+            cell(i+1, W[0], { align:AlignmentType.RIGHT, color:GREY, fill:f }),
+            cell(r.name, W[1], { bold:true, fill:f }),
+            cell(domName[r.domain] || r.domain, W[2], { fill:f }),
+            cell(r.pts, W[3], { align:AlignmentType.RIGHT, bold:true, color:ACCENT, fill:f }),
+            cell(r.pct + "%", W[4], { align:AlignmentType.RIGHT, color:GREY, fill:f }),
+          ] });
+        })];
+        const absentTxt = (stats.absent || []).map(a => a.name).join(", ") || "—";
+        return [
+          sectionTitle("## " + L.statsRanking),
+          new Table({ width:{ size:9026, type:WidthType.DXA }, columnWidths:W, borders:noB, rows }),
+          new Paragraph({ spacing:{ before:280, after:80 }, children:[ new TextRun({ text:L.statsAbsent.toUpperCase(), font:FONT, size:20, bold:true, color:DARK, characterSpacing:30 }) ] }),
+          new Paragraph({ spacing:{ after:160, line:300 }, children:[ new TextRun({ text:absentTxt, font:FONT, size:20, color:GREY }) ] }),
+          new Paragraph({ spacing:{ after:120 }, children:[] }),
+        ];
+      }
+
       // ---- Construit le corps à partir du markdown léger du rapport ----
       const children = [
         new Paragraph({ spacing:{ after:60 }, children:[ new TextRun({ text:"Portrait de talents", font:FONT, size:52, bold:true, color:DARK }) ] }),
@@ -1596,6 +1541,11 @@ export default function Home() {
         children.push(new Paragraph({ spacing:{ after:120 }, children:[ new TextRun({ text:"VOS 10 FORCES DOMINANTES", font:FONT, size:20, bold:true, color:DARK, characterSpacing:30 }) ] }));
         children.push(strengthsTable(headStrengths));
         children.push(new Paragraph({ spacing:{ after:120 }, children:[] }));
+      }
+
+      // Équipe : insère le classement pondéré et les forces absentes avant le débrief.
+      if (stats && stats.ranking && stats.ranking.length) {
+        statsBlocks(stats).forEach((b) => children.push(b));
       }
 
       const lines = String(reportText || "").split("\n");
@@ -1672,8 +1622,6 @@ export default function Home() {
       analyzeTeam(newLang);
     } else if (mode === "pair" && pairReport) {
       analyzePair(newLang);
-    } else if (mode === "cnv" && cnvReport) {
-      analyzeCnv(newLang);
     }
   }
 
@@ -1703,7 +1651,6 @@ export default function Home() {
           <button className={`mode-pill ${mode==="individual"?"active":""}`} onClick={() => setMode("individual")}>{L.individual}</button>
           <button className={`mode-pill ${mode==="team"?"active":""}`} onClick={() => setMode("team")}>{L.team}</button>
           <button className={`mode-pill ${mode==="pair"?"active":""}`} onClick={() => setMode("pair")}>{L.pair}</button>
-          <button className={`mode-pill ${mode==="cnv"?"active":""}`} onClick={() => setMode("cnv")}>{L.cnv}</button>
         </div>
         <div className="pill-group" style={{ marginLeft: "auto" }}>
           {authState.role === "admin" && (
@@ -1720,7 +1667,7 @@ export default function Home() {
       {/* Header */}
       <div className="agent-header">
         <h1>Leadership Agent — StrengthsFinder</h1>
-        <p>{mode==="individual" ? L.headerSub : mode==="team" ? L.headerSubTeam : mode==="pair" ? L.headerSubPair : L.headerSubCnv}</p>
+        <p>{mode==="individual" ? L.headerSub : mode==="team" ? L.headerSubTeam : L.headerSubPair}</p>
       </div>
 
       {/* INDIVIDUAL MODE */}
@@ -1914,7 +1861,7 @@ export default function Home() {
             <div className="report-content"><RichText text={teamReport.text} /></div>
           </div>
           <button className="pdf-btn" onClick={() => downloadPdf(teamName, teamReport.text, teamReport.stats, teamReport.members)}>{L.downloadPdf}</button>
-          <button className="pdf-btn" onClick={() => downloadWord(teamName, teamReport.text, teamName)}>{L.downloadWord}</button>
+          <button className="pdf-btn" onClick={() => downloadWord(teamName, teamReport.text, teamName, null, teamReport.stats)}>{L.downloadWord}</button>
           <ChatArea messages={teamChatMsgs} chatAreaRef={teamChatRef} />
           <div className="chat-input-row">
             <textarea rows={2} value={teamChatInput} onChange={e => setTeamChatInput(e.target.value)}
@@ -2000,47 +1947,6 @@ export default function Home() {
               placeholder={L.pairChatPlaceholder}
               onKeyDown={e => { if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendPairChat();} }} />
             <button className="send-btn" onClick={sendPairChat} disabled={pairChatLoading}>↑</button>
-          </div>
-        </div>
-      )}
-
-      {/* CNV MODE */}
-      {mode === "cnv" && !cnvReport && (
-        <div>
-          <div className="form-section">
-            <h2>{L.cnv}</h2>
-            <label style={{ display:"block", fontSize:"13px", fontWeight:600, marginBottom:"6px" }}>{L.cnvSituationLabel}</label>
-            <textarea rows={5} value={cnvSituation} onChange={e => setCnvSituation(e.target.value)} placeholder={L.cnvSituationPh}
-              style={{ width:"100%", boxSizing:"border-box", fontFamily:"inherit", fontSize:"14px", padding:"10px 12px", borderRadius:"10px", border:"1px solid #ddd", resize:"vertical" }} />
-            <div className="field-row" style={{ marginTop:"12px" }}>
-              <label>{L.cnvWithLabel}</label>
-              <input type="text" value={cnvWith} onChange={e => setCnvWith(e.target.value)} placeholder={L.cnvWithPh} />
-            </div>
-            <div className="field-row" style={{ marginTop:"8px" }}>
-              <label>{L.cnvGoalLabel}</label>
-              <input type="text" value={cnvGoal} onChange={e => setCnvGoal(e.target.value)} placeholder={L.cnvGoalPh} />
-            </div>
-          </div>
-          <button className="analyze-btn" onClick={analyzeCnv} disabled={cnvLoading}>
-            {cnvLoading ? L.analyzing : L.analyzeCnv}
-          </button>
-        </div>
-      )}
-
-      {mode === "cnv" && cnvReport && (
-        <div>
-          <button className="back-btn" onClick={() => { setCnvReport(null); setCnvChatMsgs([]); setCnvHistory([]); }}>{L.backCnv}</button>
-          <div className="report-area">
-            <div className="report-content"><RichText text={cnvReport.text} /></div>
-          </div>
-          <button className="pdf-btn" onClick={() => downloadPdf(cnvWith || L.cnv, cnvReport.text)}>{L.downloadPdf}</button>
-          <button className="pdf-btn" onClick={() => downloadWord(cnvWith || L.cnv, cnvReport.text, L.cnv)}>{L.downloadWord}</button>
-          <ChatArea messages={cnvChatMsgs} chatAreaRef={cnvChatRef} />
-          <div className="chat-input-row">
-            <textarea rows={2} value={cnvChatInput} onChange={e => setCnvChatInput(e.target.value)}
-              placeholder={L.cnvChatPlaceholder}
-              onKeyDown={e => { if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendCnvChat();} }} />
-            <button className="send-btn" onClick={sendCnvChat} disabled={cnvChatLoading}>↑</button>
           </div>
         </div>
       )}
