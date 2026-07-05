@@ -987,7 +987,7 @@ export default function Home() {
       setIndReport({ text: report, strengths });
       setIndHistory([{ role:"user", content: promptText }, { role:"assistant", content: report }]);
       setIndChatMsgs([{ role:"ag", text: lg==="fr" ? "Debrief généré. Posez vos questions pour approfondir." : lg==="de" ? "Debrief erstellt. Stellen Sie Ihre Fragen." : "Debrief complete. Ask your questions." }]);
-    } catch(e) { alert(Lg.errApi); }
+    } catch(e) { alert(Lg.errApi + (e && e.message ? "\n\n" + e.message : "")); }
     setIndLoading(false);
   }
 
@@ -1068,7 +1068,7 @@ export default function Home() {
       setTeamReport({ text: report, strengths: allStrengths, stats, members: validMembers });
       setTeamHistory([{ role:"user", content: promptText }, { role:"assistant", content: report }]);
       setTeamChatMsgs([{ role:"ag", text: lg==="fr" ? "Analyse générée. Posez vos questions sur l'équipe." : lg==="de" ? "Analyse erstellt." : "Analysis complete. Ask your questions." }]);
-    } catch(e) { alert(Lg.errApi); }
+    } catch(e) { alert(Lg.errApi + (e && e.message ? "\n\n" + e.message : "")); }
     setTeamLoading(false);
   }
 
@@ -1163,7 +1163,7 @@ export default function Home() {
       setPairReport({ text: report, stats, a: { ...pairA, name: nameA }, b: { ...pairB, name: nameB }, strengths: [...aS, ...bS] });
       setPairHistory([{ role:"user", content: promptText }, { role:"assistant", content: report }]);
       setPairChatMsgs([{ role:"ag", text: lg==="fr" ? "Débrief du binôme généré. Posez vos questions pour approfondir." : lg==="de" ? "Duo-Debrief erstellt. Stellen Sie Ihre Fragen." : "Pair debrief complete. Ask your questions." }]);
-    } catch(e) { alert(Lg.errApi); }
+    } catch(e) { alert(Lg.errApi + (e && e.message ? "\n\n" + e.message : "")); }
     setPairLoading(false);
   }
 
@@ -1208,7 +1208,7 @@ export default function Home() {
       setCnvReport({ text: report });
       setCnvHistory([{ role:"user", content: promptText }, { role:"assistant", content: report }]);
       setCnvChatMsgs([{ role:"ag", text: lg==="fr" ? "Message CNV généré. Affinez-le ou testez une reformulation." : lg==="de" ? "GFK-Botschaft erstellt. Verfeinern Sie sie." : "NVC message ready. Refine it or try a rephrasing." }]);
-    } catch(e) { alert(Lg.errApi); }
+    } catch(e) { alert(Lg.errApi + (e && e.message ? "\n\n" + e.message : "")); }
     setCnvLoading(false);
   }
 
