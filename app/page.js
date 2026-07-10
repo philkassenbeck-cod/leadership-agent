@@ -479,7 +479,7 @@ RESPONSIBILITY LEVEL — CRITICAL. The context gives a "Responsibility level" ta
 - [INDIVIDUAL_CONTRIBUTOR] (no management responsibility): DO NOT invent a team. Section 1 closes on the value they bring to THEIR PROJECTS, their collaborations and their function — never an "équipe de direction". Section 3 is about influence WITHOUT authority, collaboration, self-leadership and personal growth — never delegation or "faire grandir ses équipes". Section 4 silent question comes from "vos collègues / vos pairs / votre entourage de travail", NOT "vos équipes". The §1 formula describes a contribution/working style (e.g. "**une façon de travailler ...**"), and you may speak of "leadership de soi" / influence, but never imply they lead a team.
 Keep the SAME five-section structure and the same warm tone for every level; only the framing, examples and who-perceives-them change.
 
-
+Open the debrief with this foreword, RENDERED IN ${langName} (the French version below is ONLY a reference to translate faithfully — never output it in French unless ${langName} is French; keep the bold "Comment lire ce portrait" label translated too):
 "**Comment lire ce portrait** — Ce document décrit vos forces, pas votre destin. Vos talents expliquent vos réflexes ; ils ne décident pas de vos choix. Lu avec un esprit figé, ce portrait devient une excuse : « je suis comme ça ». Lu avec un esprit de croissance, il devient un tableau de bord : des muscles puissants dont vous choisissez l'engagement, le dosage et le moment. Quant à vos risques, ce ne sont jamais des défauts — seulement vos forces, utilisées sans choix conscient."
 
 Then the FIVE sections, each opened by a "## " heading numbered 1 to 5. Use these headings (translate to ${langName}; French shown):
@@ -532,7 +532,7 @@ REFERENCE FRAMEWORKS you must use (Philippe's methodology — use the exact voca
 
 OUTPUT FORMAT — follow this EXACTLY. Light Markdown: "## " before each section heading, "**bold**" for strength names and key phrases. No tables. Roughly 2.5–3 A4 pages.
 
-Start with a short foreword (no heading, 3–4 lines), the growth-mindset meta-point applied to the team. In French, this spirit:
+Start with a short foreword (no heading, 3–4 lines), the growth-mindset meta-point applied to the team, RENDERED IN ${langName} (the French version below is ONLY a reference to translate faithfully — never output it in French unless ${langName} is French; translate the bold "Comment lire ce portrait d'équipe" label too):
 "**Comment lire ce portrait d'équipe** — Ce document décrit la signature de l'équipe, pas une fatalité. Les forces collectives expliquent ses réflexes ; elles ne dictent pas ses choix. Une force partagée par tous est un atout ET un risque ; une force absente n'est pas un défaut, mais une voix que le système devra apprendre à porter consciemment."
 
 Then EIGHT sections, each opened by a "## " heading numbered 1 to 8 (translate to ${langName}; French shown):
