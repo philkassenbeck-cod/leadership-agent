@@ -415,6 +415,18 @@ function renderInline(text) {
   );
 }
 
+// Nettoie une ligne pour les exports PDF/Word : enlève le gras (**...**), les puces/
+// tirets en début de ligne, et remplace les tirets cadratins « — » (deux-points quand
+// ils séparent une étiquette, espace sinon). N'affecte PAS le rendu à l'écran.
+function cleanReportLine(line) {
+  let s = String(line);
+  s = s.replace(/\*\*(.+?)\*\*/g, "$1");     // enlève le gras inline
+  s = s.replace(/^\s*[—–-]\s+/, "");          // enlève la puce / le tiret en début de ligne
+  s = s.replace(/\s+—\s+/g, " : ");           // tiret cadratin de séparation → deux-points
+  s = s.replace(/\s*—\s*/g, " ");             // tout tiret cadratin restant → espace
+  return s.replace(/\s{2,}/g, " ").trim();
+}
+
 function RichText({ text }) {
   const lines = (text || "").split("\n");
   return (
@@ -1354,17 +1366,16 @@ export default function Home() {
         y = marginTop;
       }
 
-      // Écrit le débrief en interprétant le Markdown léger : "## Titre" -> titre gras.
+      // Écrit le débrief : "## Titre" -> titre ; le reste nettoyé (sans gras ni tiret cadratin).
       (reportText || "").split("\n").forEach((raw) => {
         const t = raw.trim();
         if (t === "") { y += 2; return; }
-        const clean = t.replace(/\*\*(.+?)\*\*/g, "$1"); // retire le gras inline
         if (/^#{1,6}\s+/.test(t)) {
-          const title = clean.replace(/^#{1,6}\s+/, "");
+          const title = cleanReportLine(t.replace(/^#{1,6}\s+/, ""));
           y += 3;
           writeBlock(title, { size: 11, style: "normal", gap: 3 });
         } else {
-          writeBlock(clean, { size: 11, style: "normal", gap: 4 });
+          writeBlock(cleanReportLine(t), { size: 11, style: "normal", gap: 4 });
         }
       });
       y += 4;
@@ -1558,19 +1569,15 @@ export default function Home() {
 
       const lines = String(reportText || "").split("\n");
       for (let raw of lines) {
-        const t = raw.trim();
+        const t0 = raw.trim();
+        if (t0 === "") continue;
+        if (/^#{1,6}\s+/.test(t0)) { children.push(sectionTitle(t0)); continue; }
+        const t = cleanReportLine(t0);              // enlève gras + tirets cadratins
         if (t === "") continue;
-        if (/^#{1,6}\s+/.test(t)) { children.push(sectionTitle(t)); continue; }
         const low = t.toLowerCase();
-        // Encadrés : risque majeur / risque systémique / question silencieuse
-        if (/^\*?\*?(votre risque majeur|le risque systémique)/i.test(t) || low.includes("question silencieuse")) {
+        // Encadrés (détectés sur le texte nettoyé, sans gras ni tiret).
+        if (/^(votre risque majeur|le risque systémique|la tension la plus structurante|le mouvement sociodynamique)/i.test(t) || low.includes("question silencieuse")) {
           children.push(calloutBox(t, low.includes("question silencieuse")));
-          continue;
-        }
-        // Puces "— " ou "- "
-        if (/^[—-]\s+/.test(t)) {
-          children.push(new Paragraph({ numbering:{ reference:"bullets", level:0 }, spacing:{ after:80, line:300 },
-            children: inlineRuns(t.replace(/^[—-]\s+/, "")) }));
           continue;
         }
         children.push(bodyPara(t));
