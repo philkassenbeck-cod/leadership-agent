@@ -453,6 +453,11 @@ async function callAPI(systemPrompt, messages) {
   });
   const data = await res.json();
   if (data.error) throw new Error(data.error);
+  // Réponse vide = génération coupée (souvent le délai serveur sur les longs débriefs).
+  // On lève une vraie erreur plutôt que de laisser un débrief blanc trompeur.
+  if (!data.content || !data.content.trim()) {
+    throw new Error("Réponse vide du modèle — la génération a probablement été coupée par le délai serveur. Réessayez ; si le débrief d'équipe échoue à répétition, il est trop long pour la limite de temps du plan Vercel.");
+  }
   return data.content;
 }
 
