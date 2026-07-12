@@ -458,15 +458,31 @@ function ChatArea({ messages, chatAreaRef }) {
 }
 
 async function callAPI(systemPrompt, messages) {
-  const res = await fetch("/api/analyze", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ systemPrompt, messages }),
-  });
-  const data = await res.json();
+  let res;
+  try {
+    res = await fetch("/api/analyze", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ systemPrompt, messages }),
+    });
+  } catch (_) {
+    throw new Error("Connexion au serveur impossible. Vérifiez votre réseau et réessayez.");
+  }
+  // Lit d'abord en texte : si Vercel renvoie une erreur plateforme (timeout, plantage),
+  // le corps n'est PAS du JSON — on donne alors un message clair au lieu d'un « Unexpected token ».
+  const raw = await res.text();
+  let data;
+  try {
+    data = JSON.parse(raw);
+  } catch (_) {
+    if (res.status === 504 || /timed out|timeout|FUNCTION_INVOCATION_TIMEOUT|An error occurred/i.test(raw)) {
+      throw new Error("Le serveur a mis trop de temps à répondre (timeout). Réessayez ; si un débrief d'équipe échoue à répétition, il dépasse la limite de temps du plan Vercel (60 s en Hobby) — il faut passer en plan Pro.");
+    }
+    throw new Error(`Réponse inattendue du serveur (code ${res.status}). ${raw.slice(0, 140)}`);
+  }
   if (data.error) throw new Error(data.error);
+  if (!res.ok) throw new Error("Erreur serveur (code " + res.status + ").");
   // Réponse vide = génération coupée (souvent le délai serveur sur les longs débriefs).
-  // On lève une vraie erreur plutôt que de laisser un débrief blanc trompeur.
   if (!data.content || !data.content.trim()) {
     throw new Error("Réponse vide du modèle — la génération a probablement été coupée par le délai serveur. Réessayez ; si le débrief d'équipe échoue à répétition, il est trop long pour la limite de temps du plan Vercel.");
   }
