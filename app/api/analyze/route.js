@@ -1,8 +1,9 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-// Laisse à Vercel jusqu'à 60 s pour générer (les débriefs d'équipe sont longs).
-// 60 s est le maximum du plan Hobby ; sur un plan Pro on peut monter à 300.
-export const maxDuration = 60;
+// Laisse à Vercel jusqu'à 300 s pour générer (Opus est plus lent, les débriefs
+// d'équipe sont longs). 300 s nécessite le plan Vercel Pro ; sur Hobby, Vercel
+// ramène automatiquement à 60 s (donc sans Pro, les longs débriefs peuvent couper).
+export const maxDuration = 300;
 
 // .trim() protège contre un espace ou un retour à la ligne collé par erreur
 // dans la variable ANTHROPIC_API_KEY (cause classique de "invalid x-api-key").
@@ -22,7 +23,7 @@ export async function POST(req) {
       return Response.json({ error: "No messages provided." }, { status: 400 });
     }
     const response = await client.messages.create({
-      model: "claude-sonnet-5",
+      model: "claude-opus-4-8",
       max_tokens: 8000,
       system: systemPrompt,
       messages,
