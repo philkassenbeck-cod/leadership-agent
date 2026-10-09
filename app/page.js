@@ -457,13 +457,13 @@ function ChatArea({ messages, chatAreaRef }) {
   );
 }
 
-async function callAPI(systemPrompt, messages) {
+async function callAPI(systemPrompt, messages, model) {
   let res;
   try {
     res = await fetch("/api/analyze", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ systemPrompt, messages }),
+      body: JSON.stringify({ systemPrompt, messages, model }),
     });
   } catch (_) {
     throw new Error("Connexion au serveur impossible. Vérifiez votre réseau et réessayez.");
@@ -1027,7 +1027,7 @@ export default function Home() {
       // 2e passage : un relecteur polit la langue sans toucher au fond ni à la structure.
       // Si ce passage échoue (délai, erreur), on garde la 1re version plutôt que de planter.
       try {
-        const polished = await callAPI(buildReviewerSystem(lg), [{ role:"user", content: report }]);
+        const polished = await callAPI(buildReviewerSystem(lg), [{ role:"user", content: report }], "sonnet");
         if (polished && polished.trim().length > report.length * 0.6) report = polished;
       } catch (_) {}
       setIndReport({ text: report, strengths });
