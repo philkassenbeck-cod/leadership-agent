@@ -22,8 +22,12 @@ export async function POST(req) {
     if (!Array.isArray(messages) || messages.length === 0) {
       return Response.json({ error: "No messages provided." }, { status: 400 });
     }
+    // Modèle : Opus par défaut (qualité du fond) ; "sonnet" pour les tâches rapides
+    // comme la relecture (plus rapide, moins coûteux). Liste blanche stricte.
+    const MODELS = { opus: "claude-opus-4-8", sonnet: "claude-sonnet-5" };
+    const model = MODELS[body.model] || "claude-opus-4-8";
     const response = await client.messages.create({
-      model: "claude-opus-4-8",
+      model,
       max_tokens: 8000,
       system: systemPrompt,
       messages,
