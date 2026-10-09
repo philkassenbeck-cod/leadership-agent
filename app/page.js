@@ -499,7 +499,7 @@ STRENGTH NAMES: Strengths are given in English (e.g. "Achiever", "Strategic"). A
 
 STRICT FIDELITY: The strengths and their order are given to you and are exact. Never contradict, reorder or invent rankings. Read the absences too: a domain that does not appear in the top is a real signal you must use (it drives sections 2 and 3).
 
-OUTPUT FORMAT — follow this structure EXACTLY. Use light Markdown: "## " before each section heading, "**bold**" for emphasis on strength names and key phrases. No tables. The whole debrief fits roughly 1.5 A4 pages.
+OUTPUT FORMAT — follow this structure EXACTLY. Use light Markdown: "## " before each section heading, "**bold**" for emphasis on strength names and key phrases. No tables. The whole debrief fits roughly 2 A4 pages.
 
 RESPONSIBILITY LEVEL — CRITICAL. The context gives a "Responsibility level" tagged [LEADER], [MANAGER] or [INDIVIDUAL_CONTRIBUTOR]. You MUST adapt the entire debrief to it. Never assume the person manages people unless they are LEADER or MANAGER.
 - [LEADER] (executive / directs through others): full leadership framing. Section 1 closes on the value they bring to their ORGANISATION / executive team. Section 3 may use delegation, "faire grandir ses équipes", building a complementary leadership team. Section 4 silent question comes from "vos équipes" (the people and teams they lead). The leadership style formula in §1 is appropriate.
@@ -510,12 +510,13 @@ Keep the SAME five-section structure and the same warm tone for every level; onl
 Open the debrief with this foreword, RENDERED IN ${langName} (the French version below is ONLY a reference to translate faithfully — never output it in French unless ${langName} is French; keep the bold "Comment lire ce portrait" label translated too):
 "**Comment lire ce portrait** — Ce document décrit vos forces, pas votre destin. Vos talents expliquent vos réflexes ; ils ne décident pas de vos choix. Lu avec un esprit figé, ce portrait devient une excuse : « je suis comme ça ». Lu avec un esprit de croissance, il devient un tableau de bord : des muscles puissants dont vous choisissez l'engagement, le dosage et le moment. Quant à vos risques, ce ne sont jamais des défauts — seulement vos forces, utilisées sans choix conscient."
 
-Then the FIVE sections, each opened by a "## " heading numbered 1 to 5. Use these headings (translate to ${langName}; French shown):
+Then the SIX sections, each opened by a "## " heading numbered 1 to 6. Use these headings (translate to ${langName}; French shown):
 "## 1. Vos forces en action"
 "## 2. Vos angles morts et vos risques"
 "## 3. Utiliser vos forces pour compenser vos fragilités"
 "## 4. Comment les autres vous perçoivent"
 "## 5. Deux questions puissantes pour avancer"
+"## 6. Si je devais me pitcher"
 
 ## 1 — Portrait (4 short paragraphs)
 Name the person's signature talent-based style in a vivid 3–4 word formula in bold (e.g. "**leadership d'ancrage**", "**leadership de vision incarnée**", or a managerial / working-style formula appropriate to their level). Tell the story of how their talents work together as a system — not a list, a living mechanism. Group their strengths into two coherent families (the way a two-column reframe would) and show the loop between them. Close on the triple value they bring, FRAMED BY THEIR RESPONSIBILITY LEVEL (organisation for a leader, their team for a manager, their projects & collaborations for an individual contributor), with three bolded nouns. Reference their dominant strengths by name.
@@ -532,7 +533,18 @@ Describe how collaborators, peers and (if relevant) the people they lead likely 
 ## 5 — Two questions (EXACTLY two, not three)
 Two powerful, open, non-yes/no questions in italics, each under its own bold label. Label 1: "**PERFORMANCE & IMPACT**" — a question that redefines success as what others accomplish without them / their real leverage. Label 2: "**CONSCIENCE DE SOI & TRANSFORMATION**" — a question about becoming the conscious master of their strengths rather than being driven by them (what does a given reflex let them avoid feeling?).
 
-Do NOT write any closing salutation or signature — the document adds it automatically. End the text right after the second question.
+## 6 — « Si je devais me pitcher » (le cadeau final, voix à la PREMIÈRE PERSONNE)
+This final section DELIBERATELY BREAKS the voice of the rest of the portrait. Sections 1 to 5 speak TO the person (vouvoiement). This one is written in the FIRST PERSON ("je"), as if the person were introducing themselves out loud. It is a self-presentation of about 20 to 30 lines (half a page), flowing prose, ready to use as a LinkedIn bio, a team introduction or an interview pitch. Heading in ${langName} (EN: "If I had to pitch myself" ; DE: "Wenn ich mich vorstellen müsste").
+ABSOLUTE RULE for THIS section only — it OVERRIDES the global "official theme name" rule: NEVER name any official CliftonStrengths theme (no "Achiever", "Woo", "Strategic", "Relator"..., and no official French/German theme names either). Each of the TOP 5 strengths must be TRANSLATED into natural, lived, first-person language anyone could understand — e.g. Achiever → "je suis quelqu'un de performant, qui aime faire et accomplir" ; Woo / Communication → "je suis quelqu'un d'audience, j'adore présenter et convaincre" ; Strategic → "je suis un stratège". The pitch must stand on its own and NEVER read like a test result.
+Write it as a SINGLE flowing text (no sub-headings, no bullets, no bold labels), in this order:
+- Open with the first name if known: "Je suis [prénom], ..." then say in one breath what fundamentally drives this person.
+- Weave the FIVE top strengths into the story, each in natural language, LINKED to one another (one strength calling the next), never as a list.
+- Show how these forces "dansent ensemble" — the living mechanism that makes this person singular.
+- Say what it concretely gives in their everyday professional life.
+- CLOSE with a SYNTHESIS that lifts up one level (who they are at their core) AND an opening on themselves (what carries them forward). This closing is the high point of the pitch.
+Keep it warm, confident, authentic, in the person's own voice; adapt naturally to their responsibility level without labelling it.
+
+Do NOT write any closing salutation or signature — the document adds it automatically. End the text right after the pitch.
 
 Context: ${context}`;
 }
@@ -965,10 +977,10 @@ export default function Home() {
     const ctx = `Name: ${indName || "Participant"}\nRole: ${indRole || "-"}\nResponsibility level: ${levelLabel} [${levelTag}]\nObjective: ${goalLabel}\nStrengths (ranked): ${strengths.map((s,i) => `${i+1}. ${s}`).join(", ")}`;
     setIndContext(ctx);
     const promptText = lg === "fr"
-      ? `Rédige le « Portrait de leadership » complet de ce profil StrengthsFinder en suivant EXACTEMENT la structure de tes consignes : avant-propos « Comment lire ce portrait », puis les cinq sections numérotées (1. portrait, 2. angles morts et risques avec l'encadré « Votre risque majeur », 3. compenser ses fragilités, 4. comment les autres vous perçoivent avec la question silencieuse, 5. deux questions puissantes), puis la signature de Philippe. Objectif du debrief : ${goalLabel}.\n\nProfil : ${ctx}`
+      ? `Rédige le « Portrait de leadership » complet de ce profil StrengthsFinder en suivant EXACTEMENT la structure de tes consignes : avant-propos « Comment lire ce portrait », puis les cinq sections numérotées (1. portrait, 2. angles morts et risques avec l'encadré « Votre risque majeur », 3. compenser ses fragilités, 4. comment les autres vous perçoivent avec la question silencieuse, 5. deux questions puissantes, 6. le pitch « Si je devais me pitcher » à la première personne, sans jamais nommer les forces officielles), puis la signature de Philippe. Objectif du debrief : ${goalLabel}.\n\nProfil : ${ctx}`
       : lg === "de"
-      ? `Verfasse das vollständige „Leadership-Portrait" dieses StrengthsFinder-Profils und folge GENAU der Struktur deiner Anweisungen: Vorwort „Wie dieses Porträt zu lesen ist", dann die fünf nummerierten Abschnitte (1. Porträt, 2. blinde Flecken & Risiken mit dem Kasten „Ihr größtes Risiko", 3. Stärken nutzen, um Schwächen auszugleichen, 4. Fremdwahrnehmung mit der stillen Frage, 5. zwei kraftvolle Fragen), dann die Signatur von Philippe. Ziel des Debriefs: ${goalLabel}.\n\nProfil: ${ctx}`
-      : `Write the complete "Leadership Portrait" for this StrengthsFinder profile following EXACTLY the structure in your instructions: foreword "How to read this portrait", then the five numbered sections (1. portrait, 2. blind spots & risks with the "Your major risk" call-out, 3. using strengths to compensate weaker areas, 4. how others perceive you with the silent question, 5. two powerful questions), then Philippe's signature. Debrief objective: ${goalLabel}.\n\nProfile: ${ctx}`;
+      ? `Verfasse das vollständige „Leadership-Portrait" dieses StrengthsFinder-Profils und folge GENAU der Struktur deiner Anweisungen: Vorwort „Wie dieses Porträt zu lesen ist", dann die fünf nummerierten Abschnitte (1. Porträt, 2. blinde Flecken & Risiken mit dem Kasten „Ihr größtes Risiko", 3. Stärken nutzen, um Schwächen auszugleichen, 4. Fremdwahrnehmung mit der stillen Frage, 5. zwei kraftvolle Fragen, 6. der Pitch „Wenn ich mich vorstellen müsste" in der Ich-Form, ohne je die offiziellen Stärkennamen zu nennen), dann die Signatur von Philippe. Ziel des Debriefs: ${goalLabel}.\n\nProfil: ${ctx}`
+      : `Write the complete "Leadership Portrait" for this StrengthsFinder profile following EXACTLY the structure in your instructions: foreword "How to read this portrait", then the five numbered sections (1. portrait, 2. blind spots & risks with the "Your major risk" call-out, 3. using strengths to compensate weaker areas, 4. how others perceive you with the silent question, 5. two powerful questions, 6. the first-person pitch "If I had to pitch myself", never naming the official strength themes), then Philippe's signature. Debrief objective: ${goalLabel}.\n\nProfile: ${ctx}`;
     try {
       const msgs = [{ role:"user", content: promptText }];
       const report = await callAPI(buildSystem(lg, ctx), msgs);
