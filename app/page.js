@@ -560,7 +560,7 @@ function buildTeamSystem(lang, context) {
   return `You are an expert StrengthsFinder TEAM coach writing in Philippe's voice and methodology, with a strong systemic (ORSC-inspired) lens. You analyze a TEAM as a living system — a "Troisième Entité" with its own personality — not a sum of individuals. Your reader is the coach (and often the team leader).
 
 LANGUAGE: Write the ENTIRE output in ${langName}, every sentence and heading, regardless of the language of these instructions.
-ABSOLUTE LANGUAGE RULE: Output 100% in ${langName}. Every French word, label, heading and call-out prefix quoted in these instructions (e.g. « Comment lire ce portrait d'équipe », « Le risque systémique majeur », « Le mouvement sociodynamique à provoquer », « Lecture : », « Profils qui peuvent porter cette discipline : », « Question puissante : », « rôle fantôme », the section titles) is ONLY a template showing structure — you MUST translate each into ${langName}. This OVERRIDES any instruction that says to start a line "exactly" with a French phrase: keep the structure and the bold, translate the words. Never emit any French unless ${langName} is French.
+ABSOLUTE LANGUAGE RULE: Output 100% in ${langName}. Every French word, label, heading and call-out prefix quoted in these instructions (e.g. « Comment lire ce portrait d'équipe », « La vigilance systémique majeure », « Le mouvement sociodynamique à provoquer », « Lecture : », « Profils qui peuvent porter cette discipline : », « Question puissante : », « rôle fantôme », the section titles) is ONLY a template showing structure — you MUST translate each into ${langName}. This OVERRIDES any instruction that says to start a line "exactly" with a French phrase: keep the structure and the bold, translate the words. Never emit any French unless ${langName} is French.
 STRENGTH NAMES: Strengths are given in English. ALWAYS translate each into the OFFICIAL CliftonStrengths theme name in ${langName} (in French: Achiever→Réalisateur, Strategic→Stratégique, Learner→Studieux, Self-Assurance→Assurance, Woo→Charisme, Individualization→Individualisation, Futuristic→Futuriste, Competition→Compétition, Relator→Relationnel, Ideation→Idéation, Input→Input, Deliberative→Prudent, Consistency→Équitable, Connectedness→Connexion, Harmony→Harmonie, Responsibility→Responsabilité, Includer→Inclusion, Developer→Développeur, Arranger→Arrangeur, Significance→Signifiance, Activator→Activateur, Analytical→Analytique, Intellection→Intellection, Empathy→Empathie, Command→Commandement).
 
 CONTEXT YOU ARE GIVEN — use ALL of it, ignore no field:
@@ -577,9 +577,9 @@ REFERENCE FRAMEWORKS you must use (Philippe's methodology — use the exact voca
 OUTPUT FORMAT — follow this EXACTLY. Light Markdown: "## " before each section heading, "**bold**" for strength names and key phrases. No tables. Roughly 2.5–3 A4 pages.
 
 Start with a short foreword (no heading, 3–4 lines), the growth-mindset meta-point applied to the team, RENDERED IN ${langName} (the French version below is ONLY a reference to translate faithfully — never output it in French unless ${langName} is French; translate the bold "Comment lire ce portrait d'équipe" label too):
-"**Comment lire ce portrait d'équipe** — Ce document décrit la signature de l'équipe, pas une fatalité. Les forces collectives expliquent ses réflexes ; elles ne dictent pas ses choix. Une force partagée par tous est un atout ET un risque ; une force absente n'est pas un défaut, mais une voix que le système devra apprendre à porter consciemment."
+"**Comment lire ce portrait d'équipe** — Ce document décrit la signature de l'équipe, pas une fatalité. Les forces collectives expliquent ses réflexes ; elles ne dictent pas ses choix. Une force partagée par tous est un atout ET un point de vigilance ; une force absente n'est pas un défaut, mais une voix que le système devra apprendre à porter consciemment."
 
-Then EIGHT sections, each opened by a "## " heading numbered 1 to 8 (translate to ${langName}; French shown):
+Then NINE sections, each opened by a "## " heading numbered 1 to 9 (translate to ${langName}; French shown):
 
 "## 1. La signature de l'équipe"
 Open with EXACTLY 10 affirmative, vivid, unhedged sentences (flowing prose, no bullets) defining who this team-entity is, read through its four domains (Executing, Influencing, Relationship, Thinking), weighted by the domain distribution. Reference dominant strengths by name. Name a collective "signature" — a strength or domain shared by most members — and frame it as both the team's superpower and its first vulnerability (e.g. a strength shared by 5 of 6 is an efficiency signature AND a premature-convergence risk). Close on the triple value the team brings, with three bolded nouns.
@@ -588,7 +588,7 @@ Open with EXACTLY 10 affirmative, vivid, unhedged sentences (flowing prose, no b
 2 to 3 short paragraphs naming the FRICTIONS that are already observable in the room — rivalries between similar dominant profiles, pace mismatches, competing leadership reflexes. Each tension is named as belonging to the SYSTEM, not to individuals ("la tension n'appartient à personne — c'est une information que le système exprime"). Tie each to specific strengths held by specific members where the data supports it.
 
 "## 3. Les tensions invisibles"
-2 to 4 short paragraphs on what does NOT show but shapes everything: the **rôle fantôme** (ghost role) — name explicitly the most consequential ABSENT strength as a voice that haunts the system (e.g. "Le rôle fantôme de cette équipe, c'est le Prudent/Délibératif : personne ne l'incarne, mais il parle à travers les erreurs et les sur-promesses"). Include: roles carried by too few members (saturation / rôle nausea risk), false harmony masking absent real conflict, and any equity/consistency gap felt below the team. Insert ONE call-out starting exactly "**Le risque systémique majeur** —" naming the single most dangerous invisible dynamic and one bolded key phrase.
+2 to 4 short paragraphs on what does NOT show but shapes everything: the **rôle fantôme** (ghost role) — name explicitly the most consequential ABSENT strength as a voice that haunts the system (e.g. "Le rôle fantôme de cette équipe, c'est le Prudent/Délibératif : personne ne l'incarne, mais il parle à travers les erreurs et les sur-promesses"). Include: roles carried by too few members (saturation / rôle nausea risk), false harmony masking absent real conflict, and any equity/consistency gap felt below the team. Insert ONE call-out starting exactly "**La vigilance systémique majeure** —" naming the single most dangerous invisible dynamic and one bolded key phrase. NEVER use the word "risque" (nor "risk") anywhere in this team analysis: speak of "vigilance", "point d'attention", "ce que le système doit surveiller".
 
 "## 4. Synergie et antagonisme — la sociodynamique de l'équipe (Fauvet)"
 The exact rates are in context (FAUVET SOCIODYNAMICS). NEVER recompute them — cite them. Write EXACTLY about 20 lines of flowing prose (NO bullets) that:
@@ -621,7 +621,12 @@ EXACTLY 6 lines on how the tagged leader's profile fits, amplifies or compensate
 "## 8. Cinq actions concrètes"
 EXACTLY 5 specific, doable recommendations tied to the findings, the objective and the sector — never generic. At least one must make the ghost role (absent voice) structurally present; at least one must protect any saturated/over-relied-on member; at least one must move the team toward Fauvet's evolutionary zone (create productive antagonism if synergy dominates, or rebuild cohesion if antagonism dominates); and at least one must reinforce the team's weakest Hawkins discipline. Frame each as a conscious choice, not a personality fix.
 
-Tone: warm, confident, truthful. Coach posture, not consultant: every shadow is the flip side of a strength, every tension a signal of something trying to emerge. Do NOT write any closing salutation or signature — the document adds it automatically.
+"## 9. Si notre équipe devait se pitcher" (le cadeau final, PREMIÈRE PERSONNE DU PLURIEL)
+This final section DELIBERATELY BREAKS the voice: it is written in the FIRST PERSON PLURAL ("nous"), as if the TEAM introduced ITSELF out loud. About 20 to 30 lines, flowing prose, ready to present the team (to a board, a client, a new member). Heading in ${langName} (EN: "If our team had to pitch itself"; DE: "Wenn sich unser Team vorstellen müsste").
+ABSOLUTE RULE for THIS section (overrides the official-theme rule): NEVER name any official CliftonStrengths theme; translate the team's dominant COLLECTIVE strengths into natural, lived language anyone could understand. Never the word "risque" either.
+Write it as a SINGLE flowing text (no sub-headings, no bullets): open with "Nous sommes une équipe qui..."; weave the dominant collective strengths in natural language, LINKED to one another; show how these collective forces "dansent ensemble" as a living system; say what the team concretely brings and delivers; CLOSE on a synthesis that lifts up one level (who this team is at its core) AND an opening (what carries it forward together). Keep it narrative yet sober: a touch of the warm, image-rich voice of a fine storyteller (Werber-like clarity, novelistic warmth), never purple prose, always grounded in the real collective profile.
+
+Tone: warm, confident, truthful. Coach posture, not consultant: every shadow is the flip side of a strength, every tension a signal of something trying to emerge. Do NOT write any closing salutation or signature — the document adds it automatically. End the text right after the team pitch.
 
 Context: ${context}`;
 }
@@ -650,7 +655,7 @@ OUTPUT FORMAT — follow this EXACTLY. Light Markdown: "## " before each heading
 
 Start with a short foreword (no heading, 2-3 lines): this describes the relationship, not a verdict; every friction is the flip side of a complementarity.
 
-Then FIVE sections, each opened by "## " numbered 1 to 5 (translate to ${langName}; French shown):
+Then SIX sections, each opened by "## " numbered 1 to 6 (translate to ${langName}; French shown):
 
 "## 1. Là où ils se ressemblent"
 2 short paragraphs. Name the SHARED strengths (from context) and the domains where both are strong. Say what this resemblance makes easy (instant mutual understanding, shared reflexes) AND the blind spot it creates — the same things ignored by both (echo chamber / angle mort partagé). Reference strengths by name.
@@ -669,7 +674,12 @@ Introduce Communication NonViolente in one line (Observation, Sentiment, Besoin,
 (a) a TAILORED example — a realistic short CNV script for the MOST LIKELY friction of THIS specific pair, written as 4 labelled lines exactly "**Observation :** …", "**Sentiment :** …", "**Besoin :** …", "**Demande :** …", spoken from one of the two toward the other, using their real dynamic;
 (b) a BLANK reusable canvas — the same 4 labels each followed by a short guiding question in italics (e.g. "**Observation :** *Quel fait précis, sans interprétation ni jugement ?*"), so they can fill it for any future tension.
 
-Tone: warm, truthful, concrete. Coach posture: every friction is the flip side of a complementarity; the aim is conscious cooperation, not fixing anyone. Do NOT write any closing salutation or signature — the document adds it automatically.
+"## 6. Si nous devions nous pitcher en duo" (le cadeau final, PREMIÈRE PERSONNE DU PLURIEL)
+This final section BREAKS the voice: it is written in the FIRST PERSON PLURAL ("nous"), as if the TWO people presented themselves together as a working duo. About 15 to 25 lines, flowing prose, ready to present the pair. Heading in ${langName} (EN: "If we had to pitch ourselves as a duo"; DE: "Wenn wir uns als Duo vorstellen müssten").
+ABSOLUTE RULE for THIS section (overrides the official-theme rule): NEVER name any official CliftonStrengths theme; translate each person's strengths into natural, lived language. Never the word "risque".
+Write it as a SINGLE flowing text (no sub-headings, no bullets): open with "Ensemble, nous sommes..."; tell what makes this pair strong TOGETHER, weaving their complementarities in natural language; show how their two energies "dansent ensemble" (one brings what the other does not); say what the duo concretely delivers; CLOSE on a synthesis that lifts up (who this duo is at its core) AND an opening (what they can build together). For [MANAGER_REPORT], keep a shared, equal voice without erasing the relationship. Keep it warm and narrative yet sober, grounded in the real profiles.
+
+Tone: warm, truthful, concrete. Coach posture: every friction is the flip side of a complementarity; the aim is conscious cooperation, not fixing anyone. Do NOT write any closing salutation or signature — the document adds it automatically. End the text right after the duo pitch.
 
 Context: ${context}`;
 }
@@ -1157,10 +1167,10 @@ export default function Home() {
     const ctx = ctxLines.join("\n");
     setPairContext(ctx);
     const promptText = lg === "fr"
-      ? `Fais le débrief complet de ce binôme en suivant EXACTEMENT la structure de tes consignes : avant-propos, puis les 5 sections (1. ressemblances, 2. complémentarités, 3. frictions avec l'encadré « La tension la plus structurante », 4. comment mieux travailler ensemble, 5. outil CNV avec un exemple sur-mesure ET un canevas vierge). Adapte tout à la nature de la relation.\n\nBinôme :\n${ctx}`
+      ? `Fais le débrief complet de ce binôme en suivant EXACTEMENT la structure de tes consignes : avant-propos, puis les 5 sections (1. ressemblances, 2. complémentarités, 3. frictions avec l'encadré « La tension la plus structurante », 4. comment mieux travailler ensemble, 5. outil CNV avec un exemple sur-mesure ET un canevas vierge, 6. le pitch en duo à la première personne du pluriel « nous », sans nommer les forces officielles). Adapte tout à la nature de la relation.\n\nBinôme :\n${ctx}`
       : lg === "de"
-      ? `Erstelle das vollständige Duo-Debrief GENAU gemäß der Struktur deiner Anweisungen: Vorwort, dann die 5 Abschnitte (1. Ähnlichkeiten, 2. Komplementaritäten, 3. Reibungen mit dem Kasten, 4. besser zusammenarbeiten, 5. GFK-Werkzeug mit maßgeschneidertem Beispiel UND leerer Vorlage). Passe alles an die Art der Beziehung an.\n\nDuo:\n${ctx}`
-      : `Provide the complete pair debrief following EXACTLY the structure in your instructions: foreword, then the 5 sections (1. resemblances, 2. complementarities, 3. frictions with the call-out, 4. how to work better together, 5. NVC tool with a tailored example AND a blank canvas). Tailor everything to the relationship type.\n\nPair:\n${ctx}`;
+      ? `Erstelle das vollständige Duo-Debrief GENAU gemäß der Struktur deiner Anweisungen: Vorwort, dann die 5 Abschnitte (1. Ähnlichkeiten, 2. Komplementaritäten, 3. Reibungen mit dem Kasten, 4. besser zusammenarbeiten, 5. GFK-Werkzeug mit maßgeschneidertem Beispiel UND leerer Vorlage, 6. der Duo-Pitch in der Wir-Form, ohne die offiziellen Stärkennamen zu nennen). Passe alles an die Art der Beziehung an.\n\nDuo:\n${ctx}`
+      : `Provide the complete pair debrief following EXACTLY the structure in your instructions: foreword, then the 5 sections (1. resemblances, 2. complementarities, 3. frictions with the call-out, 4. how to work better together, 5. NVC tool with a tailored example AND a blank canvas, 6. the duo pitch in the first person plural "we", never naming the official strength themes). Tailor everything to the relationship type.\n\nPair:\n${ctx}`;
     try {
       const msgs = [{ role:"user", content: promptText }];
       const report = await callAPI(buildPairSystem(lg, ctx), msgs);
@@ -1608,7 +1618,7 @@ export default function Home() {
         if (t === "") continue;
         const low = t.toLowerCase();
         // Encadrés (détectés sur le texte nettoyé, sans gras ni tiret).
-        if (/^(votre vigilance prioritaire|votre risque majeur|le risque systémique|la tension la plus structurante|le mouvement sociodynamique)/i.test(t) || low.includes("question silencieuse")) {
+        if (/^(votre vigilance prioritaire|la vigilance systémique majeure|votre risque majeur|le risque systémique|la tension la plus structurante|le mouvement sociodynamique)/i.test(t) || low.includes("question silencieuse")) {
           children.push(calloutBox(t, low.includes("question silencieuse")));
           continue;
         }
