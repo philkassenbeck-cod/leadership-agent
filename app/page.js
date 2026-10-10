@@ -1354,7 +1354,7 @@ export default function Home() {
     throw new Error("jsPDF indisponible (tous les CDN ont échoué)");
   }
 
-  async function downloadPdf(recipientName, reportText, stats, members) {
+  async function downloadPdf(recipientName, reportText, stats, members, opts = {}) {
     try {
       const jsPDF = await loadJsPDF();
       const doc = new jsPDF({ unit: "mm", format: "a4" });
@@ -1539,8 +1539,14 @@ export default function Home() {
         if (t === "") { y += 2; return; }
         if (/^#{1,6}\s+/.test(t)) {
           const title = cleanReportLine(t.replace(/^#{1,6}\s+/, ""));
-          y += 3;
-          writeBlock(title, { size: 11, style: "normal", gap: 3 });
+          // Mode « pitchs » : chaque section (chaque personne) démarre sur sa propre page.
+          if (opts.pageBreakPerSection) {
+            doc.addPage(); y = marginTop;
+            writeBlock(title, { size: 15, style: "bold", gap: 5, color: [20, 20, 20] });
+          } else {
+            y += 3;
+            writeBlock(title, { size: 11, style: "normal", gap: 3 });
+          }
         } else {
           writeBlock(cleanReportLine(t), { size: 11, style: "normal", gap: 4 });
         }
@@ -1603,7 +1609,7 @@ export default function Home() {
 
   // Génère un .docx à la charte Optimup (Arial, orange #E8590C, encadrés à filet gauche).
   // recipientName : prénom ; reportText : markdown léger du débrief ; subtitle : rôle/poste ou nom d'équipe.
-  async function downloadWord(recipientName, reportText, subtitle, headStrengths, stats) {
+  async function downloadWord(recipientName, reportText, subtitle, headStrengths, stats, opts = {}) {
     try {
       const D = await loadDocx();
       const {
@@ -1647,12 +1653,13 @@ export default function Home() {
           }) ] }) ],
         });
       }
-      function sectionTitle(line) {
+      function sectionTitle(line, pageBreakBefore) {
         // line ex. "## 1. Vos forces en action" ou "## La signature de l'équipe"
         const clean = line.replace(/^#{1,6}\s+/, "");
         const m = clean.match(/^(\d+\.)\s*(.*)$/);
         const num = m ? m[1] : "", rest = m ? m[2] : clean;
         return new Paragraph({
+          pageBreakBefore: !!pageBreakBefore,
           spacing:{ before:320, after:160 },
           border:{ bottom:{ style:BorderStyle.SINGLE, size:10, color:ACCENT, space:6 } },
           children:[
@@ -1738,7 +1745,7 @@ export default function Home() {
       for (let raw of lines) {
         const t0 = raw.trim();
         if (t0 === "") continue;
-        if (/^#{1,6}\s+/.test(t0)) { children.push(sectionTitle(t0)); continue; }
+        if (/^#{1,6}\s+/.test(t0)) { children.push(sectionTitle(t0, opts.pageBreakPerSection)); continue; }
         const t = cleanReportLine(t0);              // enlève gras + tirets cadratins
         if (t === "") continue;
         const low = t.toLowerCase();
@@ -2054,8 +2061,8 @@ export default function Home() {
           <div className="report-area">
             <div className="report-content"><RichText text={teamReport.text} /></div>
           </div>
-          <button className="pdf-btn" onClick={() => downloadPdf(teamName, teamReport.text, teamReport.stats, teamReport.members)}>{L.downloadPdf}</button>
-          <button className="pdf-btn" onClick={() => downloadWord(teamName, teamReport.text, teamName, null, teamReport.stats)}>{L.downloadWord}</button>
+          <button className="pdf-btn" onClick={() => downloadPdf(teamName, teamReport.text, teamReport.stats, teamReport.members, { pageBreakPerSection: teamReport.pitchOnly })}>{L.downloadPdf}</button>
+          <button className="pdf-btn" onClick={() => downloadWord(teamName, teamReport.text, teamName, null, teamReport.stats, { pageBreakPerSection: teamReport.pitchOnly })}>{L.downloadWord}</button>
           <ChatArea messages={teamChatMsgs} chatAreaRef={teamChatRef} />
           <div className="chat-input-row">
             <textarea rows={2} value={teamChatInput} onChange={e => setTeamChatInput(e.target.value)}
