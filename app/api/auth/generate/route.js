@@ -15,13 +15,15 @@ export async function POST(req) {
   }
 
   let days = 7;
+  let scope = "full";
   try {
     const body = await req.json();
     days = body && body.days;
+    if (body && body.scope === "pitch") scope = "pitch";
   } catch (_) {}
   days = Math.max(1, Math.min(365, parseInt(days, 10) || 7));
 
   const expMs = Date.now() + days * DAY;
-  const code = await makeCode(expMs, secret);
-  return Response.json({ ok: true, code, expires: expMs, days });
+  const code = await makeCode(expMs, secret, scope);
+  return Response.json({ ok: true, code, expires: expMs, days, scope });
 }

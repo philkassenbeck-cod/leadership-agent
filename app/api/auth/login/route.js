@@ -25,17 +25,19 @@ export async function POST(req) {
   const now = Date.now();
   let role = null;
   let sessionExp = null;
+  let scope = "full";
 
   if (await passwordMatches(password, master, secret)) {
-    // Mot de passe maître du coach → accès admin (génération de codes).
+    // Mot de passe maître du coach → accès admin complet (génération de codes).
     role = "admin";
     sessionExp = now + MAX_SESSION;
   } else {
-    // Sinon, peut-être un code d'accès à durée limitée.
-    const codeExp = await verifyCode(password, secret, now);
-    if (codeExp) {
+    // Sinon, peut-être un code d'accès à durée limitée (avec sa portée).
+    const codeInfo = await verifyCode(password, secret, now);
+    if (codeInfo) {
       role = "user";
-      sessionExp = Math.min(codeExp, now + MAX_SESSION);
+      sessionExp = Math.min(codeInfo.exp, now + MAX_SESSION);
+      scope = codeInfo.scope || "full";
     }
   }
 
@@ -43,7 +45,7 @@ export async function POST(req) {
     return Response.json({ error: "Mot de passe invalide ou expiré." }, { status: 401 });
   }
 
-  const token = await makeSession(role, sessionExp, secret);
+  const token = await makeSession(role, sessionExp, secret, scope);
   cookies().set("ls_session", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
@@ -51,5 +53,5 @@ export async function POST(req) {
     path: "/",
     expires: new Date(sessionExp),
   });
-  return Response.json({ ok: true, role, exp: sessionExp });
+  return Response.json({ ok: true, role, exp: sessionExp, scope });
 }
