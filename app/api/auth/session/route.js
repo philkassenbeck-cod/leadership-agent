@@ -7,5 +7,5 @@ export async function GET() {
   const token = cookies().get("ls_session")?.value;
   const session = secret ? await verifySession(token, secret, Date.now()) : null;
   if (!session) return Response.json({ authed: false });
-  return Response.json({ authed: true, role: session.role, exp: session.exp });
+  return Response.json({ authed: true, role: session.role, exp: session.exp, scope: session.scope || "full" });
 }

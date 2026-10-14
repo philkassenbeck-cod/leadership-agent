@@ -13,9 +13,9 @@ const DOMAINS = {
 };
 
 const LABELS = {
-  fr: { identity:"Identité", name:"Nom", role:"Rôle / Poste", top5:"Top 5 forces (obligatoire)", top10:"Forces 6–10 (optionnel)", context:"Contexte", goal:"Objectif du debrief", teamName:"Nom de l'équipe", teamGoal:"Objectif du debrief", teamLeader:"Chef d'équipe", teamLeaderHint:"Cliquez ⭐ sur le membre qui dirige l'équipe", statsByPerson:"Les 5 forces par personne", statsByDomain:"Répartition par domaine de forces", statsRanking:"Classement pondéré des forces", statsPresent:"Talents présents", statsDomainCol:"Domaine", statsSocio:"Synergie et antagonisme (Fauvet)", socioSynergy:"Synergie", socioAntagonism:"Antagonisme", socioNeutral:"Neutre / latence", socioSub:"Cohésion interne (EGO) vs autonomie & ouverture (ECO)", statsAbsent:"Forces absentes de l'équipe", department:"Département / Service", phDepartment:"ex. Marketing, Direction générale, Production...", business:"Nature du métier / secteur", phBusiness:"ex. Luxe, Industrie, Services financiers...", members:"Membres", addMember:"+ Ajouter un membre", analyze:"Analyser →", analyzeTeam:"Analyser l'équipe →", back:"← Nouveau debrief", backTeam:"← Nouvelle analyse", individual:"Individuel", team:"Équipe", headerSub:"Debrief individuel · Saisissez le top 5 ou top 10", headerSubTeam:"Analyse d'équipe · Ajoutez les membres et leurs forces", executing:"Exécution", influencing:"Influence", relationship:"Relation", thinking:"Pensée stratégique", chatPlaceholder:"Approfondissez une force, posez une question...", teamChatPlaceholder:"Posez une question sur la dynamique d'équipe...", goalOptions:[{v:"dev",l:"Développement personnel"},{v:"team",l:"Intégration dans une équipe"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], level:"Niveau de responsabilité", levelOptions:[{v:"leader",l:"Dirigeant·e / leader"},{v:"manager",l:"Manager / encadrant·e"},{v:"ic",l:"Sans responsabilité d'encadrement"}], teamGoalOptions:[{v:"dynamics",l:"Dynamiques d'équipe"},{v:"collab",l:"Améliorer la collaboration"},{v:"blind",l:"Identifier les angles morts"},{v:"perf",l:"Performance collective"}], coachName:"Votre nom (coach)", downloadPdf:"⬇ Télécharger en PDF", downloadWord:"⬇ Télécharger en Word", importPdf:"📄 Glissez votre rapport Gallup ici, ou cliquez", importDrop:"Déposez le PDF ici…", importing:"Lecture du PDF...", importOk:"Forces importées ✓", importErr:"Lecture impossible. Vérifiez que c'est bien le PDF Gallup, ou saisissez à la main.", importTeam:"📄 Glissez jusqu'à 17 rapports Gallup ici, ou cliquez", importTeamDrop:"Déposez les PDF ici…", importingTeam:"Lecture des rapports...", importTeamOk:(n)=>`${n} membre(s) importé(s) ✓`, importTeamErr:"Aucun rapport lisible. Vérifiez que ce sont bien des PDF Gallup.", importTeamMax:"17 rapports maximum.", letterGreeting:(n)=>`Cher(e) ${n},`, letterIntro:"Voici le débrief de tes forces, fruit de notre échange. Prends le temps de le lire, d'y revenir, et de laisser ces mots résonner.", letterClose:"Avec toute ma confiance,", pdfTitle:"Débrief StrengthsFinder", wordTitle:"Portrait de talents", wordStrengthsHead:"VOS 10 FORCES DOMINANTES", phName:"Prénom Nom", phRole:"ex. CEO, Chef de projet...", phCoach:"ex. Philippe Kassenbeck", phTeam:"ex. Board, Équipe Marketing...", strength:"Force", optional:"optionnel", member:"Membre", analyzing:"Analyse en cours...", errMin3:"Saisissez au moins 3 forces.", errMin2:"Ajoutez au moins 2 membres avec des forces.", errApi:"Erreur API.", errRetry:"Erreur. Réessayez.", authSub:"Accès réservé", authTitle:"Connexion", authPassword:"Mot de passe", authPlaceholder:"Votre mot de passe ou code d'accès", authLogin:"Entrer →", authChecking:"Vérification...", authWrong:"Mot de passe invalide ou expiré.", logout:"Déconnexion", codesBtn:"🔑 Codes d'accès", adminCodes:"Générer un code d'accès", codeDays:"Durée de validité (jours)", generateCode:"Générer le code", copyCode:"Copier", copied:"Copié ✓", codeExpires:"Valable jusqu'au", codeHint:"Donnez ce code à votre client : il pourra se connecter jusqu'à la date d'expiration.", pair:"Binôme", headerSubPair:"Débrief binôme · Analysez l'interaction entre deux personnes", pairRelation:"Nature de la relation", pairRelationOptions:[{v:"peers",l:"Pairs / collègues"},{v:"manager",l:"Manager – collaborateur"},{v:"cofounders",l:"Co-fondateurs / associés"},{v:"transverse",l:"Collaboration transverse"}], analyzePair:"Analyser le binôme →", backPair:"← Nouveau binôme", pairChatPlaceholder:"Posez une question sur la dynamique du binôme...", importPair:"📄 Glissez les 2 rapports Gallup ici, ou cliquez", importPairDrop:"Déposez les 2 PDF ici…", importPairOk:"Binôme importé ✓", importPairErr:"Il faut 2 rapports Gallup lisibles.", statsShared:"Forces communes", statsComplement:"Les deux profils comparés", statsFriction:"Points de friction potentiels", pairNoShared:"Aucune force commune dans les tops — deux profils très différents.", pairNoFriction:"Aucune paire de tension classique détectée.", errPairMin:"Saisissez au moins 3 forces pour chacune des deux personnes.", personA:"Personne A", personB:"Personne B", pitchOnly:"Générer seulement le pitch", pitchOnlyTeam:"Générer seulement les pitchs (chaque membre + l'équipe)", genPitch:"Générer le pitch →", genPitchTeam:"Générer les pitchs →" },
-  de: { identity:"Identität", name:"Name", role:"Rolle / Position", top5:"Top 5 Stärken (Pflicht)", top10:"Stärken 6–10 (optional)", context:"Kontext", goal:"Ziel des Debriefs", teamName:"Teamname", teamGoal:"Ziel des Debriefs", teamLeader:"Teamleiter", teamLeaderHint:"Klicken Sie ⭐ beim Mitglied, das das Team leitet", statsByPerson:"Die 5 Stärken pro Person", statsByDomain:"Verteilung nach Stärkenbereich", statsRanking:"Gewichtetes Stärken-Ranking", statsPresent:"Vorhandene Talente", statsDomainCol:"Bereich", statsSocio:"Synergie und Antagonismus (Fauvet)", socioSynergy:"Synergie", socioAntagonism:"Antagonismus", socioNeutral:"Neutral / latent", socioSub:"Innerer Zusammenhalt (EGO) vs. Autonomie & Offenheit (ECO)", statsAbsent:"Im Team fehlende Stärken", department:"Abteilung / Bereich", phDepartment:"z. B. Marketing, Geschäftsführung, Produktion...", business:"Branche / Tätigkeitsbereich", phBusiness:"z. B. Luxus, Industrie, Finanzdienstleistungen...", members:"Mitglieder", addMember:"+ Mitglied hinzufügen", analyze:"Analysieren →", analyzeTeam:"Team analysieren →", back:"← Neues Debrief", backTeam:"← Neue Analyse", individual:"Individuell", team:"Team", headerSub:"Individuelles Debrief · Geben Sie die Top 5 oder Top 10 ein", headerSubTeam:"Teamanalyse · Fügen Sie Mitglieder und Stärken hinzu", executing:"Ausführung", influencing:"Einfluss", relationship:"Beziehung", thinking:"Strategisches Denken", chatPlaceholder:"Vertiefen Sie eine Stärke...", teamChatPlaceholder:"Fragen zur Teamdynamik...", goalOptions:[{v:"dev",l:"Persönliche Entwicklung"},{v:"team",l:"Teamintegration"},{v:"perf",l:"Performance"},{v:"collab",l:"Zusammenarbeit"}], level:"Verantwortungsebene", levelOptions:[{v:"leader",l:"Führungskraft / Leader"},{v:"manager",l:"Manager / Teamleiter"},{v:"ic",l:"Ohne Führungsverantwortung"}], teamGoalOptions:[{v:"dynamics",l:"Teamdynamiken"},{v:"collab",l:"Zusammenarbeit verbessern"},{v:"blind",l:"Blinde Flecken erkennen"},{v:"perf",l:"Kollektive Performance"}], coachName:"Ihr Name (Coach)", downloadPdf:"⬇ Als PDF herunterladen", downloadWord:"⬇ Als Word herunterladen", importPdf:"📄 Gallup-Bericht hierher ziehen oder klicken", importDrop:"PDF hier ablegen…", importing:"PDF wird gelesen...", importOk:"Stärken importiert ✓", importErr:"Lesen nicht möglich. Bitte prüfen Sie das Gallup-PDF oder geben Sie manuell ein.", importTeam:"📄 Bis zu 17 Gallup-Berichte hierher ziehen oder klicken", importTeamDrop:"PDFs hier ablegen…", importingTeam:"Berichte werden gelesen...", importTeamOk:(n)=>`${n} Mitglied(er) importiert ✓`, importTeamErr:"Keine lesbaren Berichte. Bitte prüfen Sie die Gallup-PDFs.", importTeamMax:"Maximal 17 Berichte.", letterGreeting:(n)=>`Liebe(r) ${n},`, letterIntro:"Hier ist das Debrief deiner Stärken, das Ergebnis unseres Gesprächs. Nimm dir Zeit, es zu lesen und nachwirken zu lassen.", letterClose:"Mit vollem Vertrauen,", pdfTitle:"StrengthsFinder Debrief", wordTitle:"Talent-Porträt", wordStrengthsHead:"IHRE 10 DOMINANTEN STÄRKEN", phName:"Vor- und Nachname", phRole:"z. B. CEO, Projektleiter...", phCoach:"z. B. Philippe Kassenbeck", phTeam:"z. B. Vorstand, Marketing-Team...", strength:"Stärke", optional:"optional", member:"Mitglied", analyzing:"Analyse läuft...", errMin3:"Geben Sie mindestens 3 Stärken ein.", errMin2:"Fügen Sie mindestens 2 Mitglieder mit Stärken hinzu.", errApi:"API-Fehler.", errRetry:"Fehler. Bitte erneut versuchen.", authSub:"Zugang beschränkt", authTitle:"Anmeldung", authPassword:"Passwort", authPlaceholder:"Ihr Passwort oder Zugangscode", authLogin:"Eintreten →", authChecking:"Prüfung...", authWrong:"Passwort ungültig oder abgelaufen.", logout:"Abmelden", codesBtn:"🔑 Zugangscodes", adminCodes:"Zugangscode generieren", codeDays:"Gültigkeitsdauer (Tage)", generateCode:"Code generieren", copyCode:"Kopieren", copied:"Kopiert ✓", codeExpires:"Gültig bis", codeHint:"Geben Sie diesen Code an Ihren Kunden weiter: er kann sich bis zum Ablaufdatum anmelden.", pair:"Duo", headerSubPair:"Duo-Debrief · Analysieren Sie die Interaktion zwischen zwei Personen", pairRelation:"Art der Beziehung", pairRelationOptions:[{v:"peers",l:"Kollegen / auf Augenhöhe"},{v:"manager",l:"Führungskraft – Mitarbeiter"},{v:"cofounders",l:"Mitgründer / Partner"},{v:"transverse",l:"Bereichsübergreifend"}], analyzePair:"Duo analysieren →", backPair:"← Neues Duo", pairChatPlaceholder:"Frage zur Dynamik des Duos...", importPair:"📄 Die 2 Gallup-Berichte hierher ziehen oder klicken", importPairDrop:"Die 2 PDFs hier ablegen…", importPairOk:"Duo importiert ✓", importPairErr:"Es braucht 2 lesbare Gallup-Berichte.", statsShared:"Gemeinsame Stärken", statsComplement:"Beide Profile im Vergleich", statsFriction:"Mögliche Reibungspunkte", pairNoShared:"Keine gemeinsame Stärke in den Tops — zwei sehr unterschiedliche Profile.", pairNoFriction:"Kein klassisches Spannungspaar erkannt.", errPairMin:"Geben Sie für jede der beiden Personen mindestens 3 Stärken ein.", personA:"Person A", personB:"Person B", pitchOnly:"Nur den Pitch generieren", pitchOnlyTeam:"Nur die Pitches generieren (jedes Mitglied + Team)", genPitch:"Pitch generieren →", genPitchTeam:"Pitches generieren →" },
-  en: { identity:"Identity", name:"Name", role:"Role / Position", top5:"Top 5 strengths (required)", top10:"Strengths 6–10 (optional)", context:"Context", goal:"Debrief objective", teamName:"Team name", teamGoal:"Debrief objective", teamLeader:"Team leader", teamLeaderHint:"Click ⭐ on the member who leads the team", statsByPerson:"The 5 strengths per person", statsByDomain:"Distribution by strength domain", statsRanking:"Weighted strengths ranking", statsPresent:"Present talents", statsDomainCol:"Domain", statsSocio:"Synergy and antagonism (Fauvet)", socioSynergy:"Synergy", socioAntagonism:"Antagonism", socioNeutral:"Neutral / latent", socioSub:"Internal cohesion (EGO) vs autonomy & openness (ECO)", statsAbsent:"Strengths absent from the team", department:"Department / Unit", phDepartment:"e.g. Marketing, Executive board, Production...", business:"Business / industry", phBusiness:"e.g. Luxury, Industry, Financial services...", members:"Members", addMember:"+ Add member", analyze:"Analyze →", analyzeTeam:"Analyze team →", back:"← New debrief", backTeam:"← New analysis", individual:"Individual", team:"Team", headerSub:"Individual debrief · Enter top 5 or top 10", headerSubTeam:"Team analysis · Add members and their strengths", executing:"Executing", influencing:"Influencing", relationship:"Relationship", thinking:"Strategic Thinking", chatPlaceholder:"Dive deeper into a strength...", teamChatPlaceholder:"Ask about team dynamics...", goalOptions:[{v:"dev",l:"Personal development"},{v:"team",l:"Team integration"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], level:"Level of responsibility", levelOptions:[{v:"leader",l:"Executive / leader"},{v:"manager",l:"Manager / team lead"},{v:"ic",l:"No management responsibility"}], teamGoalOptions:[{v:"dynamics",l:"Team dynamics"},{v:"collab",l:"Improve collaboration"},{v:"blind",l:"Identify blind spots"},{v:"perf",l:"Collective performance"}], coachName:"Your name (coach)", downloadPdf:"⬇ Download PDF", downloadWord:"⬇ Download Word", importPdf:"📄 Drag your Gallup report here, or click", importDrop:"Drop the PDF here…", importing:"Reading PDF...", importOk:"Strengths imported ✓", importErr:"Could not read it. Check it's the Gallup PDF, or enter manually.", importTeam:"📄 Drag up to 17 Gallup reports here, or click", importTeamDrop:"Drop the PDFs here…", importingTeam:"Reading reports...", importTeamOk:(n)=>`${n} member(s) imported ✓`, importTeamErr:"No readable reports. Check they are Gallup PDFs.", importTeamMax:"17 reports maximum.", letterGreeting:(n)=>`Dear ${n},`, letterIntro:"Here is the debrief of your strengths, the fruit of our conversation. Take the time to read it, return to it, and let these words resonate.", letterClose:"With all my confidence,", pdfTitle:"StrengthsFinder Debrief", wordTitle:"Talent Portrait", wordStrengthsHead:"YOUR 10 DOMINANT STRENGTHS", phName:"First and last name", phRole:"e.g. CEO, Project manager...", phCoach:"e.g. Philippe Kassenbeck", phTeam:"e.g. Board, Marketing team...", strength:"Strength", optional:"optional", member:"Member", analyzing:"Analyzing...", errMin3:"Enter at least 3 strengths.", errMin2:"Add at least 2 members with strengths.", errApi:"API error.", errRetry:"Error. Please try again.", authSub:"Restricted access", authTitle:"Sign in", authPassword:"Password", authPlaceholder:"Your password or access code", authLogin:"Enter →", authChecking:"Checking...", authWrong:"Invalid or expired password.", logout:"Log out", codesBtn:"🔑 Access codes", adminCodes:"Generate an access code", codeDays:"Validity (days)", generateCode:"Generate code", copyCode:"Copy", copied:"Copied ✓", codeExpires:"Valid until", codeHint:"Give this code to your client: they can sign in until the expiry date.", pair:"Pair", headerSubPair:"Pair debrief · Analyze the interaction between two people", pairRelation:"Nature of the relationship", pairRelationOptions:[{v:"peers",l:"Peers / colleagues"},{v:"manager",l:"Manager – report"},{v:"cofounders",l:"Co-founders / partners"},{v:"transverse",l:"Cross-functional"}], analyzePair:"Analyze the pair →", backPair:"← New pair", pairChatPlaceholder:"Ask about the pair's dynamic...", importPair:"📄 Drag the 2 Gallup reports here, or click", importPairDrop:"Drop the 2 PDFs here…", importPairOk:"Pair imported ✓", importPairErr:"Two readable Gallup reports are required.", statsShared:"Shared strengths", statsComplement:"Both profiles compared", statsFriction:"Potential friction points", pairNoShared:"No shared strength in the tops — two very different profiles.", pairNoFriction:"No classic tension pair detected.", errPairMin:"Enter at least 3 strengths for each of the two people.", personA:"Person A", personB:"Person B", pitchOnly:"Generate only the pitch", pitchOnlyTeam:"Generate only the pitches (each member + the team)", genPitch:"Generate the pitch →", genPitchTeam:"Generate the pitches →" },
+  fr: { identity:"Identité", name:"Nom", role:"Rôle / Poste", top5:"Top 5 forces (obligatoire)", top10:"Forces 6–10 (optionnel)", context:"Contexte", goal:"Objectif du debrief", teamName:"Nom de l'équipe", teamGoal:"Objectif du debrief", teamLeader:"Chef d'équipe", teamLeaderHint:"Cliquez ⭐ sur le membre qui dirige l'équipe", statsByPerson:"Les 5 forces par personne", statsByDomain:"Répartition par domaine de forces", statsRanking:"Classement pondéré des forces", statsPresent:"Talents présents", statsDomainCol:"Domaine", statsSocio:"Synergie et antagonisme (Fauvet)", socioSynergy:"Synergie", socioAntagonism:"Antagonisme", socioNeutral:"Neutre / latence", socioSub:"Cohésion interne (EGO) vs autonomie & ouverture (ECO)", statsAbsent:"Forces absentes de l'équipe", department:"Département / Service", phDepartment:"ex. Marketing, Direction générale, Production...", business:"Nature du métier / secteur", phBusiness:"ex. Luxe, Industrie, Services financiers...", members:"Membres", addMember:"+ Ajouter un membre", analyze:"Analyser →", analyzeTeam:"Analyser l'équipe →", back:"← Nouveau debrief", backTeam:"← Nouvelle analyse", individual:"Individuel", team:"Équipe", headerSub:"Debrief individuel · Saisissez le top 5 ou top 10", headerSubTeam:"Analyse d'équipe · Ajoutez les membres et leurs forces", executing:"Exécution", influencing:"Influence", relationship:"Relation", thinking:"Pensée stratégique", chatPlaceholder:"Approfondissez une force, posez une question...", teamChatPlaceholder:"Posez une question sur la dynamique d'équipe...", goalOptions:[{v:"dev",l:"Développement personnel"},{v:"team",l:"Intégration dans une équipe"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], level:"Niveau de responsabilité", levelOptions:[{v:"leader",l:"Dirigeant·e / leader"},{v:"manager",l:"Manager / encadrant·e"},{v:"ic",l:"Sans responsabilité d'encadrement"}], teamGoalOptions:[{v:"dynamics",l:"Dynamiques d'équipe"},{v:"collab",l:"Améliorer la collaboration"},{v:"blind",l:"Identifier les angles morts"},{v:"perf",l:"Performance collective"}], coachName:"Votre nom (coach)", downloadPdf:"⬇ Télécharger en PDF", downloadWord:"⬇ Télécharger en Word", importPdf:"📄 Glissez votre rapport Gallup ici, ou cliquez", importDrop:"Déposez le PDF ici…", importing:"Lecture du PDF...", importOk:"Forces importées ✓", importErr:"Lecture impossible. Vérifiez que c'est bien le PDF Gallup, ou saisissez à la main.", importTeam:"📄 Glissez jusqu'à 20 rapports Gallup ici, ou cliquez", importTeamDrop:"Déposez les PDF ici…", importingTeam:"Lecture des rapports...", importTeamOk:(n)=>`${n} membre(s) importé(s) ✓`, importTeamErr:"Aucun rapport lisible. Vérifiez que ce sont bien des PDF Gallup.", importTeamMax:"20 rapports maximum.", letterGreeting:(n)=>`Cher(e) ${n},`, letterIntro:"Voici le débrief de tes forces, fruit de notre échange. Prends le temps de le lire, d'y revenir, et de laisser ces mots résonner.", letterClose:"Avec toute ma confiance,", pdfTitle:"Débrief StrengthsFinder", wordTitle:"Portrait de talents", wordStrengthsHead:"VOS 10 FORCES DOMINANTES", phName:"Prénom Nom", phRole:"ex. CEO, Chef de projet...", phCoach:"ex. Philippe Kassenbeck", phTeam:"ex. Board, Équipe Marketing...", strength:"Force", optional:"optionnel", member:"Membre", analyzing:"Analyse en cours...", errMin3:"Saisissez au moins 3 forces.", errMin2:"Ajoutez au moins 2 membres avec des forces.", errApi:"Erreur API.", errRetry:"Erreur. Réessayez.", authSub:"Accès réservé", authTitle:"Connexion", authPassword:"Mot de passe", authPlaceholder:"Votre mot de passe ou code d'accès", authLogin:"Entrer →", authChecking:"Vérification...", authWrong:"Mot de passe invalide ou expiré.", logout:"Déconnexion", codesBtn:"🔑 Codes d'accès", adminCodes:"Générer un code d'accès", codeDays:"Durée de validité (jours)", generateCode:"Générer le code", copyCode:"Copier", copied:"Copié ✓", codeExpires:"Valable jusqu'au", codeHint:"Donnez ce code à votre client : il pourra se connecter jusqu'à la date d'expiration.", pair:"Binôme", headerSubPair:"Débrief binôme · Analysez l'interaction entre deux personnes", pairRelation:"Nature de la relation", pairRelationOptions:[{v:"peers",l:"Pairs / collègues"},{v:"manager",l:"Manager – collaborateur"},{v:"cofounders",l:"Co-fondateurs / associés"},{v:"transverse",l:"Collaboration transverse"}], analyzePair:"Analyser le binôme →", backPair:"← Nouveau binôme", pairChatPlaceholder:"Posez une question sur la dynamique du binôme...", importPair:"📄 Glissez les 2 rapports Gallup ici, ou cliquez", importPairDrop:"Déposez les 2 PDF ici…", importPairOk:"Binôme importé ✓", importPairErr:"Il faut 2 rapports Gallup lisibles.", statsShared:"Forces communes", statsComplement:"Les deux profils comparés", statsFriction:"Points de friction potentiels", pairNoShared:"Aucune force commune dans les tops — deux profils très différents.", pairNoFriction:"Aucune paire de tension classique détectée.", errPairMin:"Saisissez au moins 3 forces pour chacune des deux personnes.", personA:"Personne A", personB:"Personne B", pitchOnly:"Générer seulement le pitch", pitchOnlyTeam:"Générer seulement les pitchs (chaque membre + l'équipe)", genPitch:"Générer le pitch →", genPitchTeam:"Générer les pitchs →", scopeLabel:"Portée du code", scopeFull:"Accès complet", scopePitch:"Pitch seul", scopePitchTag:"Pitch seul", pitchLockTease:"🔒 Offre complète (débrief détaillé, équipe, binôme) sur demande" },
+  de: { identity:"Identität", name:"Name", role:"Rolle / Position", top5:"Top 5 Stärken (Pflicht)", top10:"Stärken 6–10 (optional)", context:"Kontext", goal:"Ziel des Debriefs", teamName:"Teamname", teamGoal:"Ziel des Debriefs", teamLeader:"Teamleiter", teamLeaderHint:"Klicken Sie ⭐ beim Mitglied, das das Team leitet", statsByPerson:"Die 5 Stärken pro Person", statsByDomain:"Verteilung nach Stärkenbereich", statsRanking:"Gewichtetes Stärken-Ranking", statsPresent:"Vorhandene Talente", statsDomainCol:"Bereich", statsSocio:"Synergie und Antagonismus (Fauvet)", socioSynergy:"Synergie", socioAntagonism:"Antagonismus", socioNeutral:"Neutral / latent", socioSub:"Innerer Zusammenhalt (EGO) vs. Autonomie & Offenheit (ECO)", statsAbsent:"Im Team fehlende Stärken", department:"Abteilung / Bereich", phDepartment:"z. B. Marketing, Geschäftsführung, Produktion...", business:"Branche / Tätigkeitsbereich", phBusiness:"z. B. Luxus, Industrie, Finanzdienstleistungen...", members:"Mitglieder", addMember:"+ Mitglied hinzufügen", analyze:"Analysieren →", analyzeTeam:"Team analysieren →", back:"← Neues Debrief", backTeam:"← Neue Analyse", individual:"Individuell", team:"Team", headerSub:"Individuelles Debrief · Geben Sie die Top 5 oder Top 10 ein", headerSubTeam:"Teamanalyse · Fügen Sie Mitglieder und Stärken hinzu", executing:"Ausführung", influencing:"Einfluss", relationship:"Beziehung", thinking:"Strategisches Denken", chatPlaceholder:"Vertiefen Sie eine Stärke...", teamChatPlaceholder:"Fragen zur Teamdynamik...", goalOptions:[{v:"dev",l:"Persönliche Entwicklung"},{v:"team",l:"Teamintegration"},{v:"perf",l:"Performance"},{v:"collab",l:"Zusammenarbeit"}], level:"Verantwortungsebene", levelOptions:[{v:"leader",l:"Führungskraft / Leader"},{v:"manager",l:"Manager / Teamleiter"},{v:"ic",l:"Ohne Führungsverantwortung"}], teamGoalOptions:[{v:"dynamics",l:"Teamdynamiken"},{v:"collab",l:"Zusammenarbeit verbessern"},{v:"blind",l:"Blinde Flecken erkennen"},{v:"perf",l:"Kollektive Performance"}], coachName:"Ihr Name (Coach)", downloadPdf:"⬇ Als PDF herunterladen", downloadWord:"⬇ Als Word herunterladen", importPdf:"📄 Gallup-Bericht hierher ziehen oder klicken", importDrop:"PDF hier ablegen…", importing:"PDF wird gelesen...", importOk:"Stärken importiert ✓", importErr:"Lesen nicht möglich. Bitte prüfen Sie das Gallup-PDF oder geben Sie manuell ein.", importTeam:"📄 Bis zu 20 Gallup-Berichte hierher ziehen oder klicken", importTeamDrop:"PDFs hier ablegen…", importingTeam:"Berichte werden gelesen...", importTeamOk:(n)=>`${n} Mitglied(er) importiert ✓`, importTeamErr:"Keine lesbaren Berichte. Bitte prüfen Sie die Gallup-PDFs.", importTeamMax:"Maximal 20 Berichte.", letterGreeting:(n)=>`Liebe(r) ${n},`, letterIntro:"Hier ist das Debrief deiner Stärken, das Ergebnis unseres Gesprächs. Nimm dir Zeit, es zu lesen und nachwirken zu lassen.", letterClose:"Mit vollem Vertrauen,", pdfTitle:"StrengthsFinder Debrief", wordTitle:"Talent-Porträt", wordStrengthsHead:"IHRE 10 DOMINANTEN STÄRKEN", phName:"Vor- und Nachname", phRole:"z. B. CEO, Projektleiter...", phCoach:"z. B. Philippe Kassenbeck", phTeam:"z. B. Vorstand, Marketing-Team...", strength:"Stärke", optional:"optional", member:"Mitglied", analyzing:"Analyse läuft...", errMin3:"Geben Sie mindestens 3 Stärken ein.", errMin2:"Fügen Sie mindestens 2 Mitglieder mit Stärken hinzu.", errApi:"API-Fehler.", errRetry:"Fehler. Bitte erneut versuchen.", authSub:"Zugang beschränkt", authTitle:"Anmeldung", authPassword:"Passwort", authPlaceholder:"Ihr Passwort oder Zugangscode", authLogin:"Eintreten →", authChecking:"Prüfung...", authWrong:"Passwort ungültig oder abgelaufen.", logout:"Abmelden", codesBtn:"🔑 Zugangscodes", adminCodes:"Zugangscode generieren", codeDays:"Gültigkeitsdauer (Tage)", generateCode:"Code generieren", copyCode:"Kopieren", copied:"Kopiert ✓", codeExpires:"Gültig bis", codeHint:"Geben Sie diesen Code an Ihren Kunden weiter: er kann sich bis zum Ablaufdatum anmelden.", pair:"Duo", headerSubPair:"Duo-Debrief · Analysieren Sie die Interaktion zwischen zwei Personen", pairRelation:"Art der Beziehung", pairRelationOptions:[{v:"peers",l:"Kollegen / auf Augenhöhe"},{v:"manager",l:"Führungskraft – Mitarbeiter"},{v:"cofounders",l:"Mitgründer / Partner"},{v:"transverse",l:"Bereichsübergreifend"}], analyzePair:"Duo analysieren →", backPair:"← Neues Duo", pairChatPlaceholder:"Frage zur Dynamik des Duos...", importPair:"📄 Die 2 Gallup-Berichte hierher ziehen oder klicken", importPairDrop:"Die 2 PDFs hier ablegen…", importPairOk:"Duo importiert ✓", importPairErr:"Es braucht 2 lesbare Gallup-Berichte.", statsShared:"Gemeinsame Stärken", statsComplement:"Beide Profile im Vergleich", statsFriction:"Mögliche Reibungspunkte", pairNoShared:"Keine gemeinsame Stärke in den Tops — zwei sehr unterschiedliche Profile.", pairNoFriction:"Kein klassisches Spannungspaar erkannt.", errPairMin:"Geben Sie für jede der beiden Personen mindestens 3 Stärken ein.", personA:"Person A", personB:"Person B", pitchOnly:"Nur den Pitch generieren", pitchOnlyTeam:"Nur die Pitches generieren (jedes Mitglied + Team)", genPitch:"Pitch generieren →", genPitchTeam:"Pitches generieren →", scopeLabel:"Umfang des Codes", scopeFull:"Voller Zugang", scopePitch:"Nur Pitch", scopePitchTag:"Nur Pitch", pitchLockTease:"🔒 Vollversion (ausführliches Debrief, Team, Duo) auf Anfrage" },
+  en: { identity:"Identity", name:"Name", role:"Role / Position", top5:"Top 5 strengths (required)", top10:"Strengths 6–10 (optional)", context:"Context", goal:"Debrief objective", teamName:"Team name", teamGoal:"Debrief objective", teamLeader:"Team leader", teamLeaderHint:"Click ⭐ on the member who leads the team", statsByPerson:"The 5 strengths per person", statsByDomain:"Distribution by strength domain", statsRanking:"Weighted strengths ranking", statsPresent:"Present talents", statsDomainCol:"Domain", statsSocio:"Synergy and antagonism (Fauvet)", socioSynergy:"Synergy", socioAntagonism:"Antagonism", socioNeutral:"Neutral / latent", socioSub:"Internal cohesion (EGO) vs autonomy & openness (ECO)", statsAbsent:"Strengths absent from the team", department:"Department / Unit", phDepartment:"e.g. Marketing, Executive board, Production...", business:"Business / industry", phBusiness:"e.g. Luxury, Industry, Financial services...", members:"Members", addMember:"+ Add member", analyze:"Analyze →", analyzeTeam:"Analyze team →", back:"← New debrief", backTeam:"← New analysis", individual:"Individual", team:"Team", headerSub:"Individual debrief · Enter top 5 or top 10", headerSubTeam:"Team analysis · Add members and their strengths", executing:"Executing", influencing:"Influencing", relationship:"Relationship", thinking:"Strategic Thinking", chatPlaceholder:"Dive deeper into a strength...", teamChatPlaceholder:"Ask about team dynamics...", goalOptions:[{v:"dev",l:"Personal development"},{v:"team",l:"Team integration"},{v:"perf",l:"Performance"},{v:"collab",l:"Collaboration"}], level:"Level of responsibility", levelOptions:[{v:"leader",l:"Executive / leader"},{v:"manager",l:"Manager / team lead"},{v:"ic",l:"No management responsibility"}], teamGoalOptions:[{v:"dynamics",l:"Team dynamics"},{v:"collab",l:"Improve collaboration"},{v:"blind",l:"Identify blind spots"},{v:"perf",l:"Collective performance"}], coachName:"Your name (coach)", downloadPdf:"⬇ Download PDF", downloadWord:"⬇ Download Word", importPdf:"📄 Drag your Gallup report here, or click", importDrop:"Drop the PDF here…", importing:"Reading PDF...", importOk:"Strengths imported ✓", importErr:"Could not read it. Check it's the Gallup PDF, or enter manually.", importTeam:"📄 Drag up to 20 Gallup reports here, or click", importTeamDrop:"Drop the PDFs here…", importingTeam:"Reading reports...", importTeamOk:(n)=>`${n} member(s) imported ✓`, importTeamErr:"No readable reports. Check they are Gallup PDFs.", importTeamMax:"20 reports maximum.", letterGreeting:(n)=>`Dear ${n},`, letterIntro:"Here is the debrief of your strengths, the fruit of our conversation. Take the time to read it, return to it, and let these words resonate.", letterClose:"With all my confidence,", pdfTitle:"StrengthsFinder Debrief", wordTitle:"Talent Portrait", wordStrengthsHead:"YOUR 10 DOMINANT STRENGTHS", phName:"First and last name", phRole:"e.g. CEO, Project manager...", phCoach:"e.g. Philippe Kassenbeck", phTeam:"e.g. Board, Marketing team...", strength:"Strength", optional:"optional", member:"Member", analyzing:"Analyzing...", errMin3:"Enter at least 3 strengths.", errMin2:"Add at least 2 members with strengths.", errApi:"API error.", errRetry:"Error. Please try again.", authSub:"Restricted access", authTitle:"Sign in", authPassword:"Password", authPlaceholder:"Your password or access code", authLogin:"Enter →", authChecking:"Checking...", authWrong:"Invalid or expired password.", logout:"Log out", codesBtn:"🔑 Access codes", adminCodes:"Generate an access code", codeDays:"Validity (days)", generateCode:"Generate code", copyCode:"Copy", copied:"Copied ✓", codeExpires:"Valid until", codeHint:"Give this code to your client: they can sign in until the expiry date.", pair:"Pair", headerSubPair:"Pair debrief · Analyze the interaction between two people", pairRelation:"Nature of the relationship", pairRelationOptions:[{v:"peers",l:"Peers / colleagues"},{v:"manager",l:"Manager – report"},{v:"cofounders",l:"Co-founders / partners"},{v:"transverse",l:"Cross-functional"}], analyzePair:"Analyze the pair →", backPair:"← New pair", pairChatPlaceholder:"Ask about the pair's dynamic...", importPair:"📄 Drag the 2 Gallup reports here, or click", importPairDrop:"Drop the 2 PDFs here…", importPairOk:"Pair imported ✓", importPairErr:"Two readable Gallup reports are required.", statsShared:"Shared strengths", statsComplement:"Both profiles compared", statsFriction:"Potential friction points", pairNoShared:"No shared strength in the tops — two very different profiles.", pairNoFriction:"No classic tension pair detected.", errPairMin:"Enter at least 3 strengths for each of the two people.", personA:"Person A", personB:"Person B", pitchOnly:"Generate only the pitch", pitchOnlyTeam:"Generate only the pitches (each member + the team)", genPitch:"Generate the pitch →", genPitchTeam:"Generate the pitches →", scopeLabel:"Code scope", scopeFull:"Full access", scopePitch:"Pitch only", scopePitchTag:"Pitch only", pitchLockTease:"🔒 Full offer (detailed debrief, team, pair) on request" },
 };
 
 // Sécurité : renvoie TOUJOURS un objet de libellés valide.
@@ -771,7 +771,7 @@ function LoginGate({ lang, setLang, onAuth }) {
         body: JSON.stringify({ password: pw }),
       });
       const data = await res.json();
-      if (data.ok) onAuth(data.role);
+      if (data.ok) onAuth(data.role, data.scope);
       else setErr(data.error || L.authWrong);
     } catch (_) { setErr(L.authWrong); }
     setBusy(false);
@@ -815,8 +815,10 @@ function LoginGate({ lang, setLang, onAuth }) {
 function CodePanel({ lang, onClose }) {
   const L = getLabels(lang);
   const [days, setDays] = useState(7);
+  const [scope, setScope] = useState("full");
   const [code, setCode] = useState("");
   const [exp, setExp] = useState(null);
+  const [codeScope, setCodeScope] = useState("full");
   const [busy, setBusy] = useState(false);
   const [copied, setCopied] = useState(false);
   async function gen() {
@@ -825,10 +827,10 @@ function CodePanel({ lang, onClose }) {
       const res = await fetch("/api/auth/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ days }),
+        body: JSON.stringify({ days, scope }),
       });
       const data = await res.json();
-      if (data.ok) { setCode(data.code); setExp(data.expires); }
+      if (data.ok) { setCode(data.code); setExp(data.expires); setCodeScope(data.scope || "full"); }
     } catch (_) {}
     setBusy(false);
   }
@@ -841,6 +843,13 @@ function CodePanel({ lang, onClose }) {
       <div className="code-panel-head">
         <strong>{L.adminCodes}</strong>
         <button className="remove-btn" onClick={onClose}>✕</button>
+      </div>
+      <div className="field-row" style={{ marginBottom: "8px" }}>
+        <label>{L.scopeLabel}</label>
+        <select value={scope} onChange={e => setScope(e.target.value)}>
+          <option value="full">{L.scopeFull}</option>
+          <option value="pitch">{L.scopePitch}</option>
+        </select>
       </div>
       <div className="field-row" style={{ marginBottom: "8px" }}>
         <label>{L.codeDays}</label>
@@ -856,6 +865,7 @@ function CodePanel({ lang, onClose }) {
           <div className="code-actions">
             <button className="pill" onClick={copy}>{copied ? L.copied : L.copyCode}</button>
             <span className="code-exp">{L.codeExpires} {exp ? new Date(exp).toLocaleDateString() : ""}</span>
+            <span className="code-exp">· {codeScope === "pitch" ? L.scopePitch : L.scopeFull}</span>
           </div>
           <div className="code-hint">{L.codeHint}</div>
         </div>
@@ -875,7 +885,7 @@ export default function Home() {
   useEffect(() => {
     fetch("/api/auth/session")
       .then(r => r.json())
-      .then(d => setAuthState(d.authed ? { authed: true, role: d.role } : { authed: false }))
+      .then(d => setAuthState(d.authed ? { authed: true, role: d.role, scope: d.scope || "full" } : { authed: false }))
       .catch(() => setAuthState({ authed: false }));
   }, []);
   async function logout() {
@@ -883,6 +893,8 @@ export default function Home() {
     setAuthState({ authed: false });
     setShowCodes(false);
   }
+  // Session « pitch seul » : seule la génération de pitch est active, le reste est grisé.
+  const pitchLock = !!(authState && authState.authed && authState.scope === "pitch");
 
   // Individual state
   const [indName, setIndName] = useState("");
@@ -1008,11 +1020,11 @@ export default function Home() {
     }
   }
 
-  // ÉQUIPE — lit jusqu'à 12 rapports Gallup et crée un membre par rapport (Top 5).
+  // ÉQUIPE — lit jusqu'à 20 rapports Gallup et crée un membre par rapport (Top 5).
   async function importTeamPdfs(fileList) {
-    const files = Array.from(fileList || []).filter(f => f.type === "application/pdf").slice(0, 17);
+    const files = Array.from(fileList || []).filter(f => f.type === "application/pdf").slice(0, 20);
     if (files.length === 0) return;
-    if ((fileList || []).length > 17) alert(L.importTeamMax);
+    if ((fileList || []).length > 20) alert(L.importTeamMax);
     setTeamImportStatus("loading");
     try {
       const pdfjsLib = await loadPdfJs();
@@ -1069,7 +1081,7 @@ export default function Home() {
       ? `Verfasse das vollständige „Leadership-Portrait" dieses StrengthsFinder-Profils und folge GENAU der Struktur deiner Anweisungen: Vorwort „Wie dieses Porträt zu lesen ist", dann die fünf nummerierten Abschnitte (1. Porträt, 2. Ihre Aufmerksamkeitszonen mit dem Kasten „Ihre wichtigste Wachsamkeit", 3. Ihre Stärken nutzen, um noch weiter zu gehen, 4. Fremdwahrnehmung mit der stillen Frage, 5. zwei kraftvolle Fragen, 6. der Pitch „Wenn ich mich vorstellen müsste" in der Ich-Form, ohne je die offiziellen Stärkennamen zu nennen), dann die Signatur von Philippe. Ziel des Debriefs: ${goalLabel}.\n\nProfil: ${ctx}`
       : `Write the complete "Leadership Portrait" for this StrengthsFinder profile following EXACTLY the structure in your instructions: foreword "How to read this portrait", then the five numbered sections (1. portrait, 2. your watch-points with the "Your key watch-point" call-out, 3. using your strengths to go even further, 4. how others perceive you with the silent question, 5. two powerful questions, 6. the first-person pitch "If I had to pitch myself", never naming the official strength themes), then Philippe's signature. Debrief objective: ${goalLabel}.\n\nProfile: ${ctx}`;
     // MODE « PITCH SEUL » : une petite requête qui ne renvoie que le pitch « je ».
-    if (indPitchOnly) {
+    if (indPitchOnly || pitchLock) {
       const heading = lg==="fr" ? "Si je devais me pitcher" : lg==="de" ? "Wenn ich mich vorstellen müsste" : "If I had to pitch myself";
       const pitchPrompt = lg==="fr"
         ? `Rédige UNIQUEMENT le pitch « Si je devais me pitcher » à la première personne, à partir de ce profil, sans jamais nommer les forces officielles.\n\nProfil : ${ctx}`
@@ -1171,7 +1183,7 @@ export default function Home() {
     // MODE « PITCHS SEULS » : une petite requête par membre (pitch « je »), en PARALLÈLE,
     // + une requête pour le pitch collectif « nous ». Chaque requête est courte et
     // indépendante (budget propre) : rapide et sans risque de time-out.
-    if (teamPitchOnly) {
+    if (teamPitchOnly || pitchLock) {
       const collHead = lg==="fr" ? "Si notre équipe devait se pitcher" : lg==="de" ? "Wenn sich unser Team vorstellen müsste" : "If our team had to pitch itself";
       const memberWord = lg==="de" ? "Mitglied" : lg==="fr" ? "Membre" : "Member";
       try {
@@ -1827,7 +1839,7 @@ export default function Home() {
     return <div className="page"><div className="agent-header"><p>{L.authChecking}</p></div></div>;
   }
   if (!authState.authed) {
-    return <LoginGate lang={lang} setLang={setLang} onAuth={(role) => setAuthState({ authed: true, role })} />;
+    return <LoginGate lang={lang} setLang={setLang} onAuth={(role, scope) => setAuthState({ authed: true, role, scope: scope || "full" })} />;
   }
 
   return (
@@ -1847,7 +1859,7 @@ export default function Home() {
         <div className="pill-group">
           <button className={`mode-pill ${mode==="individual"?"active":""}`} onClick={() => setMode("individual")}>{L.individual}</button>
           <button className={`mode-pill ${mode==="team"?"active":""}`} onClick={() => setMode("team")}>{L.team}</button>
-          <button className={`mode-pill ${mode==="pair"?"active":""}`} onClick={() => setMode("pair")}>{L.pair}</button>
+          <button className={`mode-pill ${mode==="pair"?"active":""}`} onClick={() => { if (!pitchLock) setMode("pair"); }} disabled={pitchLock} title={pitchLock ? L.pitchLockTease : undefined} style={pitchLock ? { opacity: .4, cursor: "not-allowed" } : undefined}>{L.pair}</button>
         </div>
         <div className="pill-group" style={{ marginLeft: "auto" }}>
           {authState.role === "admin" && (
@@ -1941,16 +1953,28 @@ export default function Home() {
                 {L.goalOptions.map(g => <option key={g.v} value={g.v}>{g.l}</option>)}
               </select>
             </div>
-            <div className="field-row" style={{marginTop:"4px"}}>
-              <label style={{display:"flex",alignItems:"center",gap:"8px",cursor:"pointer"}}>
-                <input type="checkbox" checked={indPitchOnly} onChange={e => setIndPitchOnly(e.target.checked)} style={{width:"auto",margin:0}} />
-                {L.pitchOnly}
-              </label>
-            </div>
+            {!pitchLock && (
+              <div className="field-row" style={{marginTop:"4px"}}>
+                <label style={{display:"flex",alignItems:"center",gap:"8px",cursor:"pointer"}}>
+                  <input type="checkbox" checked={indPitchOnly} onChange={e => setIndPitchOnly(e.target.checked)} style={{width:"auto",margin:0}} />
+                  {L.pitchOnly}
+                </label>
+              </div>
+            )}
           </div>
-          <button className="analyze-btn" onClick={analyzeIndividual} disabled={indLoading}>
-            {indLoading ? L.analyzing : (indPitchOnly ? L.genPitch : L.analyze)}
-          </button>
+          {pitchLock ? (
+            <>
+              <button className="analyze-btn" disabled style={{ opacity: .4, cursor: "not-allowed" }}>🔒 {L.analyze}</button>
+              <div style={{ fontSize: "12px", color: "var(--text2)", textAlign: "center", margin: "6px 0 10px" }}>{L.pitchLockTease}</div>
+              <button className="analyze-btn" onClick={analyzeIndividual} disabled={indLoading}>
+                {indLoading ? L.analyzing : L.genPitch}
+              </button>
+            </>
+          ) : (
+            <button className="analyze-btn" onClick={analyzeIndividual} disabled={indLoading}>
+              {indLoading ? L.analyzing : (indPitchOnly ? L.genPitch : L.analyze)}
+            </button>
+          )}
         </div>
       )}
 
@@ -1963,13 +1987,15 @@ export default function Home() {
           </div>
           <button className="pdf-btn" onClick={() => downloadPdf(indName, indReport.text)}>{L.downloadPdf}</button>
           <button className="pdf-btn" onClick={() => downloadWord(indName, indReport.text, indRole, indReport.strengths)}>{L.downloadWord}</button>
-          <ChatArea messages={indChatMsgs} chatAreaRef={indChatRef} />
-          <div className="chat-input-row">
-            <textarea rows={2} value={indChatInput} onChange={e => setIndChatInput(e.target.value)}
-              placeholder={L.chatPlaceholder}
-              onKeyDown={e => { if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendIndChat();} }} />
-            <button className="send-btn" onClick={sendIndChat} disabled={indChatLoading}>↑</button>
-          </div>
+          {!pitchLock && <ChatArea messages={indChatMsgs} chatAreaRef={indChatRef} />}
+          {!pitchLock && (
+            <div className="chat-input-row">
+              <textarea rows={2} value={indChatInput} onChange={e => setIndChatInput(e.target.value)}
+                placeholder={L.chatPlaceholder}
+                onKeyDown={e => { if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendIndChat();} }} />
+              <button className="send-btn" onClick={sendIndChat} disabled={indChatLoading}>↑</button>
+            </div>
+          )}
         </div>
       )}
 
@@ -2049,15 +2075,27 @@ export default function Home() {
             ))}
             <button className="add-member-btn" onClick={addMember}>{L.addMember}</button>
           </div>
-          <div className="form-section">
-            <label style={{display:"flex",alignItems:"center",gap:"8px",cursor:"pointer",fontSize:"14px"}}>
-              <input type="checkbox" checked={teamPitchOnly} onChange={e => setTeamPitchOnly(e.target.checked)} style={{width:"auto",margin:0}} />
-              {L.pitchOnlyTeam}
-            </label>
-          </div>
-          <button className="analyze-btn" onClick={analyzeTeam} disabled={teamLoading}>
-            {teamLoading ? L.analyzing : (teamPitchOnly ? L.genPitchTeam : L.analyzeTeam)}
-          </button>
+          {!pitchLock && (
+            <div className="form-section">
+              <label style={{display:"flex",alignItems:"center",gap:"8px",cursor:"pointer",fontSize:"14px"}}>
+                <input type="checkbox" checked={teamPitchOnly} onChange={e => setTeamPitchOnly(e.target.checked)} style={{width:"auto",margin:0}} />
+                {L.pitchOnlyTeam}
+              </label>
+            </div>
+          )}
+          {pitchLock ? (
+            <>
+              <button className="analyze-btn" disabled style={{ opacity: .4, cursor: "not-allowed" }}>🔒 {L.analyzeTeam}</button>
+              <div style={{ fontSize: "12px", color: "var(--text2)", textAlign: "center", margin: "6px 0 10px" }}>{L.pitchLockTease}</div>
+              <button className="analyze-btn" onClick={analyzeTeam} disabled={teamLoading}>
+                {teamLoading ? L.analyzing : L.genPitchTeam}
+              </button>
+            </>
+          ) : (
+            <button className="analyze-btn" onClick={analyzeTeam} disabled={teamLoading}>
+              {teamLoading ? L.analyzing : (teamPitchOnly ? L.genPitchTeam : L.analyzeTeam)}
+            </button>
+          )}
         </div>
       )}
 
@@ -2071,13 +2109,15 @@ export default function Home() {
           </div>
           <button className="pdf-btn" onClick={() => downloadPdf(teamName, teamReport.text, teamReport.stats, teamReport.members, { pageBreakPerSection: teamReport.pitchOnly })}>{L.downloadPdf}</button>
           <button className="pdf-btn" onClick={() => downloadWord(teamName, teamReport.text, teamName, null, teamReport.stats, { pageBreakPerSection: teamReport.pitchOnly })}>{L.downloadWord}</button>
-          <ChatArea messages={teamChatMsgs} chatAreaRef={teamChatRef} />
-          <div className="chat-input-row">
-            <textarea rows={2} value={teamChatInput} onChange={e => setTeamChatInput(e.target.value)}
-              placeholder={L.teamChatPlaceholder}
-              onKeyDown={e => { if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendTeamChat();} }} />
-            <button className="send-btn" onClick={sendTeamChat} disabled={teamChatLoading}>↑</button>
-          </div>
+          {!pitchLock && <ChatArea messages={teamChatMsgs} chatAreaRef={teamChatRef} />}
+          {!pitchLock && (
+            <div className="chat-input-row">
+              <textarea rows={2} value={teamChatInput} onChange={e => setTeamChatInput(e.target.value)}
+                placeholder={L.teamChatPlaceholder}
+                onKeyDown={e => { if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendTeamChat();} }} />
+              <button className="send-btn" onClick={sendTeamChat} disabled={teamChatLoading}>↑</button>
+            </div>
+          )}
         </div>
       )}
 
