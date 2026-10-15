@@ -26,12 +26,18 @@ export async function POST(req) {
     // comme la relecture (plus rapide, moins coûteux). Liste blanche stricte.
     const MODELS = { opus: "claude-opus-4-8", sonnet: "claude-sonnet-5" };
     const model = MODELS[body.model] || "claude-opus-4-8";
+    // 16000 : un débrief complet (6 sections + 3 questions + pitch), ancré sur la
+    // référence, dépasse les 8000 tokens et se faisait tronquer en plein milieu
+    // (section 5 coupée, pitch absent). Le modèle s'arrête de lui-même quand il a fini.
     const response = await client.messages.create({
       model,
-      max_tokens: 8000,
+      max_tokens: 16000,
       system: systemPrompt,
       messages,
     });
+    if (response.stop_reason === "max_tokens") {
+      console.warn("Analyze: output hit max_tokens (truncated).");
+    }
     // Concatenate every text block rather than assuming a single one.
     const text = (response.content || [])
       .filter((block) => block.type === "text")
