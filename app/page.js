@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { OPTIMUP_LOGO, OPTIMUP_LOGO_RATIO } from "./logo";
 import { toEnglishStrength } from "./strengthsMap";
+import { strengthsReference, familyRoots, favoritesBlock } from "./strengthsData";
 
 const ALL34 = ["Achiever","Activator","Adaptability","Analytical","Arranger","Belief","Command","Communication","Competition","Connectedness","Consistency","Context","Deliberative","Developer","Discipline","Empathy","Focus","Futuristic","Harmony","Ideation","Includer","Individualization","Input","Intellection","Learner","Maximizer","Positivity","Relator","Responsibility","Restorative","Self-Assurance","Significance","Strategic","Woo"];
 
@@ -504,6 +505,8 @@ STRENGTH NAMES: Strengths are given in English (e.g. "Achiever", "Strategic"). A
 
 STRICT FIDELITY: The strengths and their order are given to you and are exact. Never contradict, reorder or invent rankings. Read the absences too: a domain that does not appear in the top is a real signal you must use (it drives sections 2 and 3).
 
+REFERENCE PROVIDED (Optimup source of truth) — the Context includes a « RÉFÉRENCE DES FORCES » (per strength: sens, vigilance, formulation « je », question puissante), « RACINES PAR FAMILLE », and a « BANQUE DE QUESTIONS PUISSANTES ». GROUND your writing on it: the meaning of each strength (section 1), the watch-points (section 2), using strengths to go further (section 3), perception (section 4), the TWO powerful questions (section 5: draw on each dominant strength's « question puissante » and the spirit of the bank), and the lived first-person language of the pitch (section 6: anchor on the « formulation « je » »). ALWAYS adapt to THIS person; NEVER copy the reference verbatim; never name the official theme in the pitch. Use the family roots only as a gentle hypothesis, woven in with tact, never asserted as a fact about the person.
+
 OUTPUT FORMAT — follow this structure EXACTLY. Use light Markdown: "## " before each section heading, "**bold**" for emphasis on strength names and key phrases. No tables. The whole debrief fits roughly 2 A4 pages.
 
 RESPONSIBILITY LEVEL — CRITICAL. The context gives a "Responsibility level" tagged [LEADER], [MANAGER] or [INDIVIDUAL_CONTRIBUTOR]. You MUST adapt the entire debrief to it. Never assume the person manages people unless they are LEADER or MANAGER.
@@ -609,6 +612,8 @@ ABSOLUTE RULE — NEVER name any official CliftonStrengths theme (no "Achiever",
 Write it as a SINGLE flowing text (no sub-headings, no bullets, no bold labels), about 20 to 30 lines (roughly half a page), in this order:
 ${body}
 
+REFERENCE: if the Context includes a « RÉFÉRENCE DES FORCES » with a « formulation « je » » per strength, ANCHOR each strength's lived language on it (keep its spirit, adapt and link it to the person, never copy verbatim, never name the theme).
+
 Return ONLY the pitch text, starting directly with its first words. Do NOT add any title, heading, salutation or signature.
 
 Context: ${context}`;
@@ -631,6 +636,8 @@ CONTEXT YOU ARE GIVEN — use ALL of it, ignore no field:
 - "Chef d'équipe": the member tagged [CHEF D'ÉQUIPE]. If tagged, analyze the leader–team dynamic specifically; if none is tagged, omit anything about a leader.
 
 A precise numeric report is given in context (weighted ranking, domain distribution, rare and absent strengths, AND the exact Fauvet sociodynamics rates: synergy %, antagonism %, neutral %). It is computed exactly — NEVER recompute or contradict these numbers. The visual tables are already shown to the user; your job is INTERPRETATION and systemic insight, not listing.
+
+REFERENCE PROVIDED (Optimup source of truth) — the Context includes a « RÉFÉRENCE DES FORCES » (per strength: sens, vigilance), « RACINES PAR FAMILLE », and a « BANQUE DE QUESTIONS PUISSANTES ». GROUND the meaning of the strengths and their collective watch-points on this reference, and draw on the family roots (with tact, as a hypothesis) and on the question bank's spirit for the Hawkins powerful questions. Adapt to THIS team; never copy verbatim.
 
 REFERENCE FRAMEWORKS you must use (Philippe's methodology — use the exact vocabulary):
 - Jean-Christian FAUVET (sociodynamique): « synergie et antagonisme ne s'opposent pas, ils se composent pour créer la dynamique organisationnelle ». SYNERGY = team EGO = internal cohesion, belonging, shared culture (risk: insularity / "tyrannie de la gentillesse" / faux consensus). ANTAGONISM = team ECO = openness, external responsiveness, individual autonomy, challenge (NOT conflict — it is the differentiation energy). Fauvet's OPTIMAL "zone évolutive" = HIGH synergy AND HIGH antagonism together = productive tension ("triangles d'or": engaged actors who challenge without breaking the bond). Actor positions on the grid: allié, opposant, hésitant, triangle d'or/déchiré, passif. Positions are NOT fixed — they move with recognition, involvement, and whether concerns are heard.
@@ -716,6 +723,7 @@ CONTEXT YOU ARE GIVEN — use ALL of it:
 - The two people, each with their ranked strengths.
 - "Relation" tagged [PEERS], [MANAGER_REPORT], [COFOUNDERS] or [TRANSVERSE]. ADAPT everything to it. For [MANAGER_REPORT], the FIRST person is the manager and the SECOND the direct report: address the hierarchical asymmetry (power, direction of feedback, psychological safety) explicitly. For [PEERS]/[TRANSVERSE], treat them as equals. For [COFOUNDERS], stress complementarity of decision-making and the risk of founder friction.
 - A computed report: SHARED strengths (resemblance), domain profiles, COMPLEMENTARY domains, and detected FRICTION PAIRS (from the Talent Tension Matrix). These are exact — cite them, never contradict or recompute.
+- A « RÉFÉRENCE DES FORCES » (Optimup source of truth: per strength sens, vigilance, formulation « je », question puissante) and « RACINES PAR FAMILLE ». GROUND the meaning, the frictions and the duo pitch on them: anchor the pitch's lived first-person-plural language on the « formulation « je » » of each person's strengths. Adapt to THIS pair; never copy verbatim; never name the theme in the pitch; use the family roots with tact, as a hypothesis.
 
 FRAMEWORKS (Philippe's methodology):
 - Resemblance is comfort AND blind spot: two people sharing a dominant strength create an echo chamber — they filter out the same things ("talent saturation"). Name this.
@@ -1073,7 +1081,12 @@ export default function Home() {
     const goalLabel = Lg.goalOptions.find(g => g.v === indGoal)?.l || indGoal;
     const levelLabel = (Lg.levelOptions || []).find(g => g.v === indLevel)?.l || indLevel;
     const levelTag = indLevel === "leader" ? "LEADER" : indLevel === "manager" ? "MANAGER" : "INDIVIDUAL_CONTRIBUTOR";
-    const ctx = `Name: ${indName.trim() || "(prénom non précisé)"}\nRole: ${indRole || "-"}\nResponsibility level: ${levelLabel} [${levelTag}]\nObjective: ${goalLabel}\nStrengths (ranked): ${strengths.map((s,i) => `${i+1}. ${s}`).join(", ")}`;
+    const ctxBase = `Name: ${indName.trim() || "(prénom non précisé)"}\nRole: ${indRole || "-"}\nResponsibility level: ${levelLabel} [${levelTag}]\nObjective: ${goalLabel}\nStrengths (ranked): ${strengths.map((s,i) => `${i+1}. ${s}`).join(", ")}`;
+    const indRoots = familyRoots(strengths);
+    const ctx = ctxBase
+      + `\n\nRÉFÉRENCE DES FORCES (source de vérité Optimup — ancre le sens, les zones de vigilance et les questions puissantes sur ceci ; adapte à la personne, ne recopie jamais mot pour mot ; ne nomme jamais la force dans le pitch) :\n${strengthsReference(strengths)}`
+      + (indRoots ? `\n\nRACINES PAR FAMILLE (lecture de profondeur, à manier avec tact, jamais à asséner comme un fait) :\n${indRoots}` : "")
+      + `\n\nBANQUE DE QUESTIONS PUISSANTES (inspiration pour la section 5 et le chat ; s'en inspirer, ne jamais recopier) :\n${favoritesBlock()}`;
     setIndContext(ctx);
     const promptText = lg === "fr"
       ? `Rédige le « Portrait de leadership » complet de ce profil StrengthsFinder en suivant EXACTEMENT la structure de tes consignes : avant-propos « Comment lire ce portrait », puis les cinq sections numérotées (1. portrait, 2. vos zones de vigilance avec l'encadré « Votre vigilance prioritaire », 3. utiliser vos forces pour aller encore plus loin, 4. comment les autres vous perçoivent avec la question silencieuse, 5. deux questions puissantes, 6. le pitch « Si je devais me pitcher » à la première personne, sans jamais nommer les forces officielles), puis la signature de Philippe. Objectif du debrief : ${goalLabel}.\n\nProfil : ${ctx}`
@@ -1177,9 +1190,13 @@ export default function Home() {
     ctxLines.push(`\nFAUVET SOCIODYNAMICS (exact, do not recompute): Synergy ${soc.synergyPct}% (${soc.synergyPts} pts) | Antagonism ${soc.antagonismPct}% (${soc.antagonismPts} pts) | Neutral/latent ${soc.neutralPct}% (${soc.neutralPts} pts)`);
     ctxLines.push(`Synergy strengths present (cohesion / EGO): ${soc.synergyStrengths.join(", ") || "none"}`);
     ctxLines.push(`Antagonism strengths present (challenge & openness / ECO): ${soc.antagonismStrengths.join(", ") || "none"}`);
-    const ctx = ctxLines.join("\n");
-    setTeamContext(ctx);
     const allStrengths = validMembers.flatMap(m => m.strengths.filter(Boolean));
+    const teamRoots = familyRoots(allStrengths);
+    const ctx = ctxLines.join("\n")
+      + `\n\nRÉFÉRENCE DES FORCES (source de vérité Optimup — ancre le sens et les zones de vigilance sur ceci ; adapte à l'équipe, ne recopie jamais mot pour mot) :\n${strengthsReference(allStrengths, ["def","vigilance"])}`
+      + (teamRoots ? `\n\nRACINES PAR FAMILLE (lecture de profondeur, à manier avec tact, jamais à asséner) :\n${teamRoots}` : "")
+      + `\n\nBANQUE DE QUESTIONS PUISSANTES (inspiration pour les questions puissantes de Hawkins ; s'en inspirer, ne jamais recopier) :\n${favoritesBlock()}`;
+    setTeamContext(ctx);
     // MODE « PITCHS SEULS » : une petite requête par membre (pitch « je »), en PARALLÈLE,
     // + une requête pour le pitch collectif « nous ». Chaque requête est courte et
     // indépendante (budget propre) : rapide et sans risque de time-out.
@@ -1190,7 +1207,8 @@ export default function Home() {
         const memberCalls = validMembers.map((m) => {
           const mS = m.strengths.filter(Boolean);
           const mName = (m.name || "").trim();
-          const mCtx = `Name: ${mName || "(prénom non précisé)"}\nStrengths (ranked): ${mS.map((s,i)=>`${i+1}. ${s}`).join(", ")}`;
+          const mCtx = `Name: ${mName || "(prénom non précisé)"}\nStrengths (ranked): ${mS.map((s,i)=>`${i+1}. ${s}`).join(", ")}`
+            + `\n\nRÉFÉRENCE « je » (ancre le langage vécu de chaque force ; ne recopie pas, ne nomme pas la force) :\n${strengthsReference(mS, ["je"])}`;
           const mPrompt = lg==="fr"
             ? `Rédige UNIQUEMENT le pitch « Si je devais me pitcher » à la première personne pour cette personne, sans jamais nommer les forces officielles.\n\nProfil : ${mCtx}`
             : lg==="de"
@@ -1309,7 +1327,10 @@ export default function Home() {
       `COMPLEMENTARY domains (exact): ${stats.complementary.map(c => `${c.domain} present in ${c.strong === "A" ? nameA : nameB}, absent in the other`).join("; ") || "none"}`,
       `FRICTION PAIRS detected (Talent Tension Matrix, exact): ${stats.frictions.map(f => `${f.a} ↔ ${f.b} (${f.desc})`).join("; ") || "none"}`,
     ];
-    const ctx = ctxLines.join("\n");
+    const pairRoots = familyRoots([...aS, ...bS]);
+    const ctx = ctxLines.join("\n")
+      + `\n\nRÉFÉRENCE DES FORCES (source de vérité Optimup — ancre le sens, les zones de vigilance et le pitch en duo sur ceci ; adapte au binôme, ne recopie jamais mot pour mot ; ne nomme jamais la force dans le pitch) :\n${strengthsReference([...aS, ...bS])}`
+      + (pairRoots ? `\n\nRACINES PAR FAMILLE (lecture de profondeur, à manier avec tact, jamais à asséner) :\n${pairRoots}` : "");
     setPairContext(ctx);
     const promptText = lg === "fr"
       ? `Fais le débrief complet de ce binôme en suivant EXACTEMENT la structure de tes consignes : avant-propos, puis les 5 sections (1. ressemblances, 2. complémentarités, 3. frictions avec l'encadré « La tension la plus structurante », 4. comment mieux travailler ensemble, 5. outil CNV avec un exemple sur-mesure ET un canevas vierge, 6. le pitch en duo à la première personne du pluriel « nous », sans nommer les forces officielles). Adapte tout à la nature de la relation.\n\nBinôme :\n${ctx}`
