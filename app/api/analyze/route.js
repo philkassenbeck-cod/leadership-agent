@@ -26,16 +26,16 @@ export async function POST(req) {
     // comme la relecture (plus rapide, moins coûteux). Liste blanche stricte.
     const MODELS = { opus: "claude-opus-4-8", sonnet: "claude-sonnet-5" };
     const model = MODELS[body.model] || "claude-opus-4-8";
-    // Température basse (0.5) : un même profil donne une lecture plus STABLE d'un
-    // débrief à l'autre (diagnostic cohérent), sans figer totalement l'expression.
-    const temperature = typeof body.temperature === "number" ? body.temperature : 0.5;
+    // NB : le paramètre `temperature` est DÉPRÉCIÉ pour Opus 4.8 (renvoie une erreur
+    // 400 « temperature is deprecated for this model »). On ne l'envoie donc pas ; la
+    // stabilité de lecture passe par les consignes (poids du classement, collision =
+    // stretch sur les forces du haut) plutôt que par la température.
     // 16000 : un débrief complet (6 sections + 3 questions + pitch), ancré sur la
     // référence, dépasse les 8000 tokens et se faisait tronquer en plein milieu
     // (section 5 coupée, pitch absent). Le modèle s'arrête de lui-même quand il a fini.
     const response = await client.messages.create({
       model,
       max_tokens: 16000,
-      temperature,
       system: systemPrompt,
       messages,
     });
