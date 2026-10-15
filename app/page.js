@@ -571,6 +571,13 @@ De l'autre côté, il y a votre intelligence des personnes. Vous ressentez les a
 À votre organisation, vous apportez trois choses précieuses : une capacité d'exécution qui ne se contente jamais du moyen, une finesse humaine qui place chaque personne au bon endroit, et une énergie d'entraînement qui met un collectif en mouvement.
 ---
 
+SECOND STYLE EXEMPLAR (a DIFFERENT person) — sections 1 and 2, same target register, showing ESPECIALLY how the COMPUTED collision is rendered as « Votre vigilance prioritaire ». Imitate the SPIRIT only, never the words or content; adapt to THIS person. French model, adapt to ${langName}. Between the === lines:
+===
+(ouverture de la section 1) Chez vous, [Prénom], le leadership prend une forme particulière : faire avancer en reliant les choses et les gens. Vous abattez énormément de travail, et vite, mais vous le faites avec la conviction tranquille que chaque effort s'inscrit dans quelque chose de plus grand que lui. Rien chez vous n'est de l'agitation pure : il y a du sens derrière le mouvement, et des personnes derrière chaque projet.
+(section 2) Votre besoin d'accomplir (Réalisateur) est un carburant rare : vous finissez ce que d'autres laissent en suspens. Mais se pourrait-il que, certains jours, votre liste devienne votre seul juge ? Peut-être parce que l'énergie de produire est si immédiate qu'elle vous pousse à vous engager sur des projets ou des délais avant d'en avoir mesuré l'ampleur.
+**Votre vigilance prioritaire** — Votre besoin d'accomplir (Réalisateur) et votre conviction que tout se tient (Connexion) tirent vers deux rythmes différents. L'un veut avancer, cocher, livrer, maintenant ; l'autre veut prendre du recul, laisser le sens émerger. Quand vous êtes sous pression, le premier parle plus fort et peut faire taire le second : vous exécutez à toute vitesse une chose qui, au fond, ne s'inscrit dans aucun fil qui compte vraiment pour vous. Votre vraie puissance naît quand l'action sert le sens, et non quand elle le remplace.
+===
+
 ## 2 — Zones de vigilance (2 paragraphs, then ONE call-out, then 1–2 paragraphs)
 Every strength has a flip side, but present it as an OPEN, APPRECIATIVE QUESTION, never as a flat verdict or a defect. Do NOT assert the shadow ("votre force peut vous amener à...", "ce qui fait votre force contient aussi son ombre"): ASK it. Lead each watch-point with a question that first honours the strength (warmly but soberly, WITHOUT superlatives) and then opens its possible flip side, e.g. « Et si votre besoin d'accomplir (Réalisateur) pouvait aussi, parfois, vous faire vous engager sur des projets ou des délais avant d'en avoir mesuré l'ampleur ? ». VARY the opening from one watch-point to the next (do NOT repeat « Et si… ? » every time): rotate among « Et si… ? », « Se pourrait-il que… ? », « Qu'est-ce qui se joue, certains jours, lorsque… ? », « Votre … va-t-il parfois… ? », « Comment réagissez-vous quand… ? ». At most ONE watch-point may start with « Et si ». After each question, offer ONE or TWO gentle HYPOTHESES as possible answers (« Peut-être parce que… », « Il se peut que… », « Est-ce que, certains jours,… ? »), never a flat diagnosis. The tone stays valuing throughout: the aim is lucidity and conscious choice, never a flaw to fix. NEVER use the word "risque" (nor "risk"): speak of "zone de vigilance", "point d'attention", "ce à quoi rester attentif".
 EXCEPTION — the call-out stays AFFIRMED and direct (not a question): after the first question-paragraph, insert ONE call-out line that starts exactly with "**Votre vigilance prioritaire** —" naming the COLLISION that is COMPUTED and GIVEN in the Context (the « STRETCH / COLLISION » line): use EXACTLY those two strengths and the tension they create, with one bolded key phrase inside. Do NOT re-derive the pair yourself, and NEVER use two synergistic same-family strengths here; this call-out is the headline of the stretch. Then continue with the remaining watch-points, STILL in the questioning « Et si… ? » + hypotheses mode, including what their UNDER-represented domains invite them to stay attentive to.
@@ -788,7 +795,7 @@ Then SIX sections, each opened by "## " numbered 1 to 6 (translate to ${langName
 2 short paragraphs. Using the COMPLEMENTARY domains and each person's distinctive strengths, name the concrete gift each brings the other (what the first gives the second, and vice-versa). Frame the pairing's combined superpower.
 
 "## 3. Là où ça peut frotter"
-2-3 paragraphs grounded in the detected FRICTION PAIRS (name them, e.g. "**Activateur** chez l'un ↔ **Prudent** chez l'autre"). For each, explain the underlying tension (pace, proof vs momentum, distinction vs belonging…) as a SYSTEM tension, never a personal fault. Where it opens the dialogue, pose a friction as an OPEN QUESTION to the pair (e.g. « Que se passe-t-il quand l'un veut lancer et l'autre vérifier d'abord ? ») rather than only as a flat statement, with VARIED openings, never the same formula twice. Insert ONE call-out starting exactly "**La tension la plus structurante** —" naming the single friction most worth working on, with one bolded key phrase, framed as productive tension to harness (the call-out stays affirmed and direct).
+2-3 paragraphs grounded in the detected FRICTION PAIRS (name them, e.g. "**Activateur** chez l'un ↔ **Prudent** chez l'autre"). For each, explain the underlying tension (pace, proof vs momentum, distinction vs belonging…) as a SYSTEM tension, never a personal fault. Where it opens the dialogue, pose a friction as an OPEN QUESTION to the pair (e.g. « Que se passe-t-il quand l'un veut lancer et l'autre vérifier d'abord ? ») rather than only as a flat statement, with VARIED openings, never the same formula twice. Insert ONE call-out starting exactly "**La tension la plus structurante** —": if the Context gives a « TENSION LA PLUS STRUCTURANTE » line (computed), name EXACTLY that friction, do not re-derive it; otherwise pick the single friction most worth working on. One bolded key phrase, framed as productive tension to harness (the call-out stays affirmed and direct).
 
 "## 4. Comment mieux travailler ensemble"
 An intro line, then EXACTLY 4 concrete, doable operating agreements ("contrats de fonctionnement") tailored to THIS pair — each as a bolded lead phrase then one sentence (division of roles that plays their complementarity, communication contracts like "prévenir 24h avant", decision rules that defuse the friction pairs, rituals). Never generic. For [MANAGER_REPORT], at least one MUST address the hierarchical dynamic.
@@ -1385,7 +1392,18 @@ export default function Home() {
       `FRICTION PAIRS detected (Talent Tension Matrix, exact): ${stats.frictions.map(f => `${f.a} ↔ ${f.b} (${f.desc})`).join("; ") || "none"}`,
     ];
     const pairRoots = familyRoots([...aS, ...bS]);
+    // TENSION LA PLUS STRUCTURANTE calculée (déterministe) : parmi les frictions
+    // détectées, celle qui engage les forces les plus HAUTES chez les deux personnes
+    // (somme des rangs la plus faible). On la fige pour que l'encadré ne dérive pas.
+    let pairStretch = "";
+    if (stats.frictions && stats.frictions.length) {
+      const scored = stats.frictions.map(f => ({ f, s: (aS.indexOf(f.a) + 1) + (bS.indexOf(f.b) + 1) }));
+      scored.sort((x, y) => x.s - y.s);
+      const top = scored[0].f;
+      pairStretch = `\n\nTENSION LA PLUS STRUCTURANTE (calculée — à NE PAS remplacer, à NE PAS déduire toi-même) : « ${top.a} » (chez ${nameA}) ↔ « ${top.b} » (chez ${nameB}) — ${top.desc}. Traite EXACTEMENT cette friction comme « La tension la plus structurante » de la section 3.`;
+    }
     const ctx = ctxLines.join("\n")
+      + pairStretch
       + `\n\nRÉFÉRENCE DES FORCES (source de vérité Optimup — ancre le sens, les zones de vigilance et le pitch en duo sur ceci ; adapte au binôme, ne recopie jamais mot pour mot ; ne nomme jamais la force dans le pitch) :\n${strengthsReference([...aS, ...bS])}`
       + (pairRoots ? `\n\nRACINES PAR FAMILLE (lecture de profondeur, à manier avec tact, jamais à asséner) :\n${pairRoots}` : "");
     setPairContext(ctx);
