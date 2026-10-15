@@ -590,6 +590,10 @@ YOUR JOB — language only:
 - Break any overlong sentence that piles up clauses; keep a natural rhythm; vary sentence openings.
 - Remove internal/coaching jargon that exposes the mechanics of the test (e.g. « dans votre sommet », « votre tête de classement », « talents de pointe » as a raw label): refer to strengths naturally (« parmi vos premières forces », « ce qui vous caractérise le plus »).
 - Fix any anglicism, awkward word order, or heavy abstract phrasing (e.g. a signature formula like « leadership d'orchestration humaine » should be made concrete and immediately clear).
+- Remove superlatives and gushing adjectives (« magnifique », « exceptionnel », « remarquable », « incroyable »...): keep only earned, SPECIFIC warmth. Keep sentences clear AND warm, never dry telegraphic lists.
+- Remove USELESS NEGATIONS (« vous n'êtes pas quelqu'un de… », « ce n'est pas que vous… ») and ready-made clichés: state things positively and directly.
+- Do NOT make the text more flattering: keep a lucid, truthful, non-sycophantic tone, never inflating the strengths into a heroic portrait.
+- Keep the strengths-in-parentheses style (« une description naturelle (Thème) »): do NOT revert to leading with the bare theme name in the prose.
 
 PRESERVE EXACTLY — never change these:
 - Every "## " heading, its number and its place; the overall structure and section order; roughly the same length.
@@ -624,7 +628,7 @@ function buildPitchSystem(lang, kind, context) {
 - CLOSE with a synthesis that lifts up one level (who they are at their core) AND an opening on themselves (what carries them forward). This closing is the high point of the pitch.`;
   return `You are an expert StrengthsFinder coach writing in Philippe's voice. You write ONE thing only: a self-pitch in ${voice}, as if ${who}. Nothing else: no analysis, no sections, no foreword, no heading of your own, no salutation, no signature.
 
-LANGUAGE: Write 100% in ${langName}, impeccable, natural, idiomatic prose, the kind ${editor} would approve. Vary sentence openings, keep sentences clear and never overlong, no anglicism, no clumsy or calqued construction. Prefer commas and colons to em dashes. NEVER cite any brand, company or trademark name: speak generically (une entreprise, une maison, un produit).
+LANGUAGE: Write 100% in ${langName}, impeccable, natural, idiomatic prose, the kind ${editor} would approve. Vary sentence openings, keep sentences clear and never overlong, no anglicism, no clumsy or calqued construction. Prefer commas and colons to em dashes. NEVER cite any brand, company or trademark name: speak generically (une entreprise, une maison, un produit). SOBRIETY: no superlatives or gushing adjectives (« magnifique », « exceptionnel », « remarquable »...); warmth and confidence come through precision and concrete lived images, not intensifiers. NO USELESS NEGATIONS: say what you ARE, positively; avoid « je ne suis pas quelqu'un de… » and ready-made clichés. Stay warm and confident but NEVER inflated, grandiose or boastful: the pitch must ring true.
 
 STYLE — narrative and alive: a voice somewhere between Bernard Werber (making a living system vivid, curious and accessible, with precise images and a quiet sense of discovery) and the warm immersion of a fine novel (a touch of wonder, the feeling that the ordinary hides something remarkable). BUT stay sober and professional: no purple prose, no mysticism, no fantasy vocabulary. Every image must carry a TRUE insight grounded in the real strengths given to you — beautiful AND exact.
 
