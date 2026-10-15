@@ -6,6 +6,11 @@ import { strengthsReference, familyRoots, favoritesBlock } from "./strengthsData
 
 const ALL34 = ["Achiever","Activator","Adaptability","Analytical","Arranger","Belief","Command","Communication","Competition","Connectedness","Consistency","Context","Deliberative","Developer","Discipline","Empathy","Focus","Futuristic","Harmony","Ideation","Includer","Individualization","Input","Intellection","Learner","Maximizer","Positivity","Relator","Responsibility","Restorative","Self-Assurance","Significance","Strategic","Woo"];
 
+// Séparateur entre la partie FIXE du prompt système (consignes, exemples, lentilles —
+// identique à chaque appel, donc mise en cache) et la partie VARIABLE (le contexte du
+// profil). La route API coupe là-dessus pour ne mettre en cache que la partie fixe.
+const CACHE_SPLIT = "<<<CTX>>>";
+
 const DOMAINS = {
   Executing: ["Achiever","Arranger","Belief","Consistency","Deliberative","Discipline","Focus","Responsibility","Restorative"],
   Influencing: ["Activator","Command","Communication","Competition","Maximizer","Self-Assurance","Significance","Woo"],
@@ -428,6 +433,23 @@ function cleanReportLine(line) {
   return s.replace(/\s{2,}/g, " ").trim();
 }
 
+// Retire les artefacts que le modèle ou le relecteur ajoutent parfois malgré les
+// consignes : une phrase d'introduction en tête (« Voici le texte poli… : ») et une
+// signature/salutation en pied (le document en ajoute déjà une automatiquement).
+function stripArtifacts(text) {
+  let t = String(text || "").trim();
+  const nl = t.indexOf("\n");
+  const first = (nl === -1 ? t : t.slice(0, nl)).trim();
+  if (/^(voici|here is|here's|hier ist)\b/i.test(first) &&
+      (first.endsWith(":") || /texte poli|polished|debrief|débrief|portrait/i.test(first))) {
+    t = nl === -1 ? "" : t.slice(nl + 1);
+  }
+  const SIGN = /^(philippe|avec toute ma confiance|avec confiance|bien à vous|cordialement|with all my confidence|with confidence|mit vollem vertrauen)[\s,]*$/i;
+  const lines = t.split("\n");
+  while (lines.length && (lines[lines.length - 1].trim() === "" || SIGN.test(lines[lines.length - 1].trim()))) lines.pop();
+  return lines.join("\n").trim();
+}
+
 function RichText({ text }) {
   const lines = (text || "").split("\n");
   return (
@@ -510,7 +532,7 @@ SEQUENCE LENSES — read the top 5 as a LIVING SYSTEM, not a list: strengths are
 1. ACTIVATION — which strength triggers which. The activation chain reveals the person's cognitive style; the SAME strengths in a different order give a different style (e.g. voir puis agir vs agir puis comprendre). This drives the living loop of section 1.
 2. ISOLATION (orphan strength) — a top-5 strength with NO adjacent strengths to support it becomes a source of FRUSTRATION, not performance (e.g. a quest for the best with nothing to systematise it = chronic frustration with mediocrity unable to fix it; a natural authority with no relational strength = effective but isolated, creates resistance). Name it in section 2 and give it a compensatory strategy in section 3.
 3. COMPRESSION — which strength is SUFFOCATED by the other dominant strengths or by the context (present, but unable to breathe). A section-2 watch-point.
-4. COLLISION — which top strengths are AT WAR within the person: THIS IS THE STRETCH. Read it FIRST between the very top strengths (rank 1 vs 2 vs 3), never from low-ranked ones. It is the heart of section 2's priority watch-point and of section 3's growth axis, and it stays stable from one debrief to the next.
+4. COLLISION — which top strengths PULL IN DIFFERENT DIRECTIONS inside the person: THIS IS THE STRETCH, and it is the single most important thing to surface. Look at the VERY TOP strengths (usually rank 1 vs rank 2, at most rank 1-3) and find the two that contrast, most often ACROSS different domains or families, e.g. a drive to accomplish and do (task) sitting right next to a deep attunement to people and feelings (relation). Two synergistic strengths of the SAME family (e.g. a drive to accomplish + a gift for arranging, both Executing) are NOT a collision: do not pass them off as the stretch. Name this top contrast explicitly. It MUST be the heart of section 2's priority watch-point (the call-out) and of section 3's growth axis, and it stays the same from one debrief to the next.
 5. SHADOW TRIGGER — under what PRECISE conditions a strength flips into its shadow (name the situational condition, e.g. uncertainty with no deadline, authority questioned, conflict with valued people). Make section 2 situational, so the person can build an early-warning system ("quand je sens X, je sais que ma force Y risque de…").
 6. DEFICIT — recurring frustration reveals a register ABSENT from the top 10 (a "nutritional deficiency"): what EXHAUSTS the person points to the missing domain (draining relationships = low Relationship, no sense of direction = low Strategic Thinking, hard to finish = low Executing). One does NOT develop an absent strength; one builds a structural prosthetic (complementary people, tools, processes). Feeds the close of section 2 and section 3.
 
@@ -551,7 +573,7 @@ De l'autre côté, il y a votre intelligence des personnes. Vous ressentez les a
 
 ## 2 — Zones de vigilance (2 paragraphs, then ONE call-out, then 1–2 paragraphs)
 Every strength has a flip side, but present it as an OPEN, APPRECIATIVE QUESTION, never as a flat verdict or a defect. Do NOT assert the shadow ("votre force peut vous amener à...", "ce qui fait votre force contient aussi son ombre"): ASK it. Lead each watch-point with a question that first honours the strength (warmly but soberly, WITHOUT superlatives) and then opens its possible flip side, e.g. « Et si votre besoin d'accomplir (Réalisateur) pouvait aussi, parfois, vous faire vous engager sur des projets ou des délais avant d'en avoir mesuré l'ampleur ? ». VARY the opening from one watch-point to the next (do NOT repeat « Et si… ? » every time): rotate among « Et si… ? », « Se pourrait-il que… ? », « Qu'est-ce qui se joue, certains jours, lorsque… ? », « Votre … va-t-il parfois… ? », « Comment réagissez-vous quand… ? ». At most ONE watch-point may start with « Et si ». After each question, offer ONE or TWO gentle HYPOTHESES as possible answers (« Peut-être parce que… », « Il se peut que… », « Est-ce que, certains jours,… ? »), never a flat diagnosis. The tone stays valuing throughout: the aim is lucidity and conscious choice, never a flaw to fix. NEVER use the word "risque" (nor "risk"): speak of "zone de vigilance", "point d'attention", "ce à quoi rester attentif".
-EXCEPTION — the call-out stays AFFIRMED and direct (not a question): after the first question-paragraph, insert ONE call-out line that starts exactly with "**Votre vigilance prioritaire** —" naming the single most important strength COMBINATION (e.g. "Activateur + Assurance") and its systemic effect, with one bolded key phrase inside. Then continue with the remaining watch-points, STILL in the questioning « Et si… ? » + hypotheses mode, including what their UNDER-represented domains invite them to stay attentive to.
+EXCEPTION — the call-out stays AFFIRMED and direct (not a question): after the first question-paragraph, insert ONE call-out line that starts exactly with "**Votre vigilance prioritaire** —" naming the COLLISION from the sequence lenses, i.e. the TWO TOP strengths that pull in DIFFERENT directions (rank 1 vs rank 2 when they contrast, usually across domains, e.g. the drive to accomplish vs the attunement to people) and the tension it creates, with one bolded key phrase inside. Do NOT use two synergistic same-family strengths here; this call-out is the headline of the stretch. Then continue with the remaining watch-points, STILL in the questioning « Et si… ? » + hypotheses mode, including what their UNDER-represented domains invite them to stay attentive to.
 
 ## 3 — Aller plus loin (intro line + 3–4 mini-blocks + closing line)
 Positive reframe: your dominant strengths are LEVERS to reach new ground and grow, NOT tools to repair weaknesses. Never speak of "fragilités", "faiblesses", "défauts" or "compenser". Open with: the good news is that the levers to go further are already in your profile. Then 3–4 short blocks. Open EACH block with a concrete, immediately clear invitation phrased as a question in natural language, with the theme name only in parentheses (e.g. « Et si vous tourniez votre besoin d'accomplir (Réalisateur) vers ce que les AUTRES accomplissent, autant que vers vous-même ? »). CRUCIAL — VARY the opening from one block to the next: do NOT start every block with « Et si… ». Rotate among forms such as « Et si… ? », « Comment les choses se passeraient-elles si… ? », « Que se passerait-il si… ? », « Votre … pourrait-il aussi devenir… ? », « Jusqu'où iriez-vous si… ? », « Qu'est-ce qui changerait si… ? », « Imaginez un instant que… », and occasionally a direct invitation that is not a question at all. At most ONE block may start with « Et si ». One block may turn a dominant strength back on itself, but SAY IT PLAINLY and concretely: NEVER use a label such as « force retournée », « retourné » or « reversed ». For each, build a concrete bridge from a PRESENT strength toward a domain to EXPLORE and DEVELOP further (a new terrain to open), framed as growth and ambition, never as fixing a flaw, never generic advice. Close with one line on complementary profiles to surround themselves with, and ONE bolded "levier de développement clé".
@@ -585,7 +607,7 @@ Keep it warm, confident, authentic, in the person's own voice; adapt naturally t
 
 Do NOT write any closing salutation or signature — the document adds it automatically. End the text right after the pitch.
 
-Context: ${context}`;
+${CACHE_SPLIT}Context: ${context}`;
 }
 
 // Prompt du RELECTEUR (2e passage) : polit la langue du débrief sans toucher au fond.
@@ -612,7 +634,7 @@ PRESERVE EXACTLY — never change these:
 - The official CliftonStrengths names where they appear. NEVER reintroduce the word « risque » (keep « zone de vigilance » / « point d'attention »).
 FIX IF PRESENT (language only, same meaning): replace any « ce qui me tient debout » / « ce qui me garde debout » / a PERSON described as « qui tient debout » or « garde debout » with « ce qui me porte » / « ce qui me tient » / « ce qui m'anime » (or plural equivalents) — in French « tenir debout » wrongly implies the person would otherwise collapse. Leave « un raisonnement / une idée qui tient debout » (= coherent) untouched.
 
-Write the ENTIRE output in ${langName}. Return ONLY the full polished debrief in the same light-Markdown format, nothing else (no preamble, no comment).`;
+Write the ENTIRE output in ${langName}. Return ONLY the full polished debrief, starting DIRECTLY with its first line (the foreword or the first "## " heading). NEVER add any preamble, introduction, meta-comment or wrapper such as « Voici le texte poli… », « Voici le débrief… », « Here is… » — not even one. NEVER add any closing salutation or signature (no « Philippe », no « Avec toute ma confiance ») : the document adds those itself. Output nothing but the polished debrief.`;
 }
 
 // Prompt du MODE « PITCH SEUL » : ne produit QUE le pitch, rien d'autre.
@@ -650,7 +672,7 @@ REFERENCE: if the Context includes a « RÉFÉRENCE DES FORCES » with a « form
 
 Return ONLY the pitch text, starting directly with its first words. Do NOT add any title, heading, salutation or signature.
 
-Context: ${context}`;
+${CACHE_SPLIT}Context: ${context}`;
 }
 
 // Prompt système spécifique au TEAM COACHING.
@@ -739,7 +761,7 @@ Write it as a SINGLE flowing text (no sub-headings, no bullets): open with "Nous
 
 Tone: warm, confident, truthful. Coach posture, not consultant: every shadow is the flip side of a strength, every tension a signal of something trying to emerge. Do NOT write any closing salutation or signature — the document adds it automatically. End the text right after the team pitch.
 
-Context: ${context}`;
+${CACHE_SPLIT}Context: ${context}`;
 }
 
 // Prompt système du DÉBRIEF BINÔME : analyse l'interaction entre DEUX personnes
@@ -794,7 +816,7 @@ Write it as a SINGLE flowing text (no sub-headings, no bullets): open with "Ense
 
 Tone: warm, truthful, concrete. Coach posture: every friction is the flip side of a complementarity; the aim is conscious cooperation, not fixing anyone. Do NOT write any closing salutation or signature — the document adds it automatically. End the text right after the duo pitch.
 
-Context: ${context}`;
+${CACHE_SPLIT}Context: ${context}`;
 }
 
 // Porte d'entrée : demande le mot de passe (maître ou code d'accès) avant l'app.
@@ -1136,7 +1158,7 @@ export default function Home() {
         ? `Verfasse NUR den Pitch „Wenn ich mich vorstellen müsste" in der Ich-Form, auf Basis dieses Profils, ohne je die offiziellen Stärkennamen zu nennen.\n\nProfil: ${ctx}`
         : `Write ONLY the first-person pitch "If I had to pitch myself" from this profile, never naming the official strength themes.\n\nProfile: ${ctx}`;
       try {
-        const pitch = await callAPI(buildPitchSystem(lg, "individual", ctx), [{ role:"user", content: pitchPrompt }]);
+        const pitch = stripArtifacts(await callAPI(buildPitchSystem(lg, "individual", ctx), [{ role:"user", content: pitchPrompt }]));
         const report = `## ${heading}\n\n${pitch}`;
         setIndReport({ text: report, strengths, pitchOnly: true });
         setIndHistory([{ role:"user", content: pitchPrompt }, { role:"assistant", content: report }]);
@@ -1147,11 +1169,11 @@ export default function Home() {
     }
     try {
       const msgs = [{ role:"user", content: promptText }];
-      let report = await callAPI(buildSystem(lg, ctx), msgs);
+      let report = stripArtifacts(await callAPI(buildSystem(lg, ctx), msgs));
       // 2e passage : un relecteur polit la langue sans toucher au fond ni à la structure.
       // Si ce passage échoue (délai, erreur), on garde la 1re version plutôt que de planter.
       try {
-        const polished = await callAPI(buildReviewerSystem(lg), [{ role:"user", content: report }], "sonnet");
+        const polished = stripArtifacts(await callAPI(buildReviewerSystem(lg), [{ role:"user", content: report }], "sonnet"));
         if (polished && polished.trim().length > report.length * 0.6) report = polished;
       } catch (_) {}
       setIndReport({ text: report, strengths });
@@ -1249,14 +1271,14 @@ export default function Home() {
             ? `Verfasse NUR den Ich-Pitch für diese Person, ohne die offiziellen Stärkennamen zu nennen.\n\nProfil: ${mCtx}`
             : `Write ONLY the first-person self-pitch for this person, never naming the official strength themes.\n\nProfile: ${mCtx}`;
           return callAPI(buildPitchSystem(lg, "individual", mCtx), [{ role:"user", content: mPrompt }])
-            .then(text => ({ name: mName, text }));
+            .then(text => ({ name: mName, text: stripArtifacts(text) }));
         });
         const collPrompt = lg==="fr"
           ? `Rédige UNIQUEMENT le pitch collectif « Si notre équipe devait se pitcher » à la première personne du pluriel (« nous »), sans jamais nommer les forces officielles.\n\nÉquipe :\n${ctx}`
           : lg==="de"
           ? `Verfasse NUR den kollektiven Wir-Pitch des Teams, ohne die offiziellen Stärkennamen zu nennen.\n\nTeam:\n${ctx}`
           : `Write ONLY the collective first-person-plural ("we") team pitch, never naming the official strength themes.\n\nTeam:\n${ctx}`;
-        const collCall = callAPI(buildPitchSystem(lg, "team", ctx), [{ role:"user", content: collPrompt }]);
+        const collCall = callAPI(buildPitchSystem(lg, "team", ctx), [{ role:"user", content: collPrompt }]).then(stripArtifacts);
         const [memberPitches, collectivePitch] = await Promise.all([Promise.all(memberCalls), collCall]);
         const parts = memberPitches.map((p, i) => `## ${p.name || `${memberWord} ${i+1}`}\n\n${p.text}`);
         parts.push(`## ${collHead}${teamName ? " — " + teamName : ""}\n\n${collectivePitch}`);
@@ -1275,7 +1297,7 @@ export default function Home() {
       : `Provide the complete team analysis following the structure in your instructions. Tailor everything to the stated sector and department, and address the leader–team dynamic if a leader is tagged. Priority objective: ${goalLabel}.\n\nTeam:\n${ctx}`;
     try {
       const msgs = [{ role:"user", content: promptText }];
-      const report = await callAPI(buildTeamSystem(lg, ctx), msgs);
+      const report = stripArtifacts(await callAPI(buildTeamSystem(lg, ctx), msgs));
       setTeamReport({ text: report, strengths: allStrengths, stats, members: validMembers });
       setTeamHistory([{ role:"user", content: promptText }, { role:"assistant", content: report }]);
       setTeamChatMsgs([{ role:"ag", text: lg==="fr" ? "Analyse générée. Posez vos questions sur l'équipe." : lg==="de" ? "Analyse erstellt." : "Analysis complete. Ask your questions." }]);
@@ -1373,7 +1395,7 @@ export default function Home() {
       : `Provide the complete pair debrief following EXACTLY the structure in your instructions: foreword, then the 5 sections (1. resemblances, 2. complementarities, 3. frictions with the call-out, 4. how to work better together, 5. NVC tool with a tailored example AND a blank canvas, 6. the duo pitch in the first person plural "we", never naming the official strength themes). Tailor everything to the relationship type.\n\nPair:\n${ctx}`;
     try {
       const msgs = [{ role:"user", content: promptText }];
-      const report = await callAPI(buildPairSystem(lg, ctx), msgs);
+      const report = stripArtifacts(await callAPI(buildPairSystem(lg, ctx), msgs));
       setPairReport({ text: report, stats, a: { ...pairA, name: nameA }, b: { ...pairB, name: nameB }, strengths: [...aS, ...bS] });
       setPairHistory([{ role:"user", content: promptText }, { role:"assistant", content: report }]);
       setPairChatMsgs([{ role:"ag", text: lg==="fr" ? "Débrief du binôme généré. Posez vos questions pour approfondir." : lg==="de" ? "Duo-Debrief erstellt. Stellen Sie Ihre Fragen." : "Pair debrief complete. Ask your questions." }]);

@@ -33,14 +33,36 @@ export async function POST(req) {
     // 16000 : un débrief complet (6 sections + 3 questions + pitch), ancré sur la
     // référence, dépasse les 8000 tokens et se faisait tronquer en plein milieu
     // (section 5 coupée, pitch absent). Le modèle s'arrête de lui-même quand il a fini.
+    // CACHE DE PROMPT : on met en cache la partie FIXE du prompt système (consignes,
+    // exemples, lentilles) pour ne payer ~0,1x que sur les appels rapprochés (rafales :
+    // pitchs d'équipe, débriefs à la suite). Le contexte du profil (après le séparateur
+    // "<<<CTX>>>") n'est jamais mis en cache car il change à chaque appel.
+    const SPLIT = "<<<CTX>>>";
+    let systemParam;
+    if (typeof systemPrompt === "string" && systemPrompt.includes(SPLIT)) {
+      const i = systemPrompt.indexOf(SPLIT);
+      const stable = systemPrompt.slice(0, i);
+      const variable = systemPrompt.slice(i + SPLIT.length);
+      systemParam = [{ type: "text", text: stable, cache_control: { type: "ephemeral" } }];
+      if (variable && variable.trim()) systemParam.push({ type: "text", text: variable });
+    } else if (typeof systemPrompt === "string") {
+      // Prompt entièrement fixe (ex. relecteur) : tout peut être mis en cache.
+      systemParam = [{ type: "text", text: systemPrompt, cache_control: { type: "ephemeral" } }];
+    } else {
+      systemParam = systemPrompt;
+    }
     const response = await client.messages.create({
       model,
       max_tokens: 16000,
-      system: systemPrompt,
+      system: systemParam,
       messages,
     });
     if (response.stop_reason === "max_tokens") {
       console.warn("Analyze: output hit max_tokens (truncated).");
+    }
+    if (response.usage) {
+      const u = response.usage;
+      console.log("Analyze usage:", JSON.stringify({ input: u.input_tokens, cache_write: u.cache_creation_input_tokens, cache_read: u.cache_read_input_tokens, output: u.output_tokens }));
     }
     // Concatenate every text block rather than assuming a single one.
     const text = (response.content || [])
