@@ -695,7 +695,7 @@ LANGUAGE: Write the ENTIRE profile in ${langName}, including every heading, rega
 LANGUAGE QUALITY — write impeccable, natural, idiomatic prose in ${langName}, the kind a demanding native editor would approve (an Académie française jury for French). Avoid calqued or clumsy constructions and anglicisms; vary sentence openings; keep sentences clear and not overlong, yet WARM and FLOWING (never dry telegraphic lists). Reread every sentence silently and repair anything a native editor would flag.
 STYLE — write like a narrator, not like a report: real sentences with rhythm, concrete and fresh images grounded in the real strengths, a quiet sense of revealing how this person truly is on stage. Stay sober and professional: no purple prose, no mysticism. Every image must carry a TRUE insight. Prefer commas and colons to em dashes.
 SOBRIETY & HONESTY — appreciate WITHOUT superlatives or gushing (avoid « magnifique », « exceptionnel », « remarquable »...): warmth comes through precision, not intensifiers. NO SYCOPHANCY: resist the pull to flatter; affirm only what is specifically true and earned, and name the real traps with calm honesty. NO USELESS NEGATIONS: define the person by what they ARE, positively.
-BRANDS & NAMES: NEVER cite any brand, company or person's name in the output; speak generically. VOCABULARY: never use the word « risque » (nor « risk ») — say « piège », « point de vigilance », « ce à quoi rester attentif ». BANNED EXPRESSION: never use « tenir debout » / « garder debout » to describe what drives or sustains a person; prefer « ce qui me porte », « ce qui me tient », « ce qui m'anime ».
+BRANDS & NAMES: NEVER cite any brand, company or person's name in the output; speak generically. VOCABULARY: never use the word « risque » (nor « risk ») — say « piège », « point de vigilance », « ce à quoi rester attentif ». ANGLICISMS: never use « délivrer » for speaking (it means to free, not to deliver): prefer « faire passer », « porter », « transmettre ». Do NOT over-repeat « livrer » / « livraison »: vary the wording for delivering a talk. BANNED EXPRESSION: never use « tenir debout » / « garder debout » to describe what drives or sustains a person; prefer « ce qui me porte », « ce qui me tient », « ce qui m'anime ».
 STRENGTH NAMES — in the PROSE (sections 1 to 6), do NOT lead with the official theme name. Describe each strength FIRST in natural, lived, immediately clear language, then put the official ${langName} CliftonStrengths theme name in PARENTHESES right after, as a discreet reference (e.g. « votre énergie de conteur (Communication) », « votre art de lire la salle (Empathie) »). SECTION 7 (the oral pitch) NEVER names any theme, not even in parentheses.
 
 STRICT FIDELITY: the strengths and their order are given and exact; never reorder or invent them. The TOP 5 are the CORE of the speaker; strengths 6 to 10 only nuance. A domain ABSENT from the top 10 is a real signal: a less natural oratory register, to be named as a TRAINING GROUND, never as a defect.
@@ -728,7 +728,7 @@ Then insert ONE call-out starting exactly "**Votre piège prioritaire** —" nam
 Then, if the Context gives a « REGISTRE ORATOIRE MOINS NATUREL » (an absent domain), name gently what it invites the speaker to train, as a training ground, never a defect.
 
 ## 3 — Comment la salle vous perçoit (1 paragraph + 3 bullets + ONE call-out)
-How does the room likely perceive you, grounded in your real strengths on stage? One paragraph, then exactly 3 bullets starting "— **Ce qui inspire confiance :**", "— **Ce qui impressionne — et parfois intrigue :**", "— **Ce qui peut être mal interprété :**". End with ONE italic call-out giving THE silent question the audience is most likely asking, drawn from the « question silencieuse du public » of the person's most dominant strength, in the form: "*La question silencieuse de la salle pourrait être : « ... »* — un écart que vous avez le pouvoir de combler."
+How does the room likely perceive you, grounded in your real strengths on stage? One paragraph, then exactly 3 bullets starting "— **Ce qui inspire confiance :**", "— **Ce qui impressionne, et parfois intrigue :**", "— **Ce qui peut être mal interprété :**". End with ONE italic call-out giving THE silent question the audience is most likely asking, drawn from the « question silencieuse du public » of the person's most dominant strength, in the form: "*La question silencieuse de la salle pourrait être : « ... »* — un écart que vous avez le pouvoir de combler."
 
 ## 4 — Ce qui vous accélère, ce qui vous ralentit (2 short movements)
 Show, concretely, which of your forces ACCELERATE you when you speak (give momentum, presence, clarity, connection) and which can SLOW you down or trip you (over-preparation, over-thinking, over-adapting, rushing…), grounded strictly in the real strengths and their « sur scène » / « piège ». Keep it concrete and lived, two clear movements, not a list of adjectives.
@@ -1311,12 +1311,18 @@ export default function Home() {
       const ra = strengths.indexOf(strengths[0]) + 1, rb = strengths.indexOf(b) + 1;
       piegeBlock = `\n\nPIÈGE PRIORITAIRE (calculé — à NE PAS remplacer, à NE PAS déduire toi-même) : « ${strengths[0]} » (rang ${ra}, ${d0}) ↔ « ${b} » (rang ${rb}, ${getDomain(b)}). À l'oral, ces deux forces du haut tirent dans des directions différentes : c'est le piège central de l'orateur, à traiter comme l'encadré « Votre piège prioritaire » de la section 2. N'emploie JAMAIS deux forces synergiques de la même famille comme piège prioritaire.`;
     }
-    // Domaine(s) absent(s) du top 10 = registre oratoire moins naturel (terrain d'entraînement).
-    const present = new Set(strengths.map(getDomain));
+    // Registre oratoire moins naturel : on se fonde sur le TOP 5 (le profil dominant de
+    // l'orateur), pas sur le top 10. Un domaine absent du top 5 est un registre moins
+    // spontané à l'oral (terrain d'entraînement) ; on précise s'il est carrément absent
+    // du top 10. Cela ancre la « lecture par domaine sur scène » sur un fait calculé.
     const DOM_FR = { Executing:"Exécution", Influencing:"Influence", Relationship:"Relations", Thinking:"Pensée stratégique" };
-    const absent = Object.keys(DOMAINS).filter(d => !present.has(d)).map(d => DOM_FR[d]);
-    const absentBlock = absent.length
-      ? `\n\nREGISTRE ORATOIRE MOINS NATUREL (calculé) : aucune force du top dans le(s) domaine(s) « ${absent.join(", ")} ». À signaler en section 2 comme un registre moins spontané à l'oral, donc un terrain d'entraînement, jamais comme un défaut.`
+    const top5doms = new Set(strengths.slice(0, 5).map(getDomain));
+    const allDoms = new Set(strengths.map(getDomain));
+    const weak = Object.keys(DOMAINS)
+      .filter(d => !top5doms.has(d))
+      .map(d => `${DOM_FR[d]}${allDoms.has(d) ? " (présent seulement plus bas)" : " (absent du top 10)"}`);
+    const absentBlock = weak.length
+      ? `\n\nREGISTRE(S) ORATOIRE(S) MOINS NATUREL(S) (calculé) : aucune force du TOP 5 dans le(s) domaine(s) « ${weak.join(", ")} ». À signaler en section 2 comme un registre moins spontané à l'oral, donc un terrain d'entraînement, jamais un défaut ; applique ici ta « lecture par domaine sur scène » pour ce(s) domaine(s).`
       : "";
     const ctx = ctxBase
       + piegeBlock
