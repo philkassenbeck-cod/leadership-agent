@@ -1,0 +1,308 @@
+[
+  {
+    "force_en": "Achiever",
+    "force_fr": "Persévérance",
+    "domaine": "Exécution",
+    "sur_scene": "Énergie de travail visible, orateur qui livre : préparé, dense, concret.",
+    "piege": "Veut tout dire dans le temps imparti ; débit rapide, aucune respiration pour la salle.",
+    "levier": "Couper un tiers du contenu, puis s'imposer trois silences de deux secondes, chronométrés.",
+    "question_silencieuse": "Est-ce qu'il me laisse le temps de digérer ?"
+  },
+  {
+    "force_en": "Arranger",
+    "force_fr": "Arrangeur",
+    "domaine": "Exécution",
+    "sur_scene": "Structure fluide, transitions élégantes, sait réorganiser son propos en direct selon la salle.",
+    "piege": "Réagence sans cesse en parlant ; le public perd le plan et la ligne directrice.",
+    "levier": "Annoncer le plan en trois bascules et s'y tenir ; une seule réorganisation autorisée, annoncée à voix haute.",
+    "question_silencieuse": "Où en sommes-nous ?"
+  },
+  {
+    "force_en": "Belief",
+    "force_fr": "Conviction",
+    "domaine": "Exécution",
+    "sur_scene": "Parole habitée par des valeurs ; authenticité qui touche et donne du sens.",
+    "piege": "Ton moralisateur ; devient rigide quand un point heurte ses valeurs.",
+    "levier": "Raconter une histoire vécue qui incarne la valeur au lieu de l'énoncer ; s'entraîner à accueillir une objection de valeur sans la combattre.",
+    "question_silencieuse": "Est-ce qu'il me juge si je ne pense pas comme lui ?"
+  },
+  {
+    "force_en": "Consistency",
+    "force_fr": "Équité",
+    "domaine": "Exécution",
+    "sur_scene": "Clarté des règles, parole juste et équilibrée, crédible quand il faut annoncer un cadre.",
+    "piege": "Discours procédural, sans relief ; peu d'émotion, peu d'exemples singuliers.",
+    "levier": "Illustrer chaque règle par une personne concrète ; varier volontairement le rythme et le volume sur une phrase clé.",
+    "question_silencieuse": "Qu'est-ce que ça change pour moi, concrètement ?"
+  },
+  {
+    "force_en": "Deliberative",
+    "force_fr": "Prudence",
+    "domaine": "Exécution",
+    "sur_scene": "Parole pesée, fiable, rassurante ; excellente gestion du risque dans les questions-réponses.",
+    "piege": "Précautions oratoires en série, conditionnels, prise de risque nulle ; la présence s'efface.",
+    "levier": "Supprimer les « peut-être » et « il me semble » d'une version du discours ; s'autoriser une affirmation nette par minute.",
+    "question_silencieuse": "Qu'est-ce qu'il pense vraiment ?"
+  },
+  {
+    "force_en": "Discipline",
+    "force_fr": "Discipline",
+    "domaine": "Exécution",
+    "sur_scene": "Préparation impeccable, timing tenu, supports maîtrisés.",
+    "piege": "Récitation ; dès que l'imprévu surgit, la parole se fige.",
+    "levier": "Travailler sur bascules plutôt que texte ; exercice d'improvisation : on lui retire une partie du discours au dernier moment.",
+    "question_silencieuse": "Est-il encore là avec nous, ou dans son script ?"
+  },
+  {
+    "force_en": "Focus",
+    "force_fr": "Focus",
+    "domaine": "Exécution",
+    "sur_scene": "Message clair, objectif unique, sait ramener la salle au but.",
+    "piege": "Coupe court aux digressions du public ; peut paraître fermé ou pressé.",
+    "levier": "Accueillir une question hors sujet en la reliant à l'objectif (reformuler, puis revenir) au lieu de l'écarter.",
+    "question_silencieuse": "A-t-il de la place pour ma question ?"
+  },
+  {
+    "force_en": "Responsibility",
+    "force_fr": "Responsabilité",
+    "domaine": "Exécution",
+    "sur_scene": "Engagement crédible : ce qu'il annonce, il le tiendra. Inspire confiance.",
+    "piege": "Porte tout seul ; s'excuse, se justifie, sur-promet en réponse aux questions.",
+    "levier": "Répondre à une critique sans se justifier : reconnaître, répondre court, revenir au message.",
+    "question_silencieuse": "Pourquoi se justifie-t-il autant ?"
+  },
+  {
+    "force_en": "Restorative",
+    "force_fr": "Restaurateur",
+    "domaine": "Exécution",
+    "sur_scene": "Excellent pour expliquer un problème et sa solution ; très crédible en situation de crise.",
+    "piege": "Parle surtout de ce qui ne va pas ; tonalité anxiogène ou corrective.",
+    "levier": "Construire le discours en « problème, solution, futur réussi » et terminer sur l'image de réussite, jamais sur le problème.",
+    "question_silencieuse": "Est-ce que tout va si mal ?"
+  },
+  {
+    "force_en": "Activator",
+    "force_fr": "Activateur",
+    "domaine": "Influence",
+    "sur_scene": "Énergie de démarrage, appel à l'action naturel, réveille une salle.",
+    "piege": "Va trop vite, saute la préparation et la mise en contexte ; la salle ne le suit pas.",
+    "levier": "Ralentir l'ouverture : trente secondes de contexte avant le premier appel ; respiration basse avant de commencer.",
+    "question_silencieuse": "Pourquoi maintenant, et pourquoi si vite ?"
+  },
+  {
+    "force_en": "Command",
+    "force_fr": "Commandement",
+    "domaine": "Influence",
+    "sur_scene": "Présence immédiate, autorité naturelle, tient une salle hostile sans trembler.",
+    "piege": "Peut intimider ou écraser la contradiction ; les échanges deviennent des rapports de force.",
+    "levier": "Transformer l'autorité en invitation : poser une question ouverte à la salle et tenir le silence jusqu'à la réponse.",
+    "question_silencieuse": "Ai-je le droit de ne pas être d'accord ?"
+  },
+  {
+    "force_en": "Communication",
+    "force_fr": "Communication",
+    "domaine": "Influence",
+    "sur_scene": "Conteur né, aisance verbale, images et formules qui restent.",
+    "piege": "Ne s'arrête plus ; le plaisir de parler dépasse le message ; dérive vers le spectacle.",
+    "levier": "Règle des trois minutes et une seule histoire ; écrire sa chute et s'arrêter dessus.",
+    "question_silencieuse": "Quel est le message, au fond ?"
+  },
+  {
+    "force_en": "Competition",
+    "force_fr": "Compétition",
+    "domaine": "Influence",
+    "sur_scene": "Énergie de challenge, aime les enjeux, se dépasse devant un public exigeant.",
+    "piege": "Veut gagner chaque échange ; transforme une question en duel.",
+    "levier": "Exercice de la question hostile : faire gagner la salle plutôt que soi (reformuler l'objection mieux que son auteur).",
+    "question_silencieuse": "Est-ce qu'il veut convaincre ou gagner ?"
+  },
+  {
+    "force_en": "Maximizer",
+    "force_fr": "Maximiseur",
+    "domaine": "Influence",
+    "sur_scene": "Exigence de qualité, met en valeur les forces de son sujet et de son public.",
+    "piege": "Perfectionnisme : ne trouve jamais sa présentation prête, retouche jusqu'à la dernière minute.",
+    "levier": "Fixer un « assez bien » avant de répéter ; une seule amélioration par répétition.",
+    "question_silencieuse": "Pourquoi n'a-t-il pas l'air satisfait ?"
+  },
+  {
+    "force_en": "Self-Assurance",
+    "force_fr": "Assurance",
+    "domaine": "Influence",
+    "sur_scene": "Calme, ancrage, tient le cap dans l'incertitude ; rassure une salle.",
+    "piege": "Paraît distant ou sûr de lui au point de décourager la contradiction.",
+    "levier": "Changer l'assurance en silence habité et en écoute : solliciter un avis contraire et le remercier publiquement.",
+    "question_silencieuse": "Y a-t-il de la place pour mon avis ?"
+  },
+  {
+    "force_en": "Significance",
+    "force_fr": "Charisme",
+    "domaine": "Influence",
+    "sur_scene": "Aime la scène et l'impact, vise grand, rayonne.",
+    "piege": "Le discours parle de lui plus que du public ; dépendance au regard des autres.",
+    "levier": "Réécrire son discours en remplaçant la moitié des « je » par « vous » ; finir sur le public, pas sur soi.",
+    "question_silencieuse": "Est-ce que ça parle de moi ou de lui ?"
+  },
+  {
+    "force_en": "Woo",
+    "force_fr": "Séduction",
+    "domaine": "Influence",
+    "sur_scene": "Contact immédiat, chaleur, met une salle de son côté en quelques secondes.",
+    "piege": "Cherche à plaire ; évite le désaccord, adoucit les messages difficiles jusqu'à les vider.",
+    "levier": "Exercice de la phrase nette : dire un message impopulaire sans sourire d'excuse, puis tenir le regard.",
+    "question_silencieuse": "Est-ce qu'il dit la vérité ou ce qui fait plaisir ?"
+  },
+  {
+    "force_en": "Adaptability",
+    "force_fr": "Adaptabilité",
+    "domaine": "Relations",
+    "sur_scene": "Excellent improvisateur, à l'aise avec l'imprévu, suit l'énergie de la salle.",
+    "piege": "Manque de structure ; se laisse emmener par les questions et perd son objectif.",
+    "levier": "Choisir un mot-bascule d'objectif et y revenir après chaque digression.",
+    "question_silencieuse": "Où veut-il nous emmener ?"
+  },
+  {
+    "force_en": "Connectedness",
+    "force_fr": "Connexion",
+    "domaine": "Relations",
+    "sur_scene": "Donne du sens, relie le sujet à quelque chose de plus grand ; touche profondément.",
+    "piege": "Trop abstrait ou spirituel pour une salle pragmatique.",
+    "levier": "Ancrer chaque idée de sens dans un fait ou une personne ; une image concrète par message.",
+    "question_silencieuse": "Concrètement, ça veut dire quoi ?"
+  },
+  {
+    "force_en": "Developer",
+    "force_fr": "Développeur",
+    "domaine": "Relations",
+    "sur_scene": "Pédagogue, valorise les progrès des autres, crée un climat d'encouragement.",
+    "piege": "Ton paternaliste ou scolaire ; s'efface derrière les autres.",
+    "levier": "Prendre la parole pour soi : affirmer sa propre ambition dans le pitch, sans détour par les autres.",
+    "question_silencieuse": "Et lui, qu'est-ce qu'il veut ?"
+  },
+  {
+    "force_en": "Empathy",
+    "force_fr": "Empathie",
+    "domaine": "Relations",
+    "sur_scene": "Lit la salle, sent les émotions, ajuste son ton avec finesse.",
+    "piege": "Absorbe le stress ou l'hostilité du public ; se laisse déstabiliser par un visage fermé.",
+    "levier": "Respirer avant de répondre ; nommer l'émotion de la salle (« je sens que ce sujet vous préoccupe ») puis revenir au message.",
+    "question_silencieuse": "Est-ce qu'il tiendra si ça se tend ?"
+  },
+  {
+    "force_en": "Harmony",
+    "force_fr": "Harmonie",
+    "domaine": "Relations",
+    "sur_scene": "Cherche le terrain commun, apaise, excellent modérateur.",
+    "piege": "Évite le conflit ; noie les positions dans le consensus ; recule face à l'objection.",
+    "levier": "Exercice de la réunion difficile : tenir une position face à trois objections sans la diluer.",
+    "question_silencieuse": "Quelle est sa position ?"
+  },
+  {
+    "force_en": "Includer",
+    "force_fr": "Inclusion",
+    "domaine": "Relations",
+    "sur_scene": "Parle à tout le monde, fait participer, personne ne se sent oublié.",
+    "piege": "Disperse l'attention ; perd le fil en voulant faire intervenir chacun.",
+    "levier": "Inclure par le regard plutôt que par la parole : balayer toute la salle, une phrase par personne.",
+    "question_silencieuse": "Où va-t-on, si tout le monde parle ?"
+  },
+  {
+    "force_en": "Individualization",
+    "force_fr": "Individualisation",
+    "domaine": "Relations",
+    "sur_scene": "Adapte son discours à chaque public ; parle à chacun comme à une personne.",
+    "piege": "Trop de cas particuliers ; difficulté à généraliser un message pour une grande salle.",
+    "levier": "Le même message porté devant trois publics : garder le noyau identique, ne changer que les exemples.",
+    "question_silencieuse": "Quel est le message commun ?"
+  },
+  {
+    "force_en": "Positivity",
+    "force_fr": "Positivité",
+    "domaine": "Relations",
+    "sur_scene": "Énergie communicative, humour, rend la salle légère.",
+    "piege": "Minimise les difficultés ; perd en crédibilité sur les sujets graves.",
+    "levier": "S'entraîner à annoncer une mauvaise nouvelle : nommer le problème avec gravité avant d'ouvrir une perspective.",
+    "question_silencieuse": "Est-ce qu'il mesure la gravité ?"
+  },
+  {
+    "force_en": "Relator",
+    "force_fr": "Relationnel",
+    "domaine": "Relations",
+    "sur_scene": "Authenticité, confiance profonde, excellent en petit comité.",
+    "piege": "Moins à l'aise face à un grand public inconnu ; se cache derrière le contenu.",
+    "levier": "Choisir trois visages dans la salle et leur parler comme à des proches ; agrandir le cercle progressivement.",
+    "question_silencieuse": "Est-ce qu'il nous parle vraiment, à nous ?"
+  },
+  {
+    "force_en": "Analytical",
+    "force_fr": "Analytique",
+    "domaine": "Pensée stratégique",
+    "sur_scene": "Rigueur, crédibilité, preuves solides ; imbattable face aux sceptiques.",
+    "piege": "Noie la salle sous les chiffres ; démonstration froide, peu d'émotion.",
+    "levier": "Un chiffre, une histoire : chaque donnée doit être portée par une personne ou une image.",
+    "question_silencieuse": "Qu'est-ce que je dois retenir ?"
+  },
+  {
+    "force_en": "Context",
+    "force_fr": "Contexte",
+    "domaine": "Pensée stratégique",
+    "sur_scene": "Met en perspective, raconte l'histoire du sujet, donne de la profondeur.",
+    "piege": "Ouverture trop longue sur le passé ; la salle attend le présent.",
+    "levier": "Ouvrir sur aujourd'hui, puis faire un seul retour en arrière qui éclaire la décision.",
+    "question_silencieuse": "Et maintenant ?"
+  },
+  {
+    "force_en": "Futuristic",
+    "force_fr": "Vision",
+    "domaine": "Pensée stratégique",
+    "sur_scene": "Fait voir l'avenir, inspire, donne envie.",
+    "piege": "Vision sans chemin ; le public ne voit pas comment y aller.",
+    "levier": "Construire en trois temps : l'image du futur, la première marche, ce qu'on attend de vous lundi.",
+    "question_silencieuse": "Et demain matin, je fais quoi ?"
+  },
+  {
+    "force_en": "Ideation",
+    "force_fr": "Idéation",
+    "domaine": "Pensée stratégique",
+    "sur_scene": "Original, surprenant, relie ce qui semblait séparé ; captive les esprits curieux.",
+    "piege": "Trop d'idées par minute, digressions, sauts logiques ; la salle décroche.",
+    "levier": "Une seule idée par prise de parole ; noter les autres sur un carnet « pour plus tard ».",
+    "question_silencieuse": "Où veut-il en venir ?"
+  },
+  {
+    "force_en": "Input",
+    "force_fr": "Input",
+    "domaine": "Pensée stratégique",
+    "sur_scene": "Richesse de références, d'exemples, de citations ; culture qui nourrit le propos.",
+    "piege": "Empile les informations ; le message se perd dans l'abondance.",
+    "levier": "Sélectionner un seul exemple, le meilleur, et le raconter en entier.",
+    "question_silencieuse": "Qu'est-ce qui compte vraiment dans tout ça ?"
+  },
+  {
+    "force_en": "Intellection",
+    "force_fr": "Intellection",
+    "domaine": "Pensée stratégique",
+    "sur_scene": "Profondeur, réflexion, parole qui fait penser.",
+    "piege": "Trop conceptuel ; pense à voix haute, phrases longues, regard tourné vers l'intérieur.",
+    "levier": "Raccourcir les phrases à quinze mots ; finir chaque idée en regardant la salle.",
+    "question_silencieuse": "Est-ce qu'il nous parle ou se parle ?"
+  },
+  {
+    "force_en": "Learner",
+    "force_fr": "Apprenant",
+    "domaine": "Pensée stratégique",
+    "sur_scene": "Curiosité contagieuse, aime partager ce qu'il découvre, humble et vivant.",
+    "piege": "Explique le processus plutôt que la conclusion ; reste en mode exploration.",
+    "levier": "Commencer par la conclusion, puis raconter ce qu'on a appris pour y arriver.",
+    "question_silencieuse": "Quelle est la conclusion ?"
+  },
+  {
+    "force_en": "Strategic",
+    "force_fr": "Stratégique",
+    "domaine": "Pensée stratégique",
+    "sur_scene": "Voit vite le chemin, simplifie les options, donne une direction claire.",
+    "piege": "Donne la conclusion sans montrer le raisonnement ; la salle ne suit pas.",
+    "levier": "Montrer son chemin à voix haute : « voici les trois options, voici pourquoi celle-ci ».",
+    "question_silencieuse": "Comment en est-il arrivé là ?"
+  }
+]
